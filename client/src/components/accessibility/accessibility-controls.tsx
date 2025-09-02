@@ -35,7 +35,7 @@ export function AccessibilityControls() {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 space-y-2">
+    <div className="fixed top-20 right-4 z-50 space-y-2">
       <Button
         variant="outline"
         size="sm"
