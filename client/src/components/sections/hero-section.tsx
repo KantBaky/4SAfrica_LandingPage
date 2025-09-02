@@ -43,9 +43,8 @@ export function HeroSection() {
               Explore Our Solutions
             </Button>
             <Button
-              variant="outline"
               size="lg"
-              className="border-2 border-white text-white px-8 py-4 text-lg font-semibold btn-seed-hover hover:bg-white hover:text-primary"
+              className="bg-white text-primary px-8 py-4 text-lg font-semibold btn-seed-hover shadow-lg hover:shadow-xl"
               data-testid="button-partner-hero"
             >
               <i className="fas fa-handshake mr-2"></i>
