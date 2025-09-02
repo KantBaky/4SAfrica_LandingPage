@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import logoImage from '@assets/4S Logo_1756834402906.jpg';
 
 const navigationItems = [
   { href: '/', label: 'Home' },
@@ -25,10 +26,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center" data-testid="link-home">
-            <div className="text-2xl font-bold text-primary font-accent">
-              4S
-              <span className="text-sm text-muted-foreground ml-1">Sustainability Solutions</span>
+          <Link href="/" className="flex items-center space-x-3" data-testid="link-home">
+            <img 
+              src={logoImage} 
+              alt="4S - Sub-Sahara Sustainability Solutions" 
+              className="h-10 w-auto"
+            />
+            <div className="hidden sm:block text-xl font-bold text-primary font-accent">
+              <span className="text-sm text-muted-foreground">Sub-Sahara Sustainability Solutions</span>
             </div>
           </Link>
           
