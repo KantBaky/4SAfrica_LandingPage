@@ -86,23 +86,23 @@ export function SolutionsGrid() {
   const [solutions, setSolutions] = useState<Solution[]>(mockSolutions);
   const [filteredSolutions, setFilteredSolutions] = useState<Solution[]>(mockSolutions);
   const [filters, setFilters] = useState({
-    sdg: '',
-    country: '',
-    tool: '',
+    sdg: 'all-sdgs',
+    country: 'all-countries',
+    tool: 'all-tools',
   });
 
   useEffect(() => {
     let filtered = solutions;
 
-    if (filters.sdg) {
+    if (filters.sdg && filters.sdg !== 'all-sdgs') {
       filtered = filtered.filter(solution => solution.sdg === filters.sdg);
     }
 
-    if (filters.country) {
+    if (filters.country && filters.country !== 'all-countries') {
       filtered = filtered.filter(solution => solution.country === filters.country);
     }
 
-    if (filters.tool) {
+    if (filters.tool && filters.tool !== 'all-tools') {
       filtered = filtered.filter(solution => solution.tools.includes(filters.tool));
     }
 
@@ -110,7 +110,7 @@ export function SolutionsGrid() {
   }, [filters, solutions]);
 
   const clearFilters = () => {
-    setFilters({ sdg: '', country: '', tool: '' });
+    setFilters({ sdg: 'all-sdgs', country: 'all-countries', tool: 'all-tools' });
   };
 
   const getSdgName = (sdgId: string) => {
@@ -150,7 +150,7 @@ export function SolutionsGrid() {
                   <SelectValue placeholder="All SDGs" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All SDGs</SelectItem>
+                  <SelectItem value="all-sdgs">All SDGs</SelectItem>
                   {SDGS.map(sdg => (
                     <SelectItem key={sdg.id} value={sdg.id}>{sdg.name}</SelectItem>
                   ))}
@@ -162,7 +162,7 @@ export function SolutionsGrid() {
                   <SelectValue placeholder="All Countries" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Countries</SelectItem>
+                  <SelectItem value="all-countries">All Countries</SelectItem>
                   {COUNTRIES.map(country => (
                     <SelectItem key={country.id} value={country.id}>
                       {country.flag} {country.name}
@@ -176,7 +176,7 @@ export function SolutionsGrid() {
                   <SelectValue placeholder="All Tools" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Tools</SelectItem>
+                  <SelectItem value="all-tools">All Tools</SelectItem>
                   {SOLUTION_TOOLS.map(tool => (
                     <SelectItem key={tool.id} value={tool.id}>{tool.name}</SelectItem>
                   ))}
