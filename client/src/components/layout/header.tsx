@@ -26,15 +26,12 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3" data-testid="link-home">
+          <Link href="/" className="flex items-center" data-testid="link-home">
             <img 
               src={logoImage} 
               alt="4S - Sub-Sahara Sustainability Solutions" 
               className="h-10 w-auto"
             />
-            <div className="hidden sm:block text-xl font-bold text-primary font-accent">
-              <span className="text-sm text-muted-foreground">Sub-Sahara Sustainability Solutions</span>
-            </div>
           </Link>
           
           {/* Desktop Navigation */}
