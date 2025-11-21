@@ -15,59 +15,102 @@ export class GrokService {
   private async getFallbackResponse(userMessage: string): Promise<string> {
     const lowerMessage = userMessage.toLowerCase();
     
+    if (lowerMessage.includes('calculate') || lowerMessage.includes('impact')) {
+      return `I can help you calculate the potential impact of 4S solutions! To give you accurate estimates, I'd like to know:
+
+• What's the primary challenge you're addressing? (energy, water, agriculture, etc.)
+• How many people would be affected?
+• What's your estimated budget?
+• Which UN SDGs are priorities for you?
+• Which country or region?
+
+For example, a clean energy microgrid in a rural area can impact 500+ people, reduce ~50 tons of CO₂ annually, and create 5-10 jobs. Tell me more about your context!`;
+    }
+    
+    if (lowerMessage.includes('match') || lowerMessage.includes('which solution') || lowerMessage.includes('recommend')) {
+      return `I'd love to help you find the perfect solutions! Let me ask a few questions:
+
+• What sustainability challenges are you facing? (poverty, lack of electricity, water access, low agricultural yields, poor connectivity, etc.)
+• Who are you? (government agency, NGO, investor, community leader)
+• What's your timeline? (immediate, 1 year, 3 years, long-term)
+• Approximate budget range?
+
+Based on your answers, I can recommend the best mix of our 6 core solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, or Innovation Labs.`;
+    }
+    
     if (lowerMessage.includes('solution') || lowerMessage.includes('what do you offer')) {
       return `4S offers six core sustainability solutions for Sub-Saharan Africa:
 
-1. **Clean Energy Access**: AI-optimized solar microgrids for rural communities
-2. **Water Management**: IoT-powered clean water distribution systems
-3. **Smart Agriculture**: Data-driven farming to maximize yields sustainably
-4. **Digital Infrastructure**: Building connectivity in underserved regions
-5. **Impact Analytics**: Real-time SDG tracking and reporting
-6. **Innovation Labs**: Fostering local tech-driven solutions
+1. **Clean Energy Access**: AI solar microgrids ($50K-500K), serves ~500 people/system
+2. **Water Management**: IoT distribution ($30K-300K), serves ~2000 people/system
+3. **Smart Agriculture**: Data-driven farming ($2K-20K), increases yields 35-50%
+4. **Digital Infrastructure**: Connectivity & literacy ($100K-1M+), bridges digital gap
+5. **Impact Analytics**: Real-time SDG tracking, custom pricing
+6. **Innovation Labs**: Community tech hubs ($150K-750K), fosters local solutions
 
-Would you like to learn more about any specific solution?`;
+Ask me to calculate impact or match solutions to your specific needs!`;
     }
     
-    if (lowerMessage.includes('impact') || lowerMessage.includes('result')) {
-      return `4S has made significant impact across Sub-Saharan Africa:
+    if (lowerMessage.includes('investment') || lowerMessage.includes('roi') || lowerMessage.includes('return')) {
+      return `Great interest in investment! Here's our typical ROI structure:
 
-• 500K+ lives impacted through our solutions
-• Operating in 15+ countries
-• 50+ solutions successfully deployed
-• 2.5M tons of CO₂ emissions reduced
+**5-10 Year Projections:**
+• Clean Energy: 15-25% IRR, payback in 6-8 years
+• Smart Agriculture: 25-35% IRR, immediate yield improvement
+• Water Management: 12-18% IRR, high social impact
+• Digital Infrastructure: 10-20% IRR, long-term growth
 
-Our approach combines AI technology with local expertise to create sustainable, scalable solutions that address real community needs.`;
-    }
-    
-    if (lowerMessage.includes('how') || lowerMessage.includes('work')) {
-      return `4S follows a three-step process:
+**Impact-First Returns:**
+• Lives improved: 500-10,000+ per solution
+• CO₂ reduced: 50-500 tons annually
+• Jobs created: 5-100+ per deployment
+• SDG alignment: 3-6 goals per solution
 
-1. **Assess & Analyze**: Use AI to identify sustainability challenges specific to your region
-2. **Design & Deploy**: Implement tailored solutions with local expertise
-3. **Monitor & Scale**: Continuous optimization and expansion to new communities
-
-Each solution is designed for the unique context of Sub-Saharan Africa, ensuring maximum impact and sustainability.`;
+Let me calculate specific returns for your investment parameters!`;
     }
     
     if (lowerMessage.includes('partner') || lowerMessage.includes('contact') || lowerMessage.includes('get started')) {
-      return `I'd be happy to help you get started! You can:
+      return `Excellent! Let's discuss your partnership with 4S. I can help with:
 
+• **Governments**: Large-scale deployment, policy integration, impact metrics
+• **NGOs**: Community-focused implementation, local expertise, grassroots scaling
+• **Investors**: ROI analysis, portfolio diversification, impact returns
+• **Communities**: Direct solution deployment, tech training, capacity building
+
+Next steps:
 • Fill out the contact form at the bottom of this page
 • Email us at info@4ssolutions.com
-• Call us at +234 (0) 123 456 7890
+• Call +234 (0) 123 456 7890
 
-We work with governments, NGOs, and investors to create lasting sustainability impact across Sub-Saharan Africa. What type of partnership are you interested in?`;
+What type of partnership interests you most?`;
     }
     
-    return `Thank you for your question! I'm SustainaBot, here to help you learn about 4S's AI-powered sustainability solutions for Sub-Saharan Africa.
+    if (lowerMessage.includes('how') || lowerMessage.includes('work') || lowerMessage.includes('process')) {
+      return `4S follows a three-step implementation process:
 
-I can tell you about:
-• Our six core solution areas
-• Impact we've achieved (500K+ lives, 15+ countries)
-• How our process works
-• Partnership opportunities
+1. **Assess & Analyze**: AI analyzes your region - climate, infrastructure, population, economics
+2. **Design & Deploy**: We customize solutions using local expertise + cutting-edge tech
+3. **Monitor & Scale**: Real-time data tracking, optimization, and expansion
 
-What would you like to know more about?`;
+Plus, I can:
+• Calculate potential impact for your situation
+• Match solutions to your specific challenges
+• Analyze ROI and partnership structure
+• Guide you on SDG alignment
+
+What aspect would you like me to help with?`;
+    }
+    
+    return `Thank you! I'm SustainaBot, here to help with 4S's AI-powered sustainability solutions for Sub-Saharan Africa.
+
+I can assist with:
+• **Impact Calculator**: Estimate potential impact of solutions
+• **Solution Matchmaker**: Find the right solutions for your challenges
+• **Investment Analysis**: Calculate ROI and partnership structure
+• **SDG Alignment**: Map solutions to UN Sustainable Development Goals
+• **Partnership Guidance**: Help governments, NGOs, and investors scale impact
+
+What would you like help with? Ask me to calculate impact, match solutions, analyze ROI, or discuss partnerships!`;
   }
 
   async chat(messages: ChatMessage[]): Promise<string> {
@@ -98,22 +141,54 @@ What would you like to know more about?`;
   }
 
   async chatWithContext(userMessage: string): Promise<string> {
-    const systemPrompt = `You are SustainaBot, an AI assistant for 4S (Sub-Saharan Sustainability Solutions). 
-You help users understand 4S's AI-powered sustainability solutions for Sub-Saharan Africa.
+    const systemPrompt = `You are SustainaBot, an advanced AI assistant for 4S (Sub-Saharan Sustainability Solutions).
+You are an expert in impact analysis, solution recommendation, and sustainability consulting for Sub-Saharan Africa.
 
-Key information about 4S:
-- Mission: Transform Sub-Saharan Africa through AI-powered sustainability solutions
-- Focus Areas: Clean Energy Access, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, Innovation Labs
-- Impact: Over 5 million lives impacted across 12 countries with 200+ solutions deployed
-- Goals: Address SDGs (Sustainable Development Goals) while creating lasting impact
+KEY CAPABILITIES:
 
-Your responses should be:
-- Professional yet warm and approachable
-- Focused on sustainability and impact in Sub-Saharan Africa
-- Informative about 4S's solutions and approach
-- Helpful in guiding users to the right solutions for their needs
+1. IMPACT CALCULATOR:
+   - Analyze user's parameters: country, population affected, solution type, budget, SDGs
+   - Calculate estimated impact: lives impacted, CO2 reduction, economic benefits
+   - Use baseline data: Each person impacted = sustainable development gains
+   - For clean energy: 1 system serves ~500 people, reduces 50 tons CO2 annually
+   - For water: 1 system serves ~2000 people, prevents waterborne disease
+   - For agriculture: Tech adoption increases yields 35-50%, uses 30% less water
+   - Always provide realistic, data-backed estimates
 
-Keep responses concise (2-3 paragraphs maximum) and actionable.`;
+2. SOLUTION MATCHMAKER:
+   - Ask clarifying questions to understand user's sustainability challenges
+   - Match to solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, Innovation Labs
+   - Consider budget constraints, timeline, local context, partner availability
+   - Recommend best-fit solutions with implementation roadmap
+
+3. PARTNERSHIP ADVISORY:
+   - Governments: Policy advocacy, large-scale deployment, regulatory alignment
+   - NGOs: Community engagement, local expertise, grassroots implementation
+   - Investors: ROI analysis, impact metrics, portfolio diversification
+   - Provide realistic timelines and cost structures
+
+SOLUTION DETAILS:
+- Clean Energy Access: AI microgrids, solar systems, battery storage, $50K-500K per deployment
+- Water Management: IoT sensors, distribution networks, purification, $30K-300K
+- Smart Agriculture: Soil sensors, weather data, yield optimization, $2K-20K per farm
+- Digital Infrastructure: Connectivity, literacy programs, tech hubs, $100K-1M+
+- Impact Analytics: Dashboard, data collection, SDG tracking, custom pricing
+- Innovation Labs: Community spaces, tech training, $150K-750K setup
+
+4. SUSTAINABILITY METRICS:
+   - UN SDGs: Focus on 1, 6, 7, 12, 13, 15 (poverty, water, energy, climate, life)
+   - Calculate CO2 reduction, lives impacted, jobs created, cost per beneficiary
+   - ROI analysis with 5-10 year projections
+
+RESPONSE STRATEGY:
+- If user describes challenges → diagnose and recommend solutions
+- If user asks about impact → calculate based on parameters provided
+- If user mentions budget/timeline → find matching solutions
+- Always be data-driven and realistic about implementation
+- Offer to calculate impact or match solutions when appropriate
+- Suggest partnership model based on user profile
+
+Keep responses concise (2-3 paragraphs) but comprehensive. Use calculation results when relevant.`;
 
     const messages: ChatMessage[] = [
       { role: 'system', content: systemPrompt },
