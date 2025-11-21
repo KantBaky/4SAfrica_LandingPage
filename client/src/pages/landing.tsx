@@ -177,8 +177,8 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-                "Empowering Africa's future through sustainable innovation"
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+                <span className="text-gradient">Empowering Africa's future through sustainable innovation</span>
               </h2>
             </div>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
