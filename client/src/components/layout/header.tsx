@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Wifi } from 'lucide-react';
 import { useLowBandwidth } from '@/hooks/use-low-bandwidth';
-import logoImage from '@assets/4S Logo_1756834402906.jpg';
+import logoImage from '../../assets/4S Logo_1756834402906.jpg';
 
 const navigationItems = [
   { href: '#hero', label: 'Home' },
