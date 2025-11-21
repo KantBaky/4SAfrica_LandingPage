@@ -77,7 +77,6 @@ export function Header() {
                   size="lg"
                   data-testid="button-mobile-menu"
                   aria-label="Toggle mobile menu"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 border-0"
                 >
                   <i className="fas fa-bars text-xl"></i>
                 </Button>
