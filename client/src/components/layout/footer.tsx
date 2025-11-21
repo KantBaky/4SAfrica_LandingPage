@@ -1,36 +1,21 @@
-import { Link } from 'wouter';
+import logoImage from '@assets/4S Logo_1756834402906.jpg';
 
-const footerSections = [
-  {
-    title: 'Solutions',
-    links: [
-      { href: '/solutions?filter=energy', label: 'Energy Access' },
-      { href: '/solutions?filter=agriculture', label: 'Smart Agriculture' },
-      { href: '/solutions?filter=water', label: 'Water Management' },
-      { href: '/solutions?filter=education', label: 'Digital Education' },
-      { href: '/solutions?filter=climate', label: 'Climate Action' },
-    ]
-  },
-  {
-    title: 'Company',
-    links: [
-      { href: '/about', label: 'About Us' },
-      { href: '/team', label: 'Our Team' },
-      { href: '/careers', label: 'Careers' },
-      { href: '/press', label: 'Press' },
-      { href: '/contact', label: 'Contact' },
-    ]
-  },
-  {
-    title: 'Resources',
-    links: [
-      { href: '/insights', label: 'Blog' },
-      { href: '/research', label: 'Research' },
-      { href: '/case-studies', label: 'Case Studies' },
-      { href: '/docs', label: 'Documentation' },
-      { href: '/support', label: 'Support' },
-    ]
+const scrollToSection = (href: string) => {
+  if (href.startsWith('#')) {
+    const element = document.getElementById(href.substring(1));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
+};
+
+const quickLinks = [
+  { href: '#hero', label: 'Home' },
+  { href: '#solutions', label: 'Solutions' },
+  { href: '#impact', label: 'Impact' },
+  { href: '#how-it-works', label: 'How It Works' },
+  { href: '#testimonials', label: 'Testimonials' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 const socialLinks = [
@@ -43,11 +28,15 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand Section */}
           <div>
-            <div className="text-3xl font-bold text-primary font-accent mb-4">4S</div>
+            <img 
+              src={logoImage} 
+              alt="4S Logo" 
+              className="h-12 w-auto mb-4 brightness-200"
+            />
             <p className="text-background/80 leading-relaxed mb-6">
               Transforming Sub-Saharan Africa through AI-powered sustainability solutions, 
               creating lasting impact for communities and the environment.
@@ -69,55 +58,49 @@ export function Footer() {
             </div>
           </div>
           
-          {/* Footer Sections */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="font-bold text-background mb-4">{section.title}</h4>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-background/80 hover:text-primary transition-colors focus-visible"
-                      data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold text-background mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-background/80 hover:text-primary transition-colors focus-visible text-left"
+                    data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-bold text-background mb-4">Contact</h4>
+            <ul className="space-y-3 text-background/80">
+              <li>
+                <i className="fas fa-envelope mr-2"></i>
+                info@4ssolutions.com
+              </li>
+              <li>
+                <i className="fas fa-phone mr-2"></i>
+                +234 (0) 123 456 7890
+              </li>
+              <li>
+                <i className="fas fa-map-marker-alt mr-2"></i>
+                Lagos, Nigeria
+              </li>
+            </ul>
+          </div>
         </div>
         
         {/* Bottom Section */}
-        <div className="border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-background/20 pt-8 text-center md:text-left">
           <p className="text-background/60 text-sm">
             © 2024 4S - Sub-Saharan Sustainability Solutions. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/privacy"
-              className="text-background/60 hover:text-primary text-sm transition-colors focus-visible"
-              data-testid="link-privacy-policy"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-background/60 hover:text-primary text-sm transition-colors focus-visible"
-              data-testid="link-terms-of-service"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-background/60 hover:text-primary text-sm transition-colors focus-visible"
-              data-testid="link-cookie-policy"
-            >
-              Cookie Policy
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
