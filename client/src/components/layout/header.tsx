@@ -85,6 +85,7 @@ export function Header() {
             </Button>
 
             {/* Mobile Menu */}
+            <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -121,6 +122,7 @@ export function Header() {
                 </div>
               </SheetContent>
             </Sheet>
+            </div>
           </div>
         </div>
       </div>
