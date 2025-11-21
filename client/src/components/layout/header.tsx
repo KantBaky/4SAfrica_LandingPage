@@ -47,7 +47,7 @@ export function Header() {
             <img 
               src={logoImage} 
               alt="4S - Sub-Sahara Sustainability Solutions" 
-              className="h-10 w-32"
+              className="h-10 w-52"
             />
           </button>
           
