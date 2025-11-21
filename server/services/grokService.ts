@@ -11,6 +11,13 @@ export interface ChatMessage {
   content: string;
 }
 
+export interface ResultData {
+  type: 'impact' | 'investment' | 'recommendation' | 'text';
+  title: string;
+  data: Record<string, string | number | Record<string, string | number>>;
+  narrative: string;
+}
+
 export class GrokService {
   private async getFallbackResponse(userMessage: string): Promise<string> {
     const lowerMessage = userMessage.toLowerCase();
@@ -140,62 +147,56 @@ What would you like help with? Ask me to calculate impact, match solutions, anal
     }
   }
 
-  async chatWithContext(userMessage: string): Promise<string> {
+  async chatWithContext(userMessage: string): Promise<string | ResultData> {
     const systemPrompt = `You are SustainaBot, an advanced AI assistant for 4S (Sub-Saharan Sustainability Solutions).
 You are an expert in impact analysis, solution recommendation, and sustainability consulting for Sub-Saharan Africa.
+
+CRITICAL: When user asks for calculations or analysis, respond with JSON data structured like:
+{"type":"impact","title":"Impact Analysis","data":{"lives_impacted":"5000","co2_reduced":"250 tons","jobs_created":"45"},"narrative":"Analysis details..."}
 
 KEY CAPABILITIES:
 
 1. IMPACT CALCULATOR:
    - Analyze user's parameters: country, population affected, solution type, budget, SDGs
    - Calculate estimated impact: lives impacted, CO2 reduction, economic benefits
-   - Use baseline data: Each person impacted = sustainable development gains
-   - For clean energy: 1 system serves ~500 people, reduces 50 tons CO2 annually
-   - For water: 1 system serves ~2000 people, prevents waterborne disease
-   - For agriculture: Tech adoption increases yields 35-50%, uses 30% less water
-   - Always provide realistic, data-backed estimates
-
+   - Return structured data with metrics and narrative
+   
 2. SOLUTION MATCHMAKER:
-   - Ask clarifying questions to understand user's sustainability challenges
-   - Match to solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, Innovation Labs
-   - Consider budget constraints, timeline, local context, partner availability
-   - Recommend best-fit solutions with implementation roadmap
+   - Return recommendations as structured data with solution names, costs, and implementation timeline
+   
+3. INVESTMENT ANALYSIS:
+   - Return ROI data structured with IRR, payback period, and impact metrics
 
-3. PARTNERSHIP ADVISORY:
-   - Governments: Policy advocacy, large-scale deployment, regulatory alignment
-   - NGOs: Community engagement, local expertise, grassroots implementation
-   - Investors: ROI analysis, impact metrics, portfolio diversification
-   - Provide realistic timelines and cost structures
+For calculations, ALWAYS return JSON data first, then narrative explanation.
 
-SOLUTION DETAILS:
-- Clean Energy Access: AI microgrids, solar systems, battery storage, $50K-500K per deployment
-- Water Management: IoT sensors, distribution networks, purification, $30K-300K
-- Smart Agriculture: Soil sensors, weather data, yield optimization, $2K-20K per farm
-- Digital Infrastructure: Connectivity, literacy programs, tech hubs, $100K-1M+
-- Impact Analytics: Dashboard, data collection, SDG tracking, custom pricing
-- Innovation Labs: Community spaces, tech training, $150K-750K setup
-
-4. SUSTAINABILITY METRICS:
-   - UN SDGs: Focus on 1, 6, 7, 12, 13, 15 (poverty, water, energy, climate, life)
-   - Calculate CO2 reduction, lives impacted, jobs created, cost per beneficiary
-   - ROI analysis with 5-10 year projections
-
-RESPONSE STRATEGY:
-- If user describes challenges → diagnose and recommend solutions
-- If user asks about impact → calculate based on parameters provided
-- If user mentions budget/timeline → find matching solutions
-- Always be data-driven and realistic about implementation
-- Offer to calculate impact or match solutions when appropriate
-- Suggest partnership model based on user profile
-
-Keep responses concise (2-3 paragraphs) but comprehensive. Use calculation results when relevant.`;
+SOLUTION BASELINES:
+- Clean Energy: 1 system = 500 people, $50K-500K, 50 tons CO₂/year
+- Water: 1 system = 2000 people, $30K-300K
+- Agriculture: 1 farm = 5-10 families, yields +35-50%, water -30%
+- Digital Infrastructure: $100K-1M+, affects 1000+ people
+- Impact Analytics: Custom, $50K-200K
+- Innovation Labs: $150K-750K, trains 500+ people`;
 
     const messages: ChatMessage[] = [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userMessage }
     ];
 
-    return this.chat(messages);
+    const response = await this.chat(messages);
+    
+    // Try to parse as JSON if it looks like structured data
+    if (response.startsWith('{')) {
+      try {
+        const parsed = JSON.parse(response);
+        if (parsed.type && parsed.data) {
+          return parsed;
+        }
+      } catch (e) {
+        // Not valid JSON, return as text
+      }
+    }
+    
+    return response;
   }
 }
 

@@ -6,10 +6,18 @@ import { MessageCircle, X, Send } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 
+interface ResultData {
+  type: 'impact' | 'investment' | 'recommendation' | 'text';
+  title: string;
+  data: Record<string, string | number | Record<string, string | number>>;
+  narrative: string;
+}
+
 interface Message {
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
+  data?: ResultData;
 }
 
 export function GrokChatbot() {
@@ -48,15 +56,27 @@ export function GrokChatbot() {
       if (!response.ok) throw new Error('Failed to get chat response');
       return response.json();
     },
-    onSuccess: (data: { response: string }) => {
-      setMessages(prev => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: data.response,
-          timestamp: new Date()
-        }
-      ]);
+    onSuccess: (data: { response: string | ResultData }) => {
+      if (typeof data.response === 'object') {
+        setMessages(prev => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: data.response.narrative || data.response.title,
+            timestamp: new Date(),
+            data: data.response
+          }
+        ]);
+      } else {
+        setMessages(prev => [
+          ...prev,
+          {
+            role: 'assistant',
+            content: data.response,
+            timestamp: new Date()
+          }
+        ]);
+      }
     },
     onError: (error) => {
       console.error('Chat error:', error);
@@ -145,7 +165,22 @@ export function GrokChatbot() {
                   }`}
                   data-testid={`message-${message.role}-${index}`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  {message.data ? (
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-sm">{message.data.title}</h4>
+                      <div className="bg-muted/50 rounded p-2 text-xs space-y-1">
+                        {Object.entries(message.data.data).map(([key, value]) => (
+                          <div key={key} className="flex justify-between">
+                            <span className="font-medium">{key.replace(/_/g, ' ').toUpperCase()}:</span>
+                            <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="text-xs whitespace-pre-wrap">{message.data.narrative}</p>
+                    </div>
+                  ) : (
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  )}
                   <p className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString([], { 
                       hour: '2-digit', 
