@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { z } from "zod";
 import { storage } from "./storage";
 import { aiService } from "./services/ai-service";
+import { grokService } from "./services/grokService";
 import { 
   insertImpactCalculationSchema,
   insertQuizResultSchema,
@@ -49,7 +50,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Chat API
+  // Chat API - Using GrokAI
   app.post("/api/ai/chat", async (req, res) => {
     try {
       const { message, sessionId } = req.body;
@@ -58,7 +59,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Message and sessionId are required" });
       }
       
-      const response = await aiService.getChatResponse(message, sessionId);
+      const response = await grokService.chatWithContext(message);
       
       // Store chat message
       await storage.createChatMessage({

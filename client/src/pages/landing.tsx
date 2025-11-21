@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
+import { GrokChatbot } from '@/components/GrokChatbot';
 
 const solutions = [
   {
@@ -96,17 +97,26 @@ export default function Landing() {
       {/* Hero Section */}
       <section 
         id="hero" 
-        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 hero-gradient opacity-90"></div>
+        {/* Multi-layer gradient background using 4S theme colors */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(102,35%,25%)] via-[hsl(218,73%,41%)] to-[hsl(29,94%,43%)] opacity-95"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-[hsl(102,35%,25%)]/50 via-transparent to-[hsl(218,73%,41%)]/30"></div>
+        </div>
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
+          className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
           }}
           role="img"
           aria-label="African landscape"
         ></div>
+        {/* Overlay pattern */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+          backgroundSize: '32px 32px'
+        }}></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
@@ -349,6 +359,9 @@ export default function Landing() {
           </p>
         </div>
       </section>
+
+      {/* GrokAI Chatbot */}
+      <GrokChatbot />
     </div>
   );
 }

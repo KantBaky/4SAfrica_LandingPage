@@ -40,7 +40,7 @@ export function Header() {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection('#hero')} 
-            className="flex items-center focus-visible cursor-pointer"
+            className="flex items-center focus:outline-none cursor-pointer border-0 bg-transparent p-0"
             data-testid="link-home"
             aria-label="Home"
           >
@@ -58,7 +58,7 @@ export function Header() {
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors focus-visible text-muted-foreground hover:text-primary"
+                  className="px-3 py-2 text-sm font-medium transition-colors focus:outline-none text-muted-foreground hover:text-primary border-0 bg-transparent"
                   data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   {item.label}
@@ -71,7 +71,7 @@ export function Header() {
           <div className="hidden md:block">
             <Button 
               onClick={() => scrollToSection('#contact')}
-              className="bg-primary text-primary-foreground btn-seed-hover"
+              className="bg-primary text-primary-foreground btn-seed-hover border-0 shadow-none"
               data-testid="button-partner-with-us"
             >
               Get Started
@@ -97,7 +97,7 @@ export function Header() {
                     <button
                       key={item.href}
                       onClick={() => handleNavClick(item.href)}
-                      className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-muted-foreground hover:text-primary text-left"
+                      className="block px-3 py-2 text-base font-medium transition-colors text-muted-foreground hover:text-primary text-left border-0 bg-transparent focus:outline-none"
                       data-testid={`link-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {item.label}
@@ -106,7 +106,7 @@ export function Header() {
                   <div className="pt-4">
                     <Button 
                       onClick={() => handleNavClick('#contact')}
-                      className="w-full bg-primary text-primary-foreground btn-seed-hover"
+                      className="w-full bg-primary text-primary-foreground btn-seed-hover border-0 shadow-none"
                       data-testid="button-mobile-partner"
                     >
                       Get Started
