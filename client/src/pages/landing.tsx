@@ -129,8 +129,8 @@ export default function Landing() {
               alt="4S Logo" 
               className="h-20 w-auto mx-auto mb-8"
             />
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-accent leading-tight">
-              AI-Powered Sustainability for Africa
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-accent leading-tight">
+              <span className="text-gradient">AI-Powered Sustainability for Africa</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
               Transforming challenges into opportunities through intelligent technology, 
