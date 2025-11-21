@@ -41,7 +41,7 @@ export function AccessibilityControls() {
         size="sm"
         onClick={toggleLowBandwidth}
         data-testid="button-low-bandwidth-toggle"
-        className="bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
       >
         <i className="fas fa-wifi mr-2"></i>
         {isLowBandwidth ? 'High Bandwidth' : 'Low Bandwidth'}
