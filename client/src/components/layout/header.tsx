@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 
 const navigationItems = [
@@ -78,7 +79,7 @@ export function Header() {
                   data-testid="button-mobile-menu"
                   aria-label="Toggle mobile menu"
                 >
-                  <i className="fas fa-bars text-xl"></i>
+                  <Menu className="w-6 h-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
