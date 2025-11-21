@@ -99,7 +99,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-background/20 pt-8 text-center md:text-left">
           <p className="text-background/60 text-sm">
-            © 2024 4S - Sub-Saharan Sustainability Solutions. All rights reserved.
+            © 2025 4S - Sub-Saharan Sustainability Solutions. All rights reserved.
           </p>
         </div>
       </div>
