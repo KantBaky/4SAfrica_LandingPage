@@ -4,6 +4,7 @@ import { z } from "zod";
 import { storage } from "./storage";
 import { aiService } from "./services/ai-service";
 import { grokService } from "./services/grokService";
+import { emailService } from "./services/emailService";
 import { 
   insertImpactCalculationSchema,
   insertQuizResultSchema,
@@ -104,6 +105,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Solutions error:", error);
       res.status(500).json({ message: "Failed to fetch solutions" });
+    }
+  });
+
+  // Contact Form API
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const { email, name, message, subject } = req.body;
+
+      // Validate required fields
+      if (!email || !message) {
+        return res.status(400).json({ message: "Email and message are required" });
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return res.status(400).json({ message: "Invalid email format" });
+      }
+
+      // Send contact email to 4S
+      await emailService.sendContactEmail({ email, name, message, subject });
+
+      // Send confirmation email to user
+      await emailService.sendConfirmationEmail(email);
+
+      res.json({ 
+        success: true,
+        message: "Your message has been sent successfully. We'll get back to you soon!" 
+      });
+    } catch (error: any) {
+      console.error("Contact form error:", error);
+      res.status(500).json({ 
+        message: "Failed to send message. Please try again or contact us directly at info@4ssolutions.com",
+        error: error.message 
+      });
     }
   });
 

@@ -84,6 +84,10 @@ const testimonials = [
 
 export default function Landing() {
   const [email, setEmail] = useState('');
+  const [contactName, setContactName] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -335,22 +339,83 @@ export default function Landing() {
             Join 500+ organizations partnering with us to build a sustainable future for Africa
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto mb-8">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
-              data-testid="input-email"
+          <div className="space-y-4 max-w-2xl mx-auto mb-8">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Input
+                type="text"
+                placeholder="Your name (optional)"
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
+                data-testid="input-name"
+              />
+              <Input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
+                data-testid="input-email"
+              />
+            </div>
+            <textarea
+              placeholder="Tell us about your sustainability goals or partnership interests..."
+              value={contactMessage}
+              onChange={(e) => setContactMessage(e.target.value)}
+              className="w-full bg-white text-foreground px-6 py-4 text-lg rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
+              data-testid="textarea-message"
             />
             <Button
               size="lg"
-              className="bg-secondary text-secondary-foreground px-8 py-4 text-lg font-semibold btn-seed-hover hover:bg-secondary/90"
+              onClick={async () => {
+                if (!email || !contactMessage) {
+                  setSubmitMessage('Please fill in email and message fields');
+                  return;
+                }
+
+                setIsSubmitting(true);
+                setSubmitMessage('');
+
+                try {
+                  const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      email,
+                      name: contactName || undefined,
+                      message: contactMessage,
+                    }),
+                  });
+
+                  const data = await response.json();
+
+                  if (response.ok) {
+                    setSubmitMessage('✓ Message sent successfully! We\'ll get back to you soon.');
+                    setEmail('');
+                    setContactName('');
+                    setContactMessage('');
+                    setTimeout(() => setSubmitMessage(''), 5000);
+                  } else {
+                    setSubmitMessage(data.message || 'Failed to send message. Please try again.');
+                  }
+                } catch (error) {
+                  setSubmitMessage('Error sending message. Please contact us directly at info@4ssolutions.com');
+                  console.error('Contact form error:', error);
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+              disabled={isSubmitting || !email || !contactMessage}
+              className="w-full bg-secondary text-secondary-foreground px-8 py-4 text-lg font-semibold btn-seed-hover hover:bg-secondary/90"
               data-testid="button-submit-email"
             >
-              Get Started
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
+            {submitMessage && (
+              <p className={`text-sm text-center ${submitMessage.includes('✓') ? 'text-green-300' : 'text-yellow-200'}`}>
+                {submitMessage}
+              </p>
+            )}
           </div>
 
           <p className="text-sm text-primary-foreground/70">
