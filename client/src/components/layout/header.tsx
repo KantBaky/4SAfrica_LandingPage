@@ -81,7 +81,7 @@ export function Header() {
               className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
             >
               <Wifi className="w-4 h-4 mr-2" />
-              {isLowBandwidth ? 'High' : 'Low'}
+              {isLowBandwidth ? 'High Bandwidth' : 'Low Bandwidth'}
             </Button>
 
             {/* Mobile Menu */}
