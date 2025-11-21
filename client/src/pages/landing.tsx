@@ -128,11 +128,6 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <img 
-              src={logoImage} 
-              alt="4S Logo" 
-              className="h-20 w-auto mx-auto mb-8"
-            />
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-accent leading-tight">
               <span className="text-gradient" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3)', filter: 'brightness(1.4) saturate(1.3)' }}>AI-Powered Sustainability for Africa</span>
             </h1>

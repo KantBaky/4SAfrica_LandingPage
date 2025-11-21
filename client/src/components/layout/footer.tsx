@@ -35,7 +35,7 @@ export function Footer() {
             <img 
               src={logoImage} 
               alt="4S Logo" 
-              className="h-12 w-auto mb-4 brightness-200"
+              className="h-14 w-40 mb-4 brightness-0 invert"
             />
             <p className="text-background/80 leading-relaxed mb-6">
               Transforming Sub-Saharan Africa through AI-powered sustainability solutions, 
