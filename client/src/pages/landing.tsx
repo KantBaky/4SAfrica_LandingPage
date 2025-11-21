@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 import { GrokChatbot } from '@/components/GrokChatbot';
+import { ImpactResults } from '@/components/ImpactResults';
 
 const solutions = [
   {

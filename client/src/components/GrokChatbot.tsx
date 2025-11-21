@@ -2,16 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, Save } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
-
-interface ResultData {
-  type: 'impact' | 'investment' | 'recommendation' | 'text';
-  title: string;
-  data: Record<string, string | number | Record<string, string | number>>;
-  narrative: string;
-}
+import { useImpactResults, type ResultData } from '@/lib/impactResults';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -32,6 +26,7 @@ export function GrokChatbot() {
   const [inputMessage, setInputMessage] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const sessionId = useRef(Math.random().toString(36).substring(7));
+  const { addResult } = useImpactResults();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -57,14 +52,15 @@ export function GrokChatbot() {
       return response.json();
     },
     onSuccess: (data: { response: string | ResultData }) => {
-      if (typeof data.response === 'object') {
+      if (typeof data.response === 'object' && data.response.type) {
+        const resultData = data.response as ResultData;
         setMessages(prev => [
           ...prev,
           {
             role: 'assistant',
-            content: data.response.narrative || data.response.title,
+            content: resultData.narrative || resultData.title,
             timestamp: new Date(),
-            data: data.response
+            data: resultData
           }
         ]);
       } else {
@@ -72,7 +68,7 @@ export function GrokChatbot() {
           ...prev,
           {
             role: 'assistant',
-            content: data.response,
+            content: String(data.response),
             timestamp: new Date()
           }
         ]);
@@ -167,7 +163,19 @@ export function GrokChatbot() {
                 >
                   {message.data ? (
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-sm">{message.data.title}</h4>
+                      <div className="flex justify-between items-start gap-2">
+                        <h4 className="font-semibold text-sm flex-1">{message.data.title}</h4>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          className="h-6 w-6"
+                          onClick={() => addResult(message.data!)}
+                          data-testid="button-save-result"
+                          title="Save to impact results"
+                        >
+                          <Save className="h-3 w-3" />
+                        </Button>
+                      </div>
                       <div className="bg-muted/50 rounded p-2 text-xs space-y-1">
                         {Object.entries(message.data.data).map(([key, value]) => (
                           <div key={key} className="flex justify-between">
