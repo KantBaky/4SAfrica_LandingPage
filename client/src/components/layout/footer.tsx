@@ -35,7 +35,8 @@ export function Footer() {
             <img 
               src={logoImage} 
               alt="4S Logo" 
-              className="h-14 w-40 mb-4 brightness-0 invert"
+              className="h-14 w-40 mb-4"
+              style={{ filter: 'invert(1) brightness(1.8)' }}
             />
             <p className="text-background/80 leading-relaxed mb-6">
               Transforming Sub-Saharan Africa through AI-powered sustainability solutions, 
