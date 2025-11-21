@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, Wifi } from 'lucide-react';
+import { useLowBandwidth } from '@/hooks/use-low-bandwidth';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 
 const navigationItems = [
@@ -24,6 +25,7 @@ const scrollToSection = (href: string) => {
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isLowBandwidth, toggleLowBandwidth } = useLowBandwidth();
 
   const handleNavClick = (href: string) => {
     scrollToSection(href);
@@ -68,9 +70,21 @@ export function Header() {
             </div>
           </div>
 
+          {/* Right Section - Bandwidth Button and Mobile Menu */}
+          <div className="flex items-center space-x-2 md:space-x-4">
+            {/* Bandwidth Toggle */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleLowBandwidth}
+              data-testid="button-low-bandwidth-toggle"
+              className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+            >
+              <Wifi className="w-4 h-4 mr-2" />
+              {isLowBandwidth ? 'High' : 'Low'}
+            </Button>
 
-          {/* Mobile Menu */}
-          <div className="md:hidden">
+            {/* Mobile Menu */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -94,6 +108,16 @@ export function Header() {
                       {item.label}
                     </button>
                   ))}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={toggleLowBandwidth}
+                    data-testid="button-low-bandwidth-toggle-mobile"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground mt-4"
+                  >
+                    <Wifi className="w-4 h-4 mr-2" />
+                    {isLowBandwidth ? 'High Bandwidth' : 'Low Bandwidth'}
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
