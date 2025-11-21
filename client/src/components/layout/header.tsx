@@ -67,16 +67,6 @@ export function Header() {
             </div>
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <Button 
-              onClick={() => scrollToSection('#contact')}
-              className="bg-primary text-primary-foreground btn-seed-hover border-0 shadow-none"
-              data-testid="button-partner-with-us"
-            >
-              Get Started
-            </Button>
-          </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden">
@@ -103,15 +93,6 @@ export function Header() {
                       {item.label}
                     </button>
                   ))}
-                  <div className="pt-4">
-                    <Button 
-                      onClick={() => handleNavClick('#contact')}
-                      className="w-full bg-primary text-primary-foreground btn-seed-hover border-0 shadow-none"
-                      data-testid="button-mobile-partner"
-                    >
-                      Get Started
-                    </Button>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>
