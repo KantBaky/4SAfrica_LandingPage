@@ -30,11 +30,7 @@ interface SolutionRecommendation {
 }
 
 export class AIService {
-  private apiKey: string;
-
-  constructor() {
-    this.apiKey = import.meta.env.VITE_OPENAI_API_KEY || "";
-  }
+  constructor() {}
 
   async calculateImpact(params: ImpactCalculationParams): Promise<ImpactResults> {
     try {
