@@ -51,12 +51,12 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-background/10 text-background hover:bg-primary hover:text-foreground transition-all duration-300 transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/20 text-primary hover:bg-primary hover:text-foreground transition-all duration-300 transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
                   data-testid={`link-social-${social.label.toLowerCase()}`}
                   aria-label={social.label}
                   title={social.label}
                 >
-                  <i className={`${social.icon} text-lg`}></i>
+                  <i className={`${social.icon} text-xl font-bold`}></i>
                 </a>
               ))}
             </div>
@@ -94,7 +94,7 @@ export function Footer() {
               </li>
               <li>
                 <i className="fas fa-map-marker-alt mr-2"></i>
-                Lagos, Nigeria
+                Nairobi, Kenya
               </li>
             </ul>
           </div>
