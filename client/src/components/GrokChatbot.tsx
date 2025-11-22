@@ -16,7 +16,7 @@ interface Message {
 }
 
 export function GrokChatbot() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -38,7 +38,17 @@ export function GrokChatbot() {
     scrollToBottom();
   }, [messages]);
 
-  const { language } = useLanguage();
+  // Update greeting message when language changes
+  useEffect(() => {
+    setMessages(prev => [
+      {
+        role: 'assistant',
+        content: t('chatbot.greeting'),
+        timestamp: new Date()
+      },
+      ...prev.slice(1)
+    ]);
+  }, [language, t]);
 
   const chatMutation = useMutation({
     mutationFn: async (message: string) => {
