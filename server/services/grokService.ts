@@ -105,6 +105,36 @@ For example, a clean energy microgrid in a rural area can impact 500+ people, re
     }
     
     if (lowerMessage.includes('match') || lowerMessage.includes('which solution') || lowerMessage.includes('recommend')) {
+      if (language === 'pt') {
+        return `Adoraria ajudá-lo a encontrar as soluções perfeitas! Deixe-me fazer algumas perguntas:
+
+• Quais desafios de sustentabilidade você enfrenta? (pobreza, falta de eletricidade, acesso à água, baixos rendimentos agrícolas, conectividade inadequada, etc.)
+• Quem é você? (agência governamental, ONG, investidor, líder comunitário)
+• Qual é seu prazo? (imediato, 1 ano, 3 anos, longo prazo)
+• Faixa de orçamento aproximado?
+
+Com base em suas respostas, posso recomendar a melhor mistura de nossas 6 soluções principais: Energia Limpa, Gestão de Água, Agricultura Inteligente, Infraestrutura Digital, Análise de Impacto ou Laboratórios de Inovação.`;
+      }
+      if (language === 'es') {
+        return `¡Me encantaría ayudarte a encontrar las soluciones perfectas! Déjame hacer algunas preguntas:
+
+• ¿Qué desafíos de sostenibilidad enfrentas? (pobreza, falta de electricidad, acceso a agua, bajos rendimientos agrícolas, conectividad inadecuada, etc.)
+• ¿Quién eres? (agencia gubernamental, ONG, inversor, líder comunitario)
+• ¿Cuál es tu plazo? (inmediato, 1 año, 3 años, largo plazo)
+• ¿Rango de presupuesto aproximado?
+
+Con base en tus respuestas, puedo recomendar la mejor mezcla de nuestras 6 soluciones principales: Energía Limpia, Gestión del Agua, Agricultura Inteligente, Infraestructura Digital, Análisis de Impacto o Laboratorios de Innovación.`;
+      }
+      if (language === 'fr') {
+        return `J'aimerais vous aider à trouver les solutions parfaites! Laissez-moi poser quelques questions:
+
+• Quels défis de durabilité affrontez-vous? (pauvreté, manque d'électricité, accès à l'eau, faibles rendements agricoles, connectivité insuffisante, etc.)
+• Qui êtes-vous? (agence gouvernementale, ONG, investisseur, leader communautaire)
+• Quel est votre délai? (immédiat, 1 an, 3 ans, long terme)
+• Budget approximatif?
+
+En fonction de vos réponses, je peux recommander le meilleur mélange de nos 6 solutions principales: Énergie Propre, Gestion de l'Eau, Agriculture Intelligente, Infrastructure Numérique, Analytique d'Impact, ou Laboratoires d'Innovation.`;
+      }
       return `I'd love to help you find the perfect solutions! Let me ask a few questions:
 
 • What sustainability challenges are you facing? (poverty, lack of electricity, water access, low agricultural yields, poor connectivity, etc.)
@@ -116,6 +146,42 @@ Based on your answers, I can recommend the best mix of our 6 core solutions: Cle
     }
     
     if (lowerMessage.includes('solution') || lowerMessage.includes('what do you offer')) {
+      if (language === 'pt') {
+        return `4S oferece seis soluções principais de sustentabilidade para a África Subsaariana:
+
+1. **Acesso a Energia Limpa**: Microrredes solares alimentadas por IA ($50K-500K), servem ~500 pessoas/sistema
+2. **Gestão de Água**: Distribuição IoT ($30K-300K), servem ~2000 pessoas/sistema
+3. **Agricultura Inteligente**: Fazenda baseada em dados ($2K-20K), aumenta rendimentos 35-50%
+4. **Infraestrutura Digital**: Conectividade e alfabetização ($100K-1M+), fecha lacuna digital
+5. **Análise de Impacto**: Rastreamento de ODS em tempo real, preços customizados
+6. **Laboratórios de Inovação**: Centros tecnológicos comunitários ($150K-750K), fomentam soluções locais
+
+Peça-me para calcular impacto ou fazer correspondência de soluções com suas necessidades específicas!`;
+      }
+      if (language === 'es') {
+        return `4S ofrece seis soluciones principales de sostenibilidad para el África Subsahariana:
+
+1. **Acceso a Energía Limpia**: Microrredes solares impulsadas por IA ($50K-500K), sirven ~500 personas/sistema
+2. **Gestión del Agua**: Distribución IoT ($30K-300K), sirven ~2000 personas/sistema
+3. **Agricultura Inteligente**: Agricultura basada en datos ($2K-20K), aumenta rendimientos 35-50%
+4. **Infraestructura Digital**: Conectividad y alfabetización ($100K-1M+), cierra la brecha digital
+5. **Análisis de Impacto**: Seguimiento de ODS en tiempo real, precios personalizados
+6. **Laboratorios de Innovación**: Centros tecnológicos comunitarios ($150K-750K), fomentan soluciones locales
+
+¡Pídeme que calcule impacto o haga coincidir soluciones con tus necesidades específicas!`;
+      }
+      if (language === 'fr') {
+        return `4S propose six solutions de durabilité principales pour l'Afrique subsaharienne:
+
+1. **Accès à l'Énergie Propre**: Microgrilles solaires alimentées par l'IA ($50K-500K), servent ~500 personnes/système
+2. **Gestion de l'Eau**: Distribution IoT ($30K-300K), servent ~2000 personnes/système
+3. **Agriculture Intelligente**: Exploitation agricole basée sur les données ($2K-20K), augmente rendements 35-50%
+4. **Infrastructure Numérique**: Connectivité et littératie ($100K-1M+), comble fossé numérique
+5. **Analytique d'Impact**: Suivi des ODD en temps réel, tarification personnalisée
+6. **Laboratoires d'Innovation**: Centres technologiques communautaires ($150K-750K), favorisent solutions locales
+
+Demandez-moi de calculer l'impact ou de faire correspondre les solutions à vos besoins spécifiques!`;
+      }
       return `4S offers six core sustainability solutions for Sub-Saharan Africa:
 
 1. **Clean Energy Access**: AI solar microgrids ($50K-500K), serves ~500 people/system
@@ -129,6 +195,57 @@ Ask me to calculate impact or match solutions to your specific needs!`;
     }
     
     if (lowerMessage.includes('investment') || lowerMessage.includes('roi') || lowerMessage.includes('return')) {
+      if (language === 'pt') {
+        return `Ótimo interesse em investimento! Aqui está nossa estrutura de ROI típica:
+
+**Projeções de 5-10 Anos:**
+• Energia Limpa: TIR 15-25%, payback em 6-8 anos
+• Agricultura Inteligente: TIR 25-35%, melhoria imediata de rendimentos
+• Gestão de Água: TIR 12-18%, alto impacto social
+• Infraestrutura Digital: TIR 10-20%, crescimento de longo prazo
+
+**Retornos Focados em Impacto:**
+• Vidas melhoradas: 500-10.000+ por solução
+• CO₂ reduzido: 50-500 toneladas anualmente
+• Empregos criados: 5-100+ por implantação
+• Alinhamento de ODS: 3-6 objetivos por solução
+
+Deixe-me calcular retornos específicos para seus parâmetros de investimento!`;
+      }
+      if (language === 'es') {
+        return `¡Excelente interés en inversión! Aquí está nuestra estructura de ROI típica:
+
+**Proyecciones de 5-10 Años:**
+• Energía Limpia: TIR 15-25%, recuperación en 6-8 años
+• Agricultura Inteligente: TIR 25-35%, mejora inmediata de rendimientos
+• Gestión del Agua: TIR 12-18%, alto impacto social
+• Infraestructura Digital: TIR 10-20%, crecimiento a largo plazo
+
+**Retornos Enfocados en Impacto:**
+• Vidas mejoradas: 500-10.000+ por solución
+• CO₂ reducido: 50-500 toneladas anualmente
+• Empleos creados: 5-100+ por despliegue
+• Alineación de ODS: 3-6 objetivos por solución
+
+¡Déjame calcular retornos específicos para tus parámetros de inversión!`;
+      }
+      if (language === 'fr') {
+        return `Grand intérêt pour l'investissement! Voici notre structure de ROI typique:
+
+**Projections 5-10 ans:**
+• Énergie Propre: TRI 15-25%, remboursement en 6-8 ans
+• Agriculture Intelligente: TRI 25-35%, amélioration immédiate des rendements
+• Gestion de l'Eau: TRI 12-18%, impact social élevé
+• Infrastructure Numérique: TRI 10-20%, croissance à long terme
+
+**Rendements Axés sur l'Impact:**
+• Vies améliorées: 500-10 000+ par solution
+• CO₂ réduit: 50-500 tonnes annuellement
+• Emplois créés: 5-100+ par déploiement
+• Alignement ODD: 3-6 objectifs par solution
+
+Laissez-moi calculer des retours spécifiques pour vos paramètres d'investissement!`;
+      }
       return `Great interest in investment! Here's our typical ROI structure:
 
 **5-10 Year Projections:**
@@ -147,6 +264,51 @@ Let me calculate specific returns for your investment parameters!`;
     }
     
     if (lowerMessage.includes('partner') || lowerMessage.includes('contact') || lowerMessage.includes('get started')) {
+      if (language === 'pt') {
+        return `Excelente! Vamos discutir sua parceria com 4S. Posso ajudar com:
+
+• **Governos**: Implantação em larga escala, integração política, métricas de impacto
+• **ONGs**: Implementação focada em comunidade, expertise local, expansão de base
+• **Investidores**: Análise de ROI, diversificação de portfólio, retornos de impacto
+• **Comunidades**: Implantação direta de soluções, treinamento técnico, construção de capacidade
+
+Próximos passos:
+• Preencha o formulário de contato na parte inferior desta página
+• Envie-nos um email em info@4ssolutions.com
+• Ligue para +254 XXX XXX XXX
+
+Qual tipo de parceria o interessa mais?`;
+      }
+      if (language === 'es') {
+        return `¡Excelente! Discutamos tu asociación con 4S. Puedo ayudarte con:
+
+• **Gobiernos**: Despliegue a gran escala, integración política, métricas de impacto
+• **ONG**: Implementación centrada en la comunidad, expertise local, escalada local
+• **Inversores**: Análisis de ROI, diversificación de portafolio, retornos de impacto
+• **Comunidades**: Despliegue directo de soluciones, capacitación técnica, construcción de capacidades
+
+Próximos pasos:
+• Rellena el formulario de contacto en la parte inferior de esta página
+• Envíanos un email a info@4ssolutions.com
+• Llama a +254 XXX XXX XXX
+
+¿Qué tipo de asociación te interesa más?`;
+      }
+      if (language === 'fr') {
+        return `Excellent! Discutons de votre partenariat avec 4S. Je peux vous aider avec:
+
+• **Gouvernements**: Déploiement à grande échelle, intégration politique, mesures d'impact
+• **ONG**: Implémentation communautaire, expertise locale, expansion locale
+• **Investisseurs**: Analyse ROI, diversification de portefeuille, rendements d'impact
+• **Communautés**: Déploiement direct de solutions, formation technologique, renforcement des capacités
+
+Prochaines étapes:
+• Remplissez le formulaire de contact au bas de cette page
+• Contactez-nous à info@4ssolutions.com
+• Appelez +254 XXX XXX XXX
+
+Quel type de partenariat vous intéresse le plus?`;
+      }
       return `Excellent! Let's discuss your partnership with 4S. I can help with:
 
 • **Governments**: Large-scale deployment, policy integration, impact metrics
@@ -157,12 +319,57 @@ Let me calculate specific returns for your investment parameters!`;
 Next steps:
 • Fill out the contact form at the bottom of this page
 • Email us at info@4ssolutions.com
-• Call +234 (0) 123 456 7890
+• Call +254 XXX XXX XXX
 
 What type of partnership interests you most?`;
     }
     
     if (lowerMessage.includes('how') || lowerMessage.includes('work') || lowerMessage.includes('process')) {
+      if (language === 'pt') {
+        return `4S segue um processo de implementação em três etapas:
+
+1. **Avaliar e Analisar**: IA analisa sua região - clima, infraestrutura, população, economia
+2. **Projetar e Implementar**: Personalizamos soluções usando expertise local + tecnologia de ponta
+3. **Monitorar e Escalar**: Rastreamento de dados em tempo real, otimização e expansão
+
+Além disso, posso:
+• Calcular impacto potencial para sua situação
+• Fazer correspondência de soluções com seus desafios específicos
+• Analisar estrutura de ROI e parcerias
+• Orientá-lo sobre alinhamento de ODS
+
+Qual aspecto você gostaria que eu ajudasse?`;
+      }
+      if (language === 'es') {
+        return `4S sigue un proceso de implementación de tres pasos:
+
+1. **Evaluar y Analizar**: IA analiza tu región - clima, infraestructura, población, economía
+2. **Diseñar e Implementar**: Personalizamos soluciones utilizando expertise local + tecnología de vanguardia
+3. **Monitorear y Escalar**: Seguimiento de datos en tiempo real, optimización y expansión
+
+Además, puedo:
+• Calcular impacto potencial para tu situación
+• Hacer coincidir soluciones con tus desafíos específicos
+• Analizar estructura de ROI y asociaciones
+• Orientarte sobre alineación de ODS
+
+¿Qué aspecto te gustaría que te ayudara?`;
+      }
+      if (language === 'fr') {
+        return `4S suit un processus de mise en œuvre en trois étapes:
+
+1. **Évaluer et Analyser**: L'IA analyse votre région - climat, infrastructure, population, économie
+2. **Concevoir et Déployer**: Nous personnalisons les solutions en utilisant expertise locale + technologie de pointe
+3. **Surveiller et Développer**: Suivi des données en temps réel, optimisation et expansion
+
+De plus, je peux:
+• Calculer l'impact potentiel pour votre situation
+• Faire correspondre les solutions à vos défis spécifiques
+• Analyser la structure de ROI et de partenariat
+• Vous guider sur l'alignement des ODD
+
+Quel aspect aimeriez-vous que je vous aide?`;
+      }
       return `4S follows a three-step implementation process:
 
 1. **Assess & Analyze**: AI analyzes your region - climate, infrastructure, population, economics
@@ -178,6 +385,42 @@ Plus, I can:
 What aspect would you like me to help with?`;
     }
     
+    if (language === 'pt') {
+      return `Obrigado! Sou SustainaBot, aqui para ajudar com as soluções de sustentabilidade alimentadas por IA da 4S para a África Subsaariana.
+
+Posso ajudar com:
+• **Calculadora de Impacto**: Estimar impacto potencial das soluções
+• **Matchmaker de Soluções**: Encontrar as soluções certas para seus desafios
+• **Análise de Investimento**: Calcular estrutura de ROI e parcerias
+• **Alinhamento de ODS**: Mapear soluções para Objetivos de Desenvolvimento Sustentável das Nações Unidas
+• **Orientação de Parcerias**: Ajudar governos, ONGs e investidores a escalar impacto
+
+Com o que posso ajudá-lo? Peça-me para calcular impacto, fazer correspondência de soluções, analisar ROI ou discutir parcerias!`;
+    }
+    if (language === 'es') {
+      return `¡Gracias! Soy SustainaBot, aquí para ayudarte con las soluciones de sostenibilidad impulsadas por IA de 4S para el África Subsahariana.
+
+Puedo ayudarte con:
+• **Calculadora de Impacto**: Estimar impacto potencial de las soluciones
+• **Matchmaker de Soluciones**: Encontrar las soluciones correctas para tus desafíos
+• **Análisis de Inversión**: Calcular estructura de ROI y asociaciones
+• **Alineación de ODS**: Mapear soluciones a Objetivos de Desarrollo Sostenible de las Naciones Unidas
+• **Orientación de Asociaciones**: Ayudar a gobiernos, ONG e inversores a escalar impacto
+
+¿Con qué puedo ayudarte? ¡Pídeme que calcule impacto, haga coincidir soluciones, analice ROI o discuta asociaciones!`;
+    }
+    if (language === 'fr') {
+      return `Merci! Je suis SustainaBot, ici pour vous aider avec les solutions de durabilité alimentées par l'IA de 4S pour l'Afrique subsaharienne.
+
+Je peux vous aider avec:
+• **Calculatrice d'Impact**: Estimer l'impact potentiel des solutions
+• **Matchmaker de Solutions**: Trouver les bonnes solutions pour vos défis
+• **Analyse d'Investissement**: Calculer la structure de ROI et de partenariat
+• **Alignement ODD**: Mapper les solutions aux Objectifs de Développement Durable des Nations unies
+• **Orientation de Partenariat**: Aider les gouvernements, ONG et investisseurs à développer l'impact
+
+Comment puis-je vous aider? Demandez-moi de calculer l'impact, faire correspondre les solutions, analyser le ROI ou discuter des partenariats!`;
+    }
     return `Thank you! I'm SustainaBot, here to help with 4S's AI-powered sustainability solutions for Sub-Saharan Africa.
 
 I can assist with:
