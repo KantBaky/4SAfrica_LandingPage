@@ -445,13 +445,30 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function detectBrowserLanguage(): Language {
+  if (typeof window === 'undefined') return 'en';
+  
+  // Check localStorage first for user preference
+  const saved = localStorage.getItem('language');
+  if (saved && ['en', 'fr', 'pt', 'es'].includes(saved)) {
+    return saved as Language;
+  }
+  
+  // Auto-detect from browser language
+  const browserLang = navigator.language.toLowerCase();
+  
+  // Direct matches
+  if (browserLang.startsWith('fr')) return 'fr';
+  if (browserLang.startsWith('pt')) return 'pt';
+  if (browserLang.startsWith('es')) return 'es';
+  if (browserLang.startsWith('en')) return 'en';
+  
+  // Default to English
+  return 'en';
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('language') as Language) || 'en';
-    }
-    return 'en';
-  });
+  const [language, setLanguage] = useState<Language>(detectBrowserLanguage);
 
   const t = (key: string): string => {
     const keys = key.split('.');

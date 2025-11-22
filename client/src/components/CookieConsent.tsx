@@ -36,7 +36,14 @@ async function getVisitorData(contactName: string, contactEmail: string): Promis
 }
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => {
+    // Show popup unless user explicitly declined
+    if (typeof window !== 'undefined') {
+      const declined = localStorage.getItem('cookieConsentDeclined');
+      return !declined;
+    }
+    return true;
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [contactName, setContactName] = useState('');
@@ -44,9 +51,9 @@ export function CookieConsent() {
   const { t } = useLanguage();
 
   useEffect(() => {
-    // Check if user has already consented or declined
-    const hasConsented = localStorage.getItem('cookieConsent');
-    if (hasConsented) {
+    // Check if user has explicitly declined
+    const declined = localStorage.getItem('cookieConsentDeclined');
+    if (declined) {
       setIsVisible(false);
     }
   }, []);
@@ -69,7 +76,7 @@ export function CookieConsent() {
       });
 
       if (response.ok) {
-        localStorage.setItem('cookieConsent', 'true');
+        localStorage.setItem('cookieConsentDeclined', 'false');
         setSubmitted(true);
         setTimeout(() => setIsVisible(false), 2000);
       }
@@ -81,7 +88,7 @@ export function CookieConsent() {
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'declined');
+    localStorage.setItem('cookieConsentDeclined', 'true');
     setIsVisible(false);
   };
 
