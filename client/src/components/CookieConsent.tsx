@@ -2,12 +2,59 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { X } from 'lucide-react';
+
+interface VisitorData {
+  timestamp: string;
+  url: string;
+  referrer: string;
+  userAgent: string;
+  language: string;
+  timezone: string;
+  screenResolution: string;
+  platform: string;
+  email?: string;
+  phone?: string;
+  ipInfo?: {
+    ip: string;
+    country?: string;
+    city?: string;
+  };
+}
+
+async function getVisitorData(): Promise<VisitorData> {
+  // Collect browser/device information
+  const data: VisitorData = {
+    timestamp: new Date().toISOString(),
+    url: window.location.href,
+    referrer: document.referrer || 'direct',
+    userAgent: navigator.userAgent,
+    language: navigator.language,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    screenResolution: `${window.screen.width}x${window.screen.height}`,
+    platform: navigator.platform,
+  };
+
+  // Try to get IP information from a public API
+  try {
+    const ipResponse = await fetch('https://ipapi.co/json/');
+    if (ipResponse.ok) {
+      const ipData = await ipResponse.json();
+      data.ipInfo = {
+        ip: ipData.ip,
+        country: ipData.country_name,
+        city: ipData.city,
+      };
+    }
+  } catch (error) {
+    console.log('Could not fetch IP info:', error);
+  }
+
+  return data;
+}
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { t } = useLanguage();
@@ -20,17 +67,14 @@ export function CookieConsent() {
   }, []);
 
   const handleAccept = async () => {
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email');
-      return;
-    }
-
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/subscribe', {
+      const visitorData = await getVisitorData();
+      
+      const response = await fetch('/api/collect-visitor-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(visitorData),
       });
 
       if (response.ok) {
@@ -39,8 +83,7 @@ export function CookieConsent() {
         setTimeout(() => setIsVisible(false), 2000);
       }
     } catch (error) {
-      console.error('Error subscribing:', error);
-      alert('Error subscribing. Please try again.');
+      console.error('Error collecting visitor data:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -73,15 +116,6 @@ export function CookieConsent() {
           ) : (
             <>
               <p className="text-sm text-muted-foreground">{t('cookies.message')}</p>
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isSubmitting}
-                data-testid="input-cookie-email"
-                className="text-sm"
-              />
               <div className="flex gap-2">
                 <Button
                   size="sm"
@@ -90,7 +124,7 @@ export function CookieConsent() {
                   className="flex-1 bg-primary hover:bg-primary/90"
                   data-testid="button-accept-cookies"
                 >
-                  {isSubmitting ? 'Subscribing...' : t('cookies.accept')}
+                  {isSubmitting ? 'Processing...' : t('cookies.accept')}
                 </Button>
                 <Button
                   size="sm"

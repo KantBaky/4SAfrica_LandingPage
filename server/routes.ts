@@ -75,6 +75,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Visitor Data Collection - Automatic data gathering from cookies
+  app.post("/api/collect-visitor-data", async (req, res) => {
+    try {
+      const visitorData = req.body;
+      
+      // Log comprehensive visitor information for outreach
+      const logEntry = {
+        timestamp: visitorData.timestamp,
+        location: visitorData.ipInfo ? `${visitorData.ipInfo.city}, ${visitorData.ipInfo.country}` : 'Unknown',
+        ip: visitorData.ipInfo?.ip || 'Not captured',
+        device: visitorData.platform,
+        browser: visitorData.userAgent.substring(0, 100),
+        screenSize: visitorData.screenResolution,
+        referrer: visitorData.referrer,
+        language: visitorData.language,
+        timezone: visitorData.timezone,
+        url: visitorData.url,
+      };
+      
+      console.log(`[Visitor Data Collected]`, logEntry);
+      
+      // In production, this would save to a database
+      // For now, we're logging it for demonstration
+      
+      res.json({ 
+        success: true, 
+        message: "Visitor data collected successfully" 
+      });
+    } catch (error) {
+      console.error("Error collecting visitor data:", error);
+      res.status(500).json({ message: "Failed to collect visitor data" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
