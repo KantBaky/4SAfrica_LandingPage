@@ -196,7 +196,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              {t('solutions.title')} <span className="text-gradient">{t('solutions.title').split(' ').slice(1).join(' ') === t('solutions.title') ? '' : ''}</span>
+              <span className="text-gradient">{t('solutions.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('solutions.comprehensive')}
@@ -248,7 +248,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              {t('howItWorks.title')} <span className="text-gradient">Works</span>
+              <span className="text-gradient">{t('howItWorks.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('howItWorks.subtitle')}
@@ -286,7 +286,7 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              {t('testimonials.title')} <span className="text-gradient">Say</span>
+              <span className="text-gradient">{t('testimonials.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('testimonials.subtitle')}
