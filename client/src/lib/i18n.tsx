@@ -77,7 +77,9 @@ export const translations = {
     cookies: {
       title: 'We Value Your Privacy',
       message: 'We\'d like to collect information to stay in touch about 4S updates and opportunities. Your privacy is important to us.',
-      accept: 'Accept',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'Your email address',
+      accept: 'Accept & Continue',
       decline: 'Decline',
       successMessage: 'Thank you! We\'ve saved your information.',
     },
@@ -157,7 +159,9 @@ export const translations = {
     cookies: {
       title: 'Nous Valorisons Votre Confidentialité',
       message: 'Nous aimerions collecter des informations pour rester en contact au sujet des mises à jour et opportunités de 4S. Votre confidentialité est importante pour nous.',
-      accept: 'Accepter',
+      namePlaceholder: 'Votre nom',
+      emailPlaceholder: 'Votre adresse email',
+      accept: 'Accepter et Continuer',
       decline: 'Refuser',
       successMessage: 'Merci! Nous avons sauvegardé vos informations.',
     },

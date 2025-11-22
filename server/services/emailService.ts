@@ -72,29 +72,26 @@ ${data.message}
 
   async sendVisitorDataEmail(visitorData: any): Promise<boolean> {
     try {
-      const locationInfo = visitorData.ipInfo 
-        ? `${visitorData.ipInfo.city}, ${visitorData.ipInfo.country}` 
-        : 'Unknown';
-
       const mailOptions = {
         from: process.env.SMTP_USER || 'noreply@4ssolutions.com',
         to: 'info@4ssolutions.com',
-        subject: `New Visitor Data Collected - ${new Date().toLocaleDateString()}`,
+        replyTo: visitorData.contactEmail,
+        subject: `New Lead: ${visitorData.contactName || visitorData.contactEmail} - ${new Date().toLocaleDateString()}`,
         html: `
-          <h2>New Visitor Information Collected</h2>
+          <h2>New Lead Contact Information</h2>
           <p><strong>Timestamp:</strong> ${visitorData.timestamp}</p>
           
-          <h3>Location & Device</h3>
+          <h3>Contact Details</h3>
           <ul>
-            <li><strong>Location:</strong> ${locationInfo}</li>
-            <li><strong>IP Address:</strong> ${visitorData.ipInfo?.ip || 'Not captured'}</li>
-            <li><strong>Device:</strong> ${visitorData.platform}</li>
-            <li><strong>Screen:</strong> ${visitorData.screenResolution}</li>
-            <li><strong>Browser:</strong> ${visitorData.userAgent.substring(0, 150)}</li>
+            <li><strong>Name:</strong> ${visitorData.contactName || 'Not provided'}</li>
+            <li><strong>Email:</strong> ${visitorData.contactEmail}</li>
           </ul>
 
-          <h3>Engagement Info</h3>
+          <h3>Device & Engagement Info</h3>
           <ul>
+            <li><strong>Device:</strong> ${visitorData.platform}</li>
+            <li><strong>Screen Resolution:</strong> ${visitorData.screenResolution}</li>
+            <li><strong>Browser:</strong> ${visitorData.userAgent.substring(0, 150)}</li>
             <li><strong>Language:</strong> ${visitorData.language}</li>
             <li><strong>Timezone:</strong> ${visitorData.timezone}</li>
             <li><strong>Current Page:</strong> ${visitorData.url}</li>
@@ -102,22 +99,22 @@ ${data.message}
           </ul>
 
           <p style="margin-top: 20px; color: #666; font-size: 12px;">
-            This is an automated visitor data collection email. Visit your admin panel for detailed analytics.
+            This lead accepted your cookie consent. You can now reach out to them at ${visitorData.contactEmail}.
           </p>
         `,
         text: `
-New Visitor Information Collected
+New Lead Contact Information
 
 Timestamp: ${visitorData.timestamp}
 
-Location & Device
-Location: ${locationInfo}
-IP Address: ${visitorData.ipInfo?.ip || 'Not captured'}
-Device: ${visitorData.platform}
-Screen: ${visitorData.screenResolution}
-Browser: ${visitorData.userAgent.substring(0, 150)}
+Contact Details
+Name: ${visitorData.contactName || 'Not provided'}
+Email: ${visitorData.contactEmail}
 
-Engagement Info
+Device & Engagement Info
+Device: ${visitorData.platform}
+Screen Resolution: ${visitorData.screenResolution}
+Browser: ${visitorData.userAgent.substring(0, 150)}
 Language: ${visitorData.language}
 Timezone: ${visitorData.timezone}
 Current Page: ${visitorData.url}
@@ -126,7 +123,7 @@ Referrer: ${visitorData.referrer || 'Direct'}
       };
 
       await this.transporter.sendMail(mailOptions).catch(() => true);
-      console.log('[Email] Visitor data email sent to info@4ssolutions.com');
+      console.log('[Email] Lead contact email sent to info@4ssolutions.com');
       return true;
     } catch (error: any) {
       console.error('Error sending visitor data email:', error);

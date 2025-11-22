@@ -13,17 +13,12 @@ interface VisitorData {
   timezone: string;
   screenResolution: string;
   platform: string;
-  email?: string;
-  phone?: string;
-  ipInfo?: {
-    ip: string;
-    country?: string;
-    city?: string;
-  };
+  contactName: string;
+  contactEmail: string;
 }
 
-async function getVisitorData(): Promise<VisitorData> {
-  // Collect browser/device information
+async function getVisitorData(contactName: string, contactEmail: string): Promise<VisitorData> {
+  // Collect browser/device information (NO IP)
   const data: VisitorData = {
     timestamp: new Date().toISOString(),
     url: window.location.href,
@@ -33,22 +28,9 @@ async function getVisitorData(): Promise<VisitorData> {
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     screenResolution: `${window.screen.width}x${window.screen.height}`,
     platform: navigator.platform,
+    contactName,
+    contactEmail,
   };
-
-  // Try to get IP information from a public API
-  try {
-    const ipResponse = await fetch('https://ipapi.co/json/');
-    if (ipResponse.ok) {
-      const ipData = await ipResponse.json();
-      data.ipInfo = {
-        ip: ipData.ip,
-        country: ipData.country_name,
-        city: ipData.city,
-      };
-    }
-  } catch (error) {
-    console.log('Could not fetch IP info:', error);
-  }
 
   return data;
 }
@@ -57,6 +39,8 @@ export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -69,9 +53,15 @@ export function CookieConsent() {
   }, []);
 
   const handleAccept = async () => {
+    // Validate email
+    if (!contactEmail || !contactEmail.includes('@')) {
+      alert(t('cookies.emailPlaceholder'));
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      const visitorData = await getVisitorData();
+      const visitorData = await getVisitorData(contactName, contactEmail);
       
       const response = await fetch('/api/collect-visitor-data', {
         method: 'POST',
@@ -101,7 +91,7 @@ export function CookieConsent() {
   return (
     <div className="fixed bottom-6 left-6 z-40 max-w-sm">
       <Card className="shadow-2xl border-primary/20">
-        <div className="p-4 space-y-4">
+        <div className="p-5 space-y-4">
           <div className="flex justify-between items-start">
             <h3 className="font-semibold text-primary">{t('cookies.title')}</h3>
             <button
@@ -114,15 +104,42 @@ export function CookieConsent() {
           </div>
 
           {submitted ? (
-            <p className="text-sm text-green-600 font-medium">{t('cookies.successMessage')}</p>
+            <div className="space-y-2">
+              <p className="text-sm text-green-600 font-medium">{t('cookies.successMessage')}</p>
+              <p className="text-xs text-muted-foreground">
+                Thanks for connecting with us! We'll reach out to {contactEmail} soon.
+              </p>
+            </div>
           ) : (
             <>
               <p className="text-sm text-muted-foreground">{t('cookies.message')}</p>
+              
+              {/* Contact Form */}
+              <div className="space-y-3">
+                <input
+                  type="text"
+                  placeholder={t('cookies.namePlaceholder')}
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  className="w-full px-3 py-2 text-sm border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  disabled={isSubmitting}
+                />
+                <input
+                  type="email"
+                  placeholder={t('cookies.emailPlaceholder')}
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                  className="w-full px-3 py-2 text-sm border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  disabled={isSubmitting}
+                  required
+                />
+              </div>
+
               <div className="flex gap-2">
                 <Button
                   size="sm"
                   onClick={handleAccept}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !contactEmail}
                   className="flex-1 bg-primary hover:bg-primary/90"
                   data-testid="button-accept-cookies"
                 >
