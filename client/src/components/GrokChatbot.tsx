@@ -6,6 +6,7 @@ import { MessageCircle, X, Send, Save } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useMutation } from '@tanstack/react-query';
 import { useImpactResults, type ResultData } from '@/lib/impactResults';
+import { useLanguage } from '@/lib/i18n';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -15,11 +16,12 @@ interface Message {
 }
 
 export function GrokChatbot() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm SustainaBot, powered by GrokAI. How can I help you learn about 4S's sustainability solutions for Sub-Saharan Africa?",
+      content: t('chatbot.greeting'),
       timestamp: new Date()
     }
   ]);
@@ -80,7 +82,7 @@ export function GrokChatbot() {
         ...prev,
         {
           role: 'assistant',
-          content: "I apologize, but I'm having trouble connecting right now. Please try again in a moment.",
+          content: t('chatbot.error'),
           timestamp: new Date()
         }
       ]);
@@ -130,7 +132,7 @@ export function GrokChatbot() {
             <div className="flex items-center gap-2">
               <MessageCircle className="h-5 w-5" />
               <div>
-                <h3 className="font-semibold">SustainaBot</h3>
+                <h3 className="font-semibold">{t('chatbot.title')}</h3>
                 <p className="text-xs opacity-90">Powered by GrokAI</p>
               </div>
             </div>
@@ -219,7 +221,7 @@ export function GrokChatbot() {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask about our solutions..."
+                placeholder={t('chatbot.placeholder')}
                 className="flex-1"
                 disabled={chatMutation.isPending}
                 data-testid="input-chat-message"

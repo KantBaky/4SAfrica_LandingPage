@@ -6,23 +6,28 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import Landing from "@/pages/landing";
 import { ImpactProvider } from "@/lib/impactResults";
+import { LanguageProvider } from "@/lib/i18n";
+import { CookieConsent } from "@/components/CookieConsent";
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ImpactProvider>
-        <TooltipProvider>
-          <div className="min-h-screen bg-background text-foreground">
-            <Header />
-            <main>
-              <Landing />
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
-        </TooltipProvider>
-      </ImpactProvider>
-    </QueryClientProvider>
+    <LanguageProvider>
+      <QueryClientProvider client={queryClient}>
+        <ImpactProvider>
+          <TooltipProvider>
+            <div className="min-h-screen bg-background text-foreground">
+              <Header />
+              <main>
+                <Landing />
+              </main>
+              <Footer />
+            </div>
+            <Toaster />
+            <CookieConsent />
+          </TooltipProvider>
+        </ImpactProvider>
+      </QueryClientProvider>
+    </LanguageProvider>
   );
 }
 

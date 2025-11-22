@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 import { GrokChatbot } from '@/components/GrokChatbot';
 import { ImpactResults } from '@/components/ImpactResults';
+import { useLanguage } from '@/lib/i18n';
 
 const solutions = [
   {
@@ -84,6 +85,7 @@ const testimonials = [
 ];
 
 export default function Landing() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [contactName, setContactName] = useState('');
   const [contactMessage, setContactMessage] = useState('');
@@ -130,11 +132,10 @@ export default function Landing() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-accent leading-tight">
-              <span className="text-gradient" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3)', filter: 'brightness(1.4) saturate(1.3)' }}>AI-Powered Sustainability for Africa</span>
+              <span className="text-gradient" style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3)', filter: 'brightness(1.4) saturate(1.3)' }}>{t('hero.title')}</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Transforming challenges into opportunities through intelligent technology, 
-              empowering communities across Sub-Saharan Africa to achieve sustainable development goals.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
@@ -144,7 +145,7 @@ export default function Landing() {
                 data-testid="button-get-started"
               >
                 <i className="fas fa-rocket mr-2"></i>
-                Get Started
+                {t('hero.getStarted')}
               </Button>
               <Button
                 size="lg"
@@ -153,7 +154,7 @@ export default function Landing() {
                 data-testid="button-learn-more"
               >
                 <i className="fas fa-info-circle mr-2"></i>
-                Learn More
+                {t('hero.learnMore')}
               </Button>
             </div>
           </motion.div>

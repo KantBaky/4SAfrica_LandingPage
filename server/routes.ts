@@ -57,6 +57,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Newsletter Subscription - Email Collection
+  app.post("/api/subscribe", async (req, res) => {
+    try {
+      const { email } = req.body;
+      
+      if (!email || !email.includes('@')) {
+        return res.status(400).json({ message: "Valid email is required" });
+      }
+
+      console.log(`[Subscribe] Email: ${email}, Time: ${new Date().toISOString()}`);
+      
+      res.json({ message: "Successfully subscribed", email });
+    } catch (error) {
+      console.error("Subscribe error:", error);
+      res.status(500).json({ message: "Failed to subscribe" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

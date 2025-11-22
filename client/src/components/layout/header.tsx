@@ -3,15 +3,17 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Wifi } from 'lucide-react';
 import { useLowBandwidth } from '@/hooks/use-low-bandwidth';
+import { useLanguage } from '@/lib/i18n';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import logoImage from '../../assets/4S Logo_1756834402906.jpg';
 
-const navigationItems = [
-  { href: '#hero', label: 'Home' },
-  { href: '#solutions', label: 'Solutions' },
-  { href: '#impact', label: 'Impact' },
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
+const getNavigationItems = (t: (key: string) => string) => [
+  { href: '#hero', label: t('nav.home') },
+  { href: '#solutions', label: t('nav.solutions') },
+  { href: '#impact', label: t('nav.impact') },
+  { href: '#how-it-works', label: t('nav.howItWorks') },
+  { href: '#testimonials', label: t('nav.testimonials') },
+  { href: '#contact', label: t('nav.contact') },
 ];
 
 const scrollToSection = (href: string) => {
@@ -26,6 +28,8 @@ const scrollToSection = (href: string) => {
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isLowBandwidth, toggleLowBandwidth } = useLowBandwidth();
+  const { t } = useLanguage();
+  const navigationItems = getNavigationItems(t);
 
   const handleNavClick = (href: string) => {
     scrollToSection(href);
@@ -70,8 +74,11 @@ export function Header() {
             </div>
           </div>
 
-          {/* Right Section - Bandwidth Button and Mobile Menu */}
+          {/* Right Section - Language, Bandwidth Button and Mobile Menu */}
           <div className="flex items-center space-x-2 md:space-x-4">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {/* Bandwidth Toggle */}
             <Button
               variant="outline"
@@ -109,6 +116,9 @@ export function Header() {
                       {item.label}
                     </button>
                   ))}
+                  <div className="flex gap-2 mt-4">
+                    <LanguageSwitcher />
+                  </div>
                   <Button
                     variant="outline"
                     size="sm"
