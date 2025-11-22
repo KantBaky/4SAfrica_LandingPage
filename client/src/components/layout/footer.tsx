@@ -90,7 +90,7 @@ export function Footer() {
               </li>
               <li>
                 <i className="fas fa-phone mr-2"></i>
-                +254 (0) 123 456 7890
+                +254 XXX XXX XXX
               </li>
               <li>
                 <i className="fas fa-map-marker-alt mr-2"></i>
