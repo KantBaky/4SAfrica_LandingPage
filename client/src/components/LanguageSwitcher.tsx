@@ -8,8 +8,8 @@ export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: 'en' as Language, label: 'EN', fullLabel: 'English' },
-    { code: 'fr' as Language, label: 'FR', fullLabel: 'Français' },
+    { code: 'en' as Language, flag: '🇬🇧', label: 'EN', fullLabel: 'English' },
+    { code: 'fr' as Language, flag: '🇫🇷', label: 'FR', fullLabel: 'Français' },
   ];
 
   const current = languages.find(l => l.code === language);
@@ -23,12 +23,12 @@ export function LanguageSwitcher() {
         data-testid="button-language-switcher"
         className="flex items-center gap-1.5"
       >
-        <Globe className="w-4 h-4" />
+        <span className="text-lg">{current?.flag}</span>
         <span className="text-xs font-bold">{current?.label}</span>
       </Button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-card border border-border rounded-lg shadow-lg z-50 min-w-[140px]">
+        <div className="absolute top-full right-0 mt-2 bg-card border border-border rounded-lg shadow-lg z-50 min-w-[160px]">
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -36,16 +36,16 @@ export function LanguageSwitcher() {
                 setLanguage(lang.code);
                 setIsOpen(false);
               }}
-              className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-2 transition-colors ${
+              className={`w-full px-4 py-2.5 text-sm text-left flex items-center gap-3 transition-colors ${
                 language === lang.code
                   ? 'bg-primary/10 text-primary font-semibold'
                   : 'hover:bg-muted'
               }`}
               data-testid={`button-language-${lang.code}`}
             >
-              <Globe className="w-3.5 h-3.5" />
+              <span className="text-xl">{lang.flag}</span>
               <span>{lang.fullLabel}</span>
-              {language === lang.code && <span className="ml-auto">✓</span>}
+              {language === lang.code && <span className="ml-auto text-primary">✓</span>}
             </button>
           ))}
         </div>

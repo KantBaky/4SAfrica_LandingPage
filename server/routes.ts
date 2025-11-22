@@ -7,13 +7,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Chat API - Using GrokAI
   app.post("/api/ai/chat", async (req, res) => {
     try {
-      const { message, sessionId } = req.body;
+      const { message, sessionId, language = 'en' } = req.body;
       
       if (!message || !sessionId) {
         return res.status(400).json({ message: "Message and sessionId are required" });
       }
       
-      const response = await grokService.chatWithContext(message);
+      const response = await grokService.chatWithContext(message, language);
       
       res.json({ response });
     } catch (error) {

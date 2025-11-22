@@ -19,10 +19,40 @@ export interface ResultData {
 }
 
 export class GrokService {
-  private async getFallbackResponse(userMessage: string): Promise<string> {
+  private getSystemPrompt(language: string = 'en'): string {
+    if (language === 'fr') {
+      return `Tu es SustainaBot, un assistant IA puissant alimenté par GrokAI. Tu représentes 4S (Solutions de Durabilité pour l'Afrique Subsaharienne). Réponds toujours en FRANÇAIS. 
+Tu aides les utilisateurs à:
+- Calculer l'impact des solutions de durabilité
+- Trouver les meilleures solutions pour leurs défis
+- Comprendre le ROI et les partenariats
+- Explorer nos 6 solutions: Énergie Propre, Gestion de l'Eau, Agriculture Intelligente, Infrastructure Numérique, Analytique d'Impact, Laboratoires d'Innovation
+Sois professionnel, optimiste et axé sur l'impact.`;
+    }
+    return `You are SustainaBot, a powerful AI assistant powered by GrokAI. You represent 4S (Sub-Saharan Sustainability Solutions). Always respond in ENGLISH.
+You help users:
+- Calculate the impact of sustainability solutions
+- Find the best solutions for their challenges
+- Understand ROI and partnerships
+- Explore our 6 solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, Innovation Labs
+Be professional, optimistic, and impact-focused.`;
+  }
+
+  private async getFallbackResponse(userMessage: string, language: string = 'en'): Promise<string> {
     const lowerMessage = userMessage.toLowerCase();
     
-    if (lowerMessage.includes('calculate') || lowerMessage.includes('impact')) {
+    if (lowerMessage.includes('calculat') || lowerMessage.includes('impact')) {
+      if (language === 'fr') {
+        return `Je peux vous aider à calculer l'impact potentiel des solutions 4S! Pour vous donner des estimations précises, j'aimerais savoir:
+
+• Quel est le défi principal que vous adressez? (énergie, eau, agriculture, etc.)
+• Combien de personnes seraient affectées?
+• Quel est votre budget estimé?
+• Quels ODD des Nations unies sont prioritaires pour vous?
+• Quel pays ou région?
+
+Par exemple, un microgrid d'énergie propre en zone rurale peut impacter 500+ personnes, réduire ~50 tonnes de CO₂ annuellement, et créer 5-10 emplois. Parlez-moi plus de votre contexte!`;
+      }
       return `I can help you calculate the potential impact of 4S solutions! To give you accurate estimates, I'd like to know:
 
 • What's the primary challenge you're addressing? (energy, water, agriculture, etc.)

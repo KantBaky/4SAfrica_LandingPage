@@ -38,6 +38,8 @@ export function GrokChatbot() {
     scrollToBottom();
   }, [messages]);
 
+  const { language } = useLanguage();
+
   const chatMutation = useMutation({
     mutationFn: async (message: string) => {
       const response = await fetch('/api/ai/chat', {
@@ -47,7 +49,8 @@ export function GrokChatbot() {
         },
         body: JSON.stringify({
           message,
-          sessionId: sessionId.current
+          sessionId: sessionId.current,
+          language
         })
       });
       if (!response.ok) throw new Error('Failed to get chat response');
