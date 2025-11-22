@@ -32,38 +32,43 @@ async function getVisitorData(): Promise<VisitorData> {
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [collected, setCollected] = useState(false);
 
   useEffect(() => {
-    // Check if already declined
-    const declined = localStorage.getItem('cookieConsentDeclined');
-    if (declined) {
+    // Check if user already declined or accepted
+    const consent = localStorage.getItem('cookieConsent');
+    if (consent) {
       setIsVisible(false);
-      return;
     }
-
-    // Auto-collect visitor data
-    const collectData = async () => {
-      try {
-        const visitorData = await getVisitorData();
-        const response = await fetch('/api/collect-visitor-data', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(visitorData),
-        });
-
-        if (response.ok) {
-          localStorage.setItem('cookieConsentDeclined', 'false');
-          setCollected(true);
-          setTimeout(() => setIsVisible(false), 2000);
-        }
-      } catch (error) {
-        console.error('Error collecting visitor data:', error);
-      }
-    };
-
-    collectData();
   }, []);
+
+  const handleAccept = async () => {
+    setIsSubmitting(true);
+    try {
+      const visitorData = await getVisitorData();
+      const response = await fetch('/api/collect-visitor-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(visitorData),
+      });
+
+      if (response.ok) {
+        localStorage.setItem('cookieConsent', 'accepted');
+        setCollected(true);
+        setTimeout(() => setIsVisible(false), 2000);
+      }
+    } catch (error) {
+      console.error('Error collecting visitor data:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDecline = () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    setIsVisible(false);
+  };
 
   if (!isVisible) return null;
 
@@ -74,10 +79,7 @@ export function CookieConsent() {
           <div className="flex justify-between items-start">
             <h3 className="font-semibold text-primary">We Value Your Privacy</h3>
             <button
-              onClick={() => {
-                localStorage.setItem('cookieConsentDeclined', 'true');
-                setIsVisible(false);
-              }}
+              onClick={handleDecline}
               className="text-muted-foreground hover:text-foreground"
               data-testid="button-close-cookie"
             >
@@ -85,22 +87,38 @@ export function CookieConsent() {
             </button>
           </div>
 
-          <div className="space-y-2">
-            {collected ? (
-              <>
-                <p className="text-sm text-muted-foreground">
-                  We collect visitor information to stay connected with you.
-                </p>
-                <p className="text-xs text-green-600 font-medium">
-                  ✓ Thank you! Your information has been saved.
-                </p>
-              </>
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                We're collecting your information to help us better serve you and stay connected about updates and opportunities.
+          {collected ? (
+            <div className="space-y-2">
+              <p className="text-xs text-green-600 font-medium">
+                ✓ Thank you! We've saved your information.
               </p>
-            )}
-          </div>
+            </div>
+          ) : (
+            <>
+              <p className="text-sm text-muted-foreground">
+                We collect visitor information to stay connected about updates and opportunities with 4S.
+              </p>
+
+              <div className="flex gap-2 pt-2">
+                <button
+                  onClick={handleAccept}
+                  disabled={isSubmitting}
+                  className="flex-1 px-3 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  data-testid="button-accept-cookies"
+                >
+                  {isSubmitting ? 'Saving...' : 'Accept'}
+                </button>
+                <button
+                  onClick={handleDecline}
+                  disabled={isSubmitting}
+                  className="flex-1 px-3 py-2 border border-border hover:bg-muted rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  data-testid="button-decline-cookies"
+                >
+                  Decline
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </Card>
     </div>
