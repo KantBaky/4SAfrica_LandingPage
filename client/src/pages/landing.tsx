@@ -8,78 +8,78 @@ import { GrokChatbot } from '@/components/GrokChatbot';
 import { ImpactResults } from '@/components/ImpactResults';
 import { useLanguage } from '@/lib/i18n';
 
-const solutions = [
+const getSolutions = (t: (key: string) => string) => [
   {
     icon: 'fa-solar-panel',
-    title: 'Clean Energy Access',
-    description: 'AI-optimized microgrids bringing reliable solar power to rural communities across Sub-Saharan Africa.',
+    title: t('solutions.cleanEnergy'),
+    description: t('solutions.cleanEnergyDesc'),
   },
   {
     icon: 'fa-droplet',
-    title: 'Water Management',
-    description: 'IoT-powered systems ensuring clean water distribution and quality monitoring for sustainable communities.',
+    title: t('solutions.waterManagement'),
+    description: t('solutions.waterManagementDesc'),
   },
   {
     icon: 'fa-seedling',
-    title: 'Smart Agriculture',
-    description: 'Data-driven farming solutions helping smallholders maximize yields while preserving soil health.',
+    title: t('solutions.smartAgriculture'),
+    description: t('solutions.smartAgricultureDesc'),
   },
   {
     icon: 'fa-network-wired',
-    title: 'Digital Infrastructure',
-    description: 'Building connectivity and digital literacy to bridge the technology gap in underserved regions.',
+    title: t('solutions.digitalInfra'),
+    description: t('solutions.digitalInfraDesc'),
   },
   {
     icon: 'fa-chart-line',
-    title: 'Impact Analytics',
-    description: 'Real-time tracking and reporting of sustainability metrics aligned with UN SDGs.',
+    title: t('solutions.impactAnalytics'),
+    description: t('solutions.impactAnalyticsDesc'),
   },
   {
     icon: 'fa-lightbulb',
-    title: 'Innovation Labs',
-    description: 'Collaborative spaces fostering local innovation and tech-driven solutions to regional challenges.',
+    title: t('solutions.innovationLabs'),
+    description: t('solutions.innovationLabsDesc'),
   },
 ];
 
-const stats = [
-  { value: '500K+', label: 'Lives Impacted', icon: 'fa-users' },
-  { value: '15+', label: 'Active Countries', icon: 'fa-globe-africa' },
-  { value: '50+', label: 'Solutions Deployed', icon: 'fa-rocket' },
-  { value: '2.5M', label: 'Tons CO₂ Reduced', icon: 'fa-leaf' },
+const getStats = (t: (key: string) => string) => [
+  { value: '500K+', label: t('stats.livesImpacted'), icon: 'fa-users' },
+  { value: '15+', label: t('stats.activeCountries'), icon: 'fa-globe-africa' },
+  { value: '50+', label: t('stats.solutionsDeployed'), icon: 'fa-rocket' },
+  { value: '2.5M', label: t('stats.co2Reduced'), icon: 'fa-leaf' },
 ];
 
-const steps = [
+const getSteps = (t: (key: string) => string) => [
   {
     number: '01',
-    title: 'Assess & Analyze',
-    description: 'We use AI to identify sustainability challenges and opportunities specific to your region, considering local context, infrastructure, and community needs.',
+    title: t('howItWorks.step01'),
+    description: t('howItWorks.assessDesc'),
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
   },
   {
     number: '02',
-    title: 'Design & Deploy',
-    description: 'Our team implements tailored solutions combining cutting-edge technology with local expertise, ensuring sustainable impact from day one.',
+    title: t('howItWorks.step02'),
+    description: t('howItWorks.designDesc'),
     image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
   },
   {
     number: '03',
-    title: 'Monitor & Scale',
-    description: 'Continuous data collection and analysis enable us to optimize performance, demonstrate impact, and expand successful solutions to new communities.',
+    title: t('howItWorks.step03'),
+    description: t('howItWorks.monitorDesc'),
     image: 'https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
   },
 ];
 
-const testimonials = [
+const getTestimonials = (t: (key: string) => string) => [
   {
-    quote: "4S transformed our village with clean energy. We now have reliable power for schools and health clinics, changing lives every day.",
-    name: "Amara Okafor",
-    title: "Community Leader, Nigeria",
+    quote: t('testimonials.quote1'),
+    name: t('testimonials.name1'),
+    title: t('testimonials.title1'),
     image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
   },
   {
-    quote: "The smart agriculture platform increased our yields by 40% while using less water. It's exactly what smallholder farmers need.",
-    name: "Kofi Mensah",
-    title: "Agricultural Cooperative Director, Ghana",
+    quote: t('testimonials.quote2'),
+    name: t('testimonials.name2'),
+    title: t('testimonials.title2'),
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
   },
 ];
@@ -91,6 +91,11 @@ export default function Landing() {
   const [contactMessage, setContactMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  
+  const solutions = getSolutions(t);
+  const stats = getStats(t);
+  const steps = getSteps(t);
+  const testimonials = getTestimonials(t);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

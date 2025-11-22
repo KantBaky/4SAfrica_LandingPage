@@ -42,8 +42,7 @@ export function Footer() {
               className="h-14 w-auto mb-4"
             />
             <p className="text-background/80 leading-relaxed mb-6">
-              Transforming Sub-Saharan Africa through AI-powered sustainability solutions, 
-              creating lasting impact for communities and the environment.
+              {t('mission.building')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -55,6 +54,7 @@ export function Footer() {
                   className="text-background/60 hover:text-primary transition-colors focus-visible"
                   data-testid={`link-social-${social.label.toLowerCase()}`}
                   aria-label={social.label}
+                  title={social.label}
                 >
                   <i className={`${social.icon} text-xl`}></i>
                 </a>
@@ -64,7 +64,7 @@ export function Footer() {
           
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-background mb-4">Quick Links</h4>
+            <h4 className="font-bold text-background mb-4">{t('nav.home') && 'Quick Links'}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -82,7 +82,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-background mb-4">Contact</h4>
+            <h4 className="font-bold text-background mb-4">{t('nav.contact')}</h4>
             <ul className="space-y-3 text-background/80">
               <li>
                 <i className="fas fa-envelope mr-2"></i>
