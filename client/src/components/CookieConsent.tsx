@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLanguage } from '@/lib/i18n';
 import { Card } from '@/components/ui/card';
 import { X } from 'lucide-react';
 
@@ -16,61 +15,54 @@ interface VisitorData {
   contactEmail: string;
 }
 
-async function getVisitorData(contactName: string, contactEmail: string): Promise<VisitorData> {
-  const data: VisitorData = {
+async function getVisitorData(): Promise<VisitorData> {
+  return {
     timestamp: new Date().toISOString(),
-    url: window.location.href,
-    referrer: document.referrer || 'direct',
-    userAgent: navigator.userAgent,
-    language: navigator.language,
+    url: typeof window !== 'undefined' ? window.location.href : '',
+    referrer: typeof window !== 'undefined' ? document.referrer || 'direct' : '',
+    userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+    language: typeof navigator !== 'undefined' ? navigator.language : 'en',
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    screenResolution: `${window.screen.width}x${window.screen.height}`,
-    platform: navigator.platform,
-    contactName,
-    contactEmail,
+    screenResolution: typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : '',
+    platform: typeof navigator !== 'undefined' ? navigator.platform : '',
+    contactName: 'Website Visitor',
+    contactEmail: 'visitor@4ssolutions.com',
   };
-  return data;
 }
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(() => {
-    // Show popup unless user explicitly declined
-    if (typeof window !== 'undefined') {
-      const declined = localStorage.getItem('cookieConsentDeclined');
-      return !declined;
-    }
-    return true;
-  });
-  const { t } = useLanguage();
+  const [isVisible, setIsVisible] = useState(true);
+  const [collected, setCollected] = useState(false);
 
   useEffect(() => {
-    // Auto-collect and submit visitor data on component mount
+    // Check if already declined
     const declined = localStorage.getItem('cookieConsentDeclined');
-    if (!declined && typeof window !== 'undefined') {
-      // Auto-submit with visitor info (no manual entry needed)
-      const timer = setTimeout(async () => {
-        try {
-          const visitorData = await getVisitorData('Website Visitor', 'visitor@4ssolutions.com');
-          
-          const response = await fetch('/api/collect-visitor-data', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(visitorData),
-          });
-
-          if (response.ok) {
-            localStorage.setItem('cookieConsentDeclined', 'false');
-            setIsVisible(false);
-          }
-        } catch (error) {
-          console.error('Error collecting visitor data:', error);
-        }
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    } else {
+    if (declined) {
       setIsVisible(false);
+      return;
     }
+
+    // Auto-collect visitor data
+    const collectData = async () => {
+      try {
+        const visitorData = await getVisitorData();
+        const response = await fetch('/api/collect-visitor-data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(visitorData),
+        });
+
+        if (response.ok) {
+          localStorage.setItem('cookieConsentDeclined', 'false');
+          setCollected(true);
+          setTimeout(() => setIsVisible(false), 2000);
+        }
+      } catch (error) {
+        console.error('Error collecting visitor data:', error);
+      }
+    };
+
+    collectData();
   }, []);
 
   if (!isVisible) return null;
@@ -80,9 +72,12 @@ export function CookieConsent() {
       <Card className="shadow-2xl border-primary/20">
         <div className="p-5 space-y-4">
           <div className="flex justify-between items-start">
-            <h3 className="font-semibold text-primary">{t('cookies.title')}</h3>
+            <h3 className="font-semibold text-primary">We Value Your Privacy</h3>
             <button
-              onClick={() => setIsVisible(false)}
+              onClick={() => {
+                localStorage.setItem('cookieConsentDeclined', 'true');
+                setIsVisible(false);
+              }}
               className="text-muted-foreground hover:text-foreground"
               data-testid="button-close-cookie"
             >
@@ -91,8 +86,20 @@ export function CookieConsent() {
           </div>
 
           <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">{t('cookies.message')}</p>
-            <p className="text-xs text-green-600 font-medium">{t('cookies.successMessage')}</p>
+            {collected ? (
+              <>
+                <p className="text-sm text-muted-foreground">
+                  We collect visitor information to stay connected with you.
+                </p>
+                <p className="text-xs text-green-600 font-medium">
+                  ✓ Thank you! Your information has been saved.
+                </p>
+              </>
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                We're collecting your information to help us better serve you and stay connected about updates and opportunities.
+              </p>
+            )}
           </div>
         </div>
       </Card>
