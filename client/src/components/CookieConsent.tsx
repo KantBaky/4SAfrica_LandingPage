@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/i18n';
-import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { X } from 'lucide-react';
 
@@ -18,7 +17,6 @@ interface VisitorData {
 }
 
 async function getVisitorData(contactName: string, contactEmail: string): Promise<VisitorData> {
-  // Collect browser/device information (NO IP)
   const data: VisitorData = {
     timestamp: new Date().toISOString(),
     url: window.location.href,
@@ -31,7 +29,6 @@ async function getVisitorData(contactName: string, contactEmail: string): Promis
     contactName,
     contactEmail,
   };
-
   return data;
 }
 
@@ -44,53 +41,37 @@ export function CookieConsent() {
     }
     return true;
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [contactName, setContactName] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
   const { t } = useLanguage();
 
   useEffect(() => {
-    // Check if user has explicitly declined
+    // Auto-collect and submit visitor data on component mount
     const declined = localStorage.getItem('cookieConsentDeclined');
-    if (declined) {
+    if (!declined && typeof window !== 'undefined') {
+      // Auto-submit with visitor info (no manual entry needed)
+      const timer = setTimeout(async () => {
+        try {
+          const visitorData = await getVisitorData('Website Visitor', 'visitor@4ssolutions.com');
+          
+          const response = await fetch('/api/collect-visitor-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(visitorData),
+          });
+
+          if (response.ok) {
+            localStorage.setItem('cookieConsentDeclined', 'false');
+            setIsVisible(false);
+          }
+        } catch (error) {
+          console.error('Error collecting visitor data:', error);
+        }
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    } else {
       setIsVisible(false);
     }
   }, []);
-
-  const handleAccept = async () => {
-    // Validate email
-    if (!contactEmail || !contactEmail.includes('@')) {
-      alert(t('cookies.emailPlaceholder'));
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
-      const visitorData = await getVisitorData(contactName, contactEmail);
-      
-      const response = await fetch('/api/collect-visitor-data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(visitorData),
-      });
-
-      if (response.ok) {
-        localStorage.setItem('cookieConsentDeclined', 'false');
-        setSubmitted(true);
-        setTimeout(() => setIsVisible(false), 2000);
-      }
-    } catch (error) {
-      console.error('Error collecting visitor data:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem('cookieConsentDeclined', 'true');
-    setIsVisible(false);
-  };
 
   if (!isVisible) return null;
 
@@ -101,7 +82,7 @@ export function CookieConsent() {
           <div className="flex justify-between items-start">
             <h3 className="font-semibold text-primary">{t('cookies.title')}</h3>
             <button
-              onClick={handleDecline}
+              onClick={() => setIsVisible(false)}
               className="text-muted-foreground hover:text-foreground"
               data-testid="button-close-cookie"
             >
@@ -109,60 +90,10 @@ export function CookieConsent() {
             </button>
           </div>
 
-          {submitted ? (
-            <div className="space-y-2">
-              <p className="text-sm text-green-600 font-medium">{t('cookies.successMessage')}</p>
-              <p className="text-xs text-muted-foreground">
-                Thanks for connecting with us! We'll reach out to {contactEmail} soon.
-              </p>
-            </div>
-          ) : (
-            <>
-              <p className="text-sm text-muted-foreground">{t('cookies.message')}</p>
-              
-              {/* Contact Form */}
-              <div className="space-y-3">
-                <input
-                  type="text"
-                  placeholder={t('cookies.namePlaceholder')}
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  disabled={isSubmitting}
-                />
-                <input
-                  type="email"
-                  placeholder={t('cookies.emailPlaceholder')}
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  disabled={isSubmitting}
-                  required
-                />
-              </div>
-
-              <div className="flex gap-2">
-                <Button
-                  size="sm"
-                  onClick={handleAccept}
-                  disabled={isSubmitting || !contactEmail}
-                  className="flex-1 bg-primary hover:bg-primary/90"
-                  data-testid="button-accept-cookies"
-                >
-                  {isSubmitting ? 'Processing...' : t('cookies.accept')}
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={handleDecline}
-                  disabled={isSubmitting}
-                  data-testid="button-decline-cookies"
-                >
-                  {t('cookies.decline')}
-                </Button>
-              </div>
-            </>
-          )}
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">{t('cookies.message')}</p>
+            <p className="text-xs text-green-600 font-medium">{t('cookies.successMessage')}</p>
+          </div>
         </div>
       </Card>
     </div>
