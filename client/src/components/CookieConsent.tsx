@@ -41,7 +41,24 @@ export function CookieConsent() {
   const [submitted, setSubmitted] = useState(false);
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
-  const { t } = useLanguage();
+  
+  let t: any = { 
+    'cookies.title': 'We Value Your Privacy',
+    'cookies.message': 'We collect your name and email to connect with you. No IP tracking.',
+    'cookies.namePlaceholder': 'Your name',
+    'cookies.emailPlaceholder': 'your.email@example.com',
+    'cookies.accept': 'Accept',
+    'cookies.decline': 'Decline',
+    'cookies.successMessage': 'Thank you! Your information has been saved.'
+  };
+  
+  try {
+    const langContext = useLanguage();
+    t = langContext.t;
+  } catch (e) {
+    // Fallback to defaults if useLanguage fails
+    console.warn('CookieConsent: Using default translations');
+  }
 
   useEffect(() => {
     // Always show cookie consent on first load
