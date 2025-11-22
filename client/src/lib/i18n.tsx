@@ -107,6 +107,9 @@ export const translations = {
       successMessage: 'Thank you! We\'ve saved your information.',
     },
     language: 'Language',
+    footer: {
+      copyright: '© 2025 4S - Sub-Saharan Sustainability Solutions. All rights reserved.',
+    },
   },
   fr: {
     nav: {
@@ -212,6 +215,9 @@ export const translations = {
       successMessage: 'Merci! Nous avons sauvegardé vos informations.',
     },
     language: 'Langue',
+    footer: {
+      copyright: '© 2025 4S - Solutions de Durabilité pour l\'Afrique Subsaharienne. Tous droits réservés.',
+    },
   },
   pt: {
     nav: {
@@ -317,6 +323,9 @@ export const translations = {
       successMessage: 'Obrigado! Salvamos suas informações.',
     },
     language: 'Idioma',
+    footer: {
+      copyright: '© 2025 4S - Soluções de Sustentabilidade para a África Subsaariana. Todos os direitos reservados.',
+    },
   },
   es: {
     nav: {
@@ -422,6 +431,9 @@ export const translations = {
       successMessage: '¡Gracias! Hemos guardado tu información.',
     },
     language: 'Idioma',
+    footer: {
+      copyright: '© 2025 4S - Soluciones de Sostenibilidad para el África Subsahariana. Todos los derechos reservados.',
+    },
   },
 };
 
