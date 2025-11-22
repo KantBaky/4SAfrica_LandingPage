@@ -96,8 +96,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       console.log(`[Visitor Data Collected]`, logEntry);
       
-      // In production, this would save to a database
-      // For now, we're logging it for demonstration
+      // Send email notification with visitor data
+      await emailService.sendVisitorDataEmail(visitorData);
       
       res.json({ 
         success: true, 
