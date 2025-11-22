@@ -25,7 +25,6 @@ export function LanguageSwitcher() {
         data-testid="button-language-switcher"
         className="flex items-center gap-1.5"
       >
-        <span className="text-lg">{current?.flag}</span>
         <span className="text-xs font-bold">{current?.label}</span>
       </Button>
 
