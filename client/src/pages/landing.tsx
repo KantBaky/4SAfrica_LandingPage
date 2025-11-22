@@ -167,7 +167,7 @@ export default function Landing() {
             transition={{ duration: 2, repeat: Infinity }}
             onClick={() => scrollToSection('mission')}
           >
-            <span className="text-sm mb-2">Discover More</span>
+            <span className="text-sm mb-2">{t('mission.discoverMore')}</span>
             <i className="fas fa-chevron-down text-xl"></i>
           </motion.div>
         </div>
@@ -179,21 +179,13 @@ export default function Landing() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-                <span className="text-gradient">Empowering Africa's future through sustainable innovation</span>
+                <span className="text-gradient">{t('mission.empowering')}</span>
               </h2>
             </div>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                4S (Sub-Saharan Sustainability Solutions) is dedicated to accelerating sustainable 
-                development across Africa through cutting-edge AI and technology solutions.
-              </p>
-              <p>
-                We partner with communities, governments, and organizations to address critical 
-                challenges in energy access, water management, agriculture, and climate action.
-              </p>
-              <p className="text-foreground font-semibold">
-                Together, we're building a greener, more prosperous Africa for generations to come.
-              </p>
+              <p>{t('mission.about')}</p>
+              <p>{t('mission.partner')}</p>
+              <p className="text-foreground font-semibold">{t('mission.building')}</p>
             </div>
           </div>
         </div>
@@ -204,10 +196,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              Our <span className="text-gradient">Solutions</span>
+              {t('solutions.title')} <span className="text-gradient">{t('solutions.title').split(' ').slice(1).join(' ') === t('solutions.title') ? '' : ''}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive technology-driven approaches to Africa's sustainability challenges
+              {t('solutions.comprehensive')}
             </p>
           </div>
 
@@ -232,10 +224,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-accent">
-              Our Impact
+              {t('impact.ourImpact')}
             </h2>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-              Real results, measurable change across Sub-Saharan Africa
+              {t('impact.realResults')}
             </p>
           </div>
 
@@ -256,10 +248,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              How It <span className="text-gradient">Works</span>
+              {t('howItWorks.title')} <span className="text-gradient">Works</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our proven three-step approach to delivering sustainable impact
+              {t('howItWorks.subtitle')}
             </p>
           </div>
 
@@ -294,10 +286,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              What People <span className="text-gradient">Say</span>
+              {t('testimonials.title')} <span className="text-gradient">Say</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Voices from communities we've empowered
+              {t('testimonials.subtitle')}
             </p>
           </div>
 
@@ -330,17 +322,17 @@ export default function Landing() {
       <section id="contact" className="py-24 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-accent">
-            Ready to Make an Impact?
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
-            Join 500+ organizations partnering with us to build a sustainable future for Africa
+            {t('contact.subtitle')}
           </p>
 
           <div className="space-y-4 max-w-2xl mx-auto mb-8">
             <div className="flex flex-col sm:flex-row gap-4">
               <Input
                 type="text"
-                placeholder="Your name (optional)"
+                placeholder={t('contact.namePlaceholder')}
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
@@ -348,7 +340,7 @@ export default function Landing() {
               />
               <Input
                 type="email"
-                placeholder="Your email"
+                placeholder={t('contact.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
@@ -356,7 +348,7 @@ export default function Landing() {
               />
             </div>
             <textarea
-              placeholder="Tell us about your sustainability goals or partnership interests..."
+              placeholder={t('contact.messagePlaceholder')}
               value={contactMessage}
               onChange={(e) => setContactMessage(e.target.value)}
               className="w-full bg-white text-foreground px-6 py-4 text-lg rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
@@ -366,7 +358,7 @@ export default function Landing() {
               size="lg"
               onClick={async () => {
                 if (!email || !contactMessage) {
-                  setSubmitMessage('Please fill in email and message fields');
+                  setSubmitMessage(t('contact.error'));
                   return;
                 }
 
@@ -387,16 +379,16 @@ export default function Landing() {
                   const data = await response.json();
 
                   if (response.ok) {
-                    setSubmitMessage('✓ Message sent successfully! We\'ll get back to you soon.');
+                    setSubmitMessage('✓ ' + t('contact.success'));
                     setEmail('');
                     setContactName('');
                     setContactMessage('');
                     setTimeout(() => setSubmitMessage(''), 5000);
                   } else {
-                    setSubmitMessage(data.message || 'Failed to send message. Please try again.');
+                    setSubmitMessage(data.message || t('contact.error'));
                   }
                 } catch (error) {
-                  setSubmitMessage('Error sending message. Please contact us directly at info@4ssolutions.com');
+                  setSubmitMessage(t('contact.error'));
                   console.error('Contact form error:', error);
                 } finally {
                   setIsSubmitting(false);
@@ -406,7 +398,7 @@ export default function Landing() {
               className="w-full bg-secondary text-secondary-foreground px-8 py-4 text-lg font-semibold btn-seed-hover hover:bg-secondary/90"
               data-testid="button-submit-email"
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? t('contact.sending') : t('contact.submit')}
             </Button>
             {submitMessage && (
               <p className={`text-sm text-center ${submitMessage.includes('✓') ? 'text-green-300' : 'text-yellow-200'}`}>

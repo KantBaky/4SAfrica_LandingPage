@@ -22,10 +22,16 @@ export const translations = {
     mission: {
       title: 'Our Mission',
       description: 'At 4S, we believe technology should serve humanity and nature. By combining artificial intelligence with deep local expertise, we create sustainable solutions that address real challenges in Sub-Saharan Africa.',
+      empowering: 'Empowering Africa\'s future through sustainable innovation',
+      about: '4S (Sub-Saharan Sustainability Solutions) is dedicated to accelerating sustainable development across Africa through cutting-edge AI and technology solutions.',
+      partner: 'We partner with communities, governments, and organizations to address critical challenges in energy access, water management, agriculture, and climate action.',
+      building: 'Together, we\'re building a greener, more prosperous Africa for generations to come.',
+      discoverMore: 'Discover More',
     },
     solutions: {
       title: 'Our Solutions',
       subtitle: 'Six core areas of impact',
+      comprehensive: 'Comprehensive technology-driven approaches to Africa\'s sustainability challenges',
       cleanEnergy: 'Clean Energy Access',
       cleanEnergyDesc: 'AI-optimized microgrids bringing reliable solar power to rural communities across Sub-Saharan Africa.',
       waterManagement: 'Water Management',
@@ -42,10 +48,12 @@ export const translations = {
     impact: {
       title: 'Your Impact Results',
       subtitle: 'Track and manage your sustainability calculations from SustainaBot',
+      ourImpact: 'Our Impact',
+      realResults: 'Real results, measurable change across Sub-Saharan Africa',
     },
     howItWorks: {
       title: 'How It Works',
-      subtitle: 'Our proven process for sustainable impact',
+      subtitle: 'Our proven three-step approach to delivering sustainable impact',
       assess: 'Assess & Analyze',
       assessDesc: 'We use AI to identify sustainability challenges and opportunities specific to your region, considering local context, infrastructure, and community needs.',
       design: 'Design & Deploy',
@@ -56,6 +64,8 @@ export const translations = {
     testimonials: {
       title: 'What People Say',
       subtitle: 'Voices from communities we\'ve empowered',
+      whatPeopleSay: 'What People',
+      voicesFromCommunities: 'Voices from communities we\'ve empowered',
     },
     contact: {
       title: 'Ready to Make an Impact?',
@@ -104,10 +114,16 @@ export const translations = {
     mission: {
       title: 'Notre Mission',
       description: 'Chez 4S, nous croyons que la technologie doit servir l\'humanité et la nature. En combinant l\'intelligence artificielle avec une expertise locale approfondie, nous créons des solutions durables qui répondent aux vrais défis d\'Afrique subsaharienne.',
+      empowering: 'Autonomiser l\'avenir de l\'Afrique par l\'innovation durable',
+      about: '4S (Solutions de Durabilité pour l\'Afrique Subsaharienne) est dédié à l\'accélération du développement durable en Afrique par des solutions technologiques de pointe et l\'IA.',
+      partner: 'Nous partenons avec des communautés, des gouvernements et des organisations pour aborder les défis critiques d\'accès à l\'énergie, gestion de l\'eau, agriculture et action climatique.',
+      building: 'Ensemble, nous construisons une Afrique plus verte et prospère pour les générations à venir.',
+      discoverMore: 'Découvrez Plus',
     },
     solutions: {
       title: 'Nos Solutions',
       subtitle: 'Six domaines d\'impact clés',
+      comprehensive: 'Approches technologiques complètes pour les défis de durabilité de l\'Afrique',
       cleanEnergy: 'Accès à l\'Énergie Propre',
       cleanEnergyDesc: 'Microgrilles optimisées par l\'IA apportant une énergie solaire fiable aux communautés rurales d\'Afrique subsaharienne.',
       waterManagement: 'Gestion de l\'Eau',
@@ -124,10 +140,12 @@ export const translations = {
     impact: {
       title: 'Vos Résultats d\'Impact',
       subtitle: 'Suivez et gérez vos calculs de durabilité de SustainaBot',
+      ourImpact: 'Notre Impact',
+      realResults: 'Résultats réels, changement mesurable en Afrique subsaharienne',
     },
     howItWorks: {
       title: 'Comment ça marche',
-      subtitle: 'Notre processus éprouvé pour l\'impact durable',
+      subtitle: 'Notre approche à trois étapes éprouvée pour l\'impact durable',
       assess: 'Évaluer et Analyser',
       assessDesc: 'Nous utilisons l\'IA pour identifier les défis et opportunités de durabilité spécifiques à votre région, en tenant compte du contexte local, de l\'infrastructure et des besoins communautaires.',
       design: 'Concevoir et Déployer',
@@ -138,6 +156,8 @@ export const translations = {
     testimonials: {
       title: 'Ce que les gens disent',
       subtitle: 'Voix des communautés que nous avons habilitées',
+      whatPeopleSay: 'Ce que les Gens',
+      voicesFromCommunities: 'Voix des communautés que nous avons habilitées',
     },
     contact: {
       title: 'Prêt à faire une différence?',

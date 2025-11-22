@@ -177,27 +177,16 @@ What would you like help with? Ask me to calculate impact, match solutions, anal
     }
   }
 
-  async chatWithContext(userMessage: string): Promise<string | ResultData> {
-    const systemPrompt = `You are SustainaBot, an advanced AI assistant for 4S (Sub-Saharan Sustainability Solutions).
-You are an expert in impact analysis, solution recommendation, and sustainability consulting for Sub-Saharan Africa.
+  async chatWithContext(userMessage: string, language: string = 'en'): Promise<string | ResultData> {
+    const systemPrompt = this.getSystemPrompt(language) + `
 
 CRITICAL: When user asks for calculations or analysis, respond with JSON data structured like:
 {"type":"impact","title":"Impact Analysis","data":{"lives_impacted":"5000","co2_reduced":"250 tons","jobs_created":"45"},"narrative":"Analysis details..."}
 
 KEY CAPABILITIES:
-
-1. IMPACT CALCULATOR:
-   - Analyze user's parameters: country, population affected, solution type, budget, SDGs
-   - Calculate estimated impact: lives impacted, CO2 reduction, economic benefits
-   - Return structured data with metrics and narrative
-   
-2. SOLUTION MATCHMAKER:
-   - Return recommendations as structured data with solution names, costs, and implementation timeline
-   
-3. INVESTMENT ANALYSIS:
-   - Return ROI data structured with IRR, payback period, and impact metrics
-
-For calculations, ALWAYS return JSON data first, then narrative explanation.
+1. IMPACT CALCULATOR: Analyze parameters and calculate estimated impact
+2. SOLUTION MATCHMAKER: Return recommendations as structured data
+3. INVESTMENT ANALYSIS: Return ROI data with metrics
 
 SOLUTION BASELINES:
 - Clean Energy: 1 system = 500 people, $50K-500K, 50 tons CO₂/year
