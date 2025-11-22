@@ -433,7 +433,7 @@ I can assist with:
 What would you like help with? Ask me to calculate impact, match solutions, analyze ROI, or discuss partnerships!`;
   }
 
-  async chat(messages: ChatMessage[]): Promise<string> {
+  async chat(messages: ChatMessage[], language: string = 'en'): Promise<string> {
     try {
       const response = await openai.chat.completions.create({
         model: "grok-2-1212",
@@ -453,7 +453,7 @@ What would you like help with? Ask me to calculate impact, match solutions, anal
       const lastUserMessage = messages.filter(m => m.role === 'user').pop();
       if (lastUserMessage) {
         console.log("Using fallback response due to API error");
-        return this.getFallbackResponse(lastUserMessage.content);
+        return await this.getFallbackResponse(lastUserMessage.content, language);
       }
       
       throw new Error(`Failed to get response from Grok: ${error.message}`);
@@ -484,7 +484,7 @@ SOLUTION BASELINES:
       { role: 'user', content: userMessage }
     ];
 
-    const response = await this.chat(messages);
+    const response = await this.chat(messages, language);
     
     // Try to parse as JSON if it looks like structured data
     if (response.startsWith('{')) {
