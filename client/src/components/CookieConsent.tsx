@@ -32,7 +32,6 @@ async function getVisitorData(): Promise<VisitorData> {
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Check if user already made a choice
@@ -43,24 +42,21 @@ export function CookieConsent() {
   }, []);
 
   const handleAccept = async () => {
-    setIsSubmitting(true);
     try {
       // Automatically collect visitor data - no manual input needed
       const visitorData = await getVisitorData();
-      const response = await fetch('/api/collect-visitor-data', {
+      await fetch('/api/collect-visitor-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(visitorData),
       });
 
-      if (response.ok) {
-        localStorage.setItem('cookieConsent', 'accepted');
-        setIsVisible(false);
-      }
+      localStorage.setItem('cookieConsent', 'accepted');
+      setIsVisible(false);
     } catch (error) {
       console.error('Error collecting visitor data:', error);
-    } finally {
-      setIsSubmitting(false);
+      localStorage.setItem('cookieConsent', 'accepted');
+      setIsVisible(false);
     }
   };
 
@@ -72,34 +68,28 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 z-40 max-w-sm">
-      <Card className="shadow-2xl border-primary/20">
-        <div className="p-5 space-y-4">
-          <h3 className="font-semibold text-primary">We Value Your Privacy</h3>
-          <p className="text-sm text-muted-foreground">
-            We collect visitor information to stay connected about updates and opportunities with 4S. No manual input needed—we automatically gather your information.
-          </p>
+    <div className="fixed bottom-6 left-6 z-50 w-80 bg-white dark:bg-slate-900 border border-border rounded-lg shadow-lg p-4">
+      <h3 className="font-semibold text-primary mb-2">Cookie Consent</h3>
+      <p className="text-sm text-muted-foreground mb-4">
+        We collect visitor information to stay connected about updates and opportunities with 4S. No manual input needed—we automatically gather your information.
+      </p>
 
-          <div className="flex gap-2 pt-2">
-            <button
-              onClick={handleAccept}
-              disabled={isSubmitting}
-              className="flex-1 px-3 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              data-testid="button-accept-cookies"
-            >
-              {isSubmitting ? 'Processing...' : 'Accept Cookies'}
-            </button>
-            <button
-              onClick={handleDecline}
-              disabled={isSubmitting}
-              className="flex-1 px-3 py-2 border border-border hover:bg-muted rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              data-testid="button-decline-cookies"
-            >
-              Decline
-            </button>
-          </div>
-        </div>
-      </Card>
+      <div className="flex gap-2">
+        <button
+          onClick={handleAccept}
+          className="flex-1 px-3 py-2 bg-green-700 hover:bg-green-800 text-white rounded text-sm font-medium"
+          data-testid="button-accept-cookies"
+        >
+          Accept Cookies
+        </button>
+        <button
+          onClick={handleDecline}
+          className="flex-1 px-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded text-sm font-medium"
+          data-testid="button-decline-cookies"
+        >
+          Decline
+        </button>
+      </div>
     </div>
   );
 }
