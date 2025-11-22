@@ -8,82 +8,6 @@ import { GrokChatbot } from '@/components/GrokChatbot';
 import { ImpactResults } from '@/components/ImpactResults';
 import { useLanguage } from '@/lib/i18n';
 
-const getSolutions = (t: (key: string) => string) => [
-  {
-    icon: 'fa-solar-panel',
-    title: t('solutions.cleanEnergy'),
-    description: t('solutions.cleanEnergyDesc'),
-  },
-  {
-    icon: 'fa-droplet',
-    title: t('solutions.waterManagement'),
-    description: t('solutions.waterManagementDesc'),
-  },
-  {
-    icon: 'fa-seedling',
-    title: t('solutions.smartAgriculture'),
-    description: t('solutions.smartAgricultureDesc'),
-  },
-  {
-    icon: 'fa-network-wired',
-    title: t('solutions.digitalInfra'),
-    description: t('solutions.digitalInfraDesc'),
-  },
-  {
-    icon: 'fa-chart-line',
-    title: t('solutions.impactAnalytics'),
-    description: t('solutions.impactAnalyticsDesc'),
-  },
-  {
-    icon: 'fa-lightbulb',
-    title: t('solutions.innovationLabs'),
-    description: t('solutions.innovationLabsDesc'),
-  },
-];
-
-const getStats = (t: (key: string) => string) => [
-  { value: '500K+', label: t('stats.livesImpacted'), icon: 'fa-users' },
-  { value: '15+', label: t('stats.activeCountries'), icon: 'fa-globe-africa' },
-  { value: '50+', label: t('stats.solutionsDeployed'), icon: 'fa-rocket' },
-  { value: '2.5M', label: t('stats.co2Reduced'), icon: 'fa-leaf' },
-];
-
-const getSteps = (t: (key: string) => string) => [
-  {
-    number: '01',
-    title: t('howItWorks.step01'),
-    description: t('howItWorks.assessDesc'),
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-  },
-  {
-    number: '02',
-    title: t('howItWorks.step02'),
-    description: t('howItWorks.designDesc'),
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-  },
-  {
-    number: '03',
-    title: t('howItWorks.step03'),
-    description: t('howItWorks.monitorDesc'),
-    image: 'https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-  },
-];
-
-const getTestimonials = (t: (key: string) => string) => [
-  {
-    quote: t('testimonials.quote1'),
-    name: t('testimonials.name1'),
-    title: t('testimonials.title1'),
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-  },
-  {
-    quote: t('testimonials.quote2'),
-    name: t('testimonials.name2'),
-    title: t('testimonials.title2'),
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-  },
-];
-
 export default function Landing() {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
@@ -92,10 +16,81 @@ export default function Landing() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   
-  const solutions = getSolutions(t);
-  const stats = getStats(t);
-  const steps = getSteps(t);
-  const testimonials = getTestimonials(t);
+  const solutions = [
+    {
+      icon: 'fa-solar-panel',
+      title: t('solutions.cleanEnergy'),
+      description: t('solutions.cleanEnergyDesc'),
+    },
+    {
+      icon: 'fa-droplet',
+      title: t('solutions.waterManagement'),
+      description: t('solutions.waterManagementDesc'),
+    },
+    {
+      icon: 'fa-seedling',
+      title: t('solutions.smartAgriculture'),
+      description: t('solutions.smartAgricultureDesc'),
+    },
+    {
+      icon: 'fa-network-wired',
+      title: t('solutions.digitalInfra'),
+      description: t('solutions.digitalInfraDesc'),
+    },
+    {
+      icon: 'fa-chart-line',
+      title: t('solutions.impactAnalytics'),
+      description: t('solutions.impactAnalyticsDesc'),
+    },
+    {
+      icon: 'fa-lightbulb',
+      title: t('solutions.innovationLabs'),
+      description: t('solutions.innovationLabsDesc'),
+    },
+  ];
+
+  const stats = [
+    { value: '500K+', label: t('stats.livesImpacted'), icon: 'fa-users' },
+    { value: '15+', label: t('stats.activeCountries'), icon: 'fa-globe-africa' },
+    { value: '50+', label: t('stats.solutionsDeployed'), icon: 'fa-rocket' },
+    { value: '2.5M', label: t('stats.co2Reduced'), icon: 'fa-leaf' },
+  ];
+
+  const steps = [
+    {
+      number: '01',
+      title: t('howItWorks.step01'),
+      description: t('howItWorks.assessDesc'),
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
+    },
+    {
+      number: '02',
+      title: t('howItWorks.step02'),
+      description: t('howItWorks.designDesc'),
+      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
+    },
+    {
+      number: '03',
+      title: t('howItWorks.step03'),
+      description: t('howItWorks.monitorDesc'),
+      image: 'https://images.unsplash.com/photo-1497440001374-f26997328c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: t('testimonials.quote1'),
+      name: t('testimonials.name1'),
+      title: t('testimonials.title1'),
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+    },
+    {
+      quote: t('testimonials.quote2'),
+      name: t('testimonials.name2'),
+      title: t('testimonials.title2'),
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+    },
+  ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);

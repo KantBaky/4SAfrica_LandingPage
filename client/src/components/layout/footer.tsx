@@ -44,19 +44,19 @@ export function Footer() {
             <p className="text-background/80 leading-relaxed mb-6">
               {t('mission.building')}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.href}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-background/60 hover:text-primary transition-colors focus-visible"
+                  className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-background/10 text-background hover:bg-primary hover:text-foreground transition-all duration-300 transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background"
                   data-testid={`link-social-${social.label.toLowerCase()}`}
                   aria-label={social.label}
                   title={social.label}
                 >
-                  <i className={`${social.icon} text-xl`}></i>
+                  <i className={`${social.icon} text-lg`}></i>
                 </a>
               ))}
             </div>
