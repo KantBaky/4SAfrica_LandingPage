@@ -32,68 +32,72 @@ async function getVisitorData(): Promise<VisitorData> {
 
 export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(true);
-  const [collected, setCollected] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Check if user already made a choice
     const consent = localStorage.getItem('cookieConsent');
-    if (consent === 'declined') {
+    if (consent) {
       setIsVisible(false);
-      return;
     }
-
-    // Auto-collect visitor data without asking
-    const collectData = async () => {
-      try {
-        const visitorData = await getVisitorData();
-        const response = await fetch('/api/collect-visitor-data', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(visitorData),
-        });
-
-        if (response.ok) {
-          localStorage.setItem('cookieConsent', 'accepted');
-          setCollected(true);
-          setTimeout(() => setIsVisible(false), 3000);
-        }
-      } catch (error) {
-        console.error('Error collecting visitor data:', error);
-      }
-    };
-
-    collectData();
   }, []);
+
+  const handleAccept = async () => {
+    setIsSubmitting(true);
+    try {
+      // Automatically collect visitor data - no manual input needed
+      const visitorData = await getVisitorData();
+      const response = await fetch('/api/collect-visitor-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(visitorData),
+      });
+
+      if (response.ok) {
+        localStorage.setItem('cookieConsent', 'accepted');
+        setIsVisible(false);
+      }
+    } catch (error) {
+      console.error('Error collecting visitor data:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDecline = () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    setIsVisible(false);
+  };
 
   if (!isVisible) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-40 max-w-sm">
       <Card className="shadow-2xl border-primary/20">
-        <div className="p-5 space-y-3">
-          <div className="flex justify-between items-start">
-            <h3 className="font-semibold text-primary">Cookie Notice</h3>
+        <div className="p-5 space-y-4">
+          <h3 className="font-semibold text-primary">We Value Your Privacy</h3>
+          <p className="text-sm text-muted-foreground">
+            We collect visitor information to stay connected about updates and opportunities with 4S. No manual input needed—we automatically gather your information.
+          </p>
+
+          <div className="flex gap-2 pt-2">
             <button
-              onClick={() => {
-                localStorage.setItem('cookieConsent', 'declined');
-                setIsVisible(false);
-              }}
-              className="text-muted-foreground hover:text-foreground"
-              data-testid="button-close-cookie"
+              onClick={handleAccept}
+              disabled={isSubmitting}
+              className="flex-1 px-3 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              data-testid="button-accept-cookies"
             >
-              <X className="w-4 h-4" />
+              {isSubmitting ? 'Processing...' : 'Accept Cookies'}
+            </button>
+            <button
+              onClick={handleDecline}
+              disabled={isSubmitting}
+              className="flex-1 px-3 py-2 border border-border hover:bg-muted rounded-md text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              data-testid="button-decline-cookies"
+            >
+              Decline
             </button>
           </div>
-
-          {collected ? (
-            <p className="text-xs text-green-600 font-medium">
-              ✓ Thank you! We're collecting visitor information to stay connected about updates and opportunities with 4S.
-            </p>
-          ) : (
-            <p className="text-sm text-muted-foreground">
-              We're automatically collecting visitor information to stay connected about updates and opportunities with 4S. Click the X to decline.
-            </p>
-          )}
         </div>
       </Card>
     </div>
