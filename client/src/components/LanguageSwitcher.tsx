@@ -10,6 +10,8 @@ export function LanguageSwitcher() {
   const languages = [
     { code: 'en' as Language, flag: '🇬🇧', label: 'EN', fullLabel: 'English' },
     { code: 'fr' as Language, flag: '🇫🇷', label: 'FR', fullLabel: 'Français' },
+    { code: 'pt' as Language, flag: '🇵🇹', label: 'PT', fullLabel: 'Português' },
+    { code: 'es' as Language, flag: '🇪🇸', label: 'ES', fullLabel: 'Español' },
   ];
 
   const current = languages.find(l => l.code === language);

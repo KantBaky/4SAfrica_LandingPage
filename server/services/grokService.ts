@@ -29,6 +29,24 @@ Tu aides les utilisateurs à:
 - Explorer nos 6 solutions: Énergie Propre, Gestion de l'Eau, Agriculture Intelligente, Infrastructure Numérique, Analytique d'Impact, Laboratoires d'Innovation
 Sois professionnel, optimiste et axé sur l'impact.`;
     }
+    if (language === 'pt') {
+      return `Você é SustainaBot, um poderoso assistente de IA alimentado por GrokAI. Você representa 4S (Soluções de Sustentabilidade para a África Subsaariana). Sempre responda em PORTUGUÊS.
+Você ajuda os usuários a:
+- Calcular o impacto das soluções de sustentabilidade
+- Encontrar as melhores soluções para seus desafios
+- Entender ROI e parcerias
+- Explorar nossas 6 soluções: Energia Limpa, Gestão de Água, Agricultura Inteligente, Infraestrutura Digital, Análise de Impacto, Laboratórios de Inovação
+Seja profissional, otimista e focado no impacto.`;
+    }
+    if (language === 'es') {
+      return `Eres SustainaBot, un poderoso asistente de IA impulsado por GrokAI. Representas a 4S (Soluciones de Sostenibilidad para el África Subsahariana). Siempre responde en ESPAÑOL.
+Ayudas a los usuarios a:
+- Calcular el impacto de las soluciones de sostenibilidad
+- Encontrar las mejores soluciones para sus desafíos
+- Comprender ROI y asociaciones
+- Explorar nuestras 6 soluciones: Energía Limpia, Gestión del Agua, Agricultura Inteligente, Infraestructura Digital, Análisis de Impacto, Laboratorios de Innovación
+Sé profesional, optimista y enfocado en el impacto.`;
+    }
     return `You are SustainaBot, a powerful AI assistant powered by GrokAI. You represent 4S (Sub-Saharan Sustainability Solutions). Always respond in ENGLISH.
 You help users:
 - Calculate the impact of sustainability solutions
@@ -42,6 +60,28 @@ Be professional, optimistic, and impact-focused.`;
     const lowerMessage = userMessage.toLowerCase();
     
     if (lowerMessage.includes('calculat') || lowerMessage.includes('impact')) {
+      if (language === 'pt') {
+        return `Posso ajudá-lo a calcular o impacto potencial das soluções 4S! Para fornecer estimativas precisas, gostaria de saber:
+
+• Qual é o principal desafio que você está abordando? (energia, água, agricultura, etc.)
+• Quantas pessoas seriam afetadas?
+• Qual é seu orçamento estimado?
+• Quais ODS das Nações Unidas são prioridades para você?
+• Qual país ou região?
+
+Por exemplo, uma microrrede de energia limpa em uma área rural pode impactar 500+ pessoas, reduzir ~50 toneladas de CO₂ anualmente e criar 5-10 empregos. Conte-me mais sobre seu contexto!`;
+      }
+      if (language === 'es') {
+        return `¡Puedo ayudarte a calcular el impacto potencial de las soluciones 4S! Para darte estimaciones precisas, me gustaría saber:
+
+• ¿Cuál es el desafío principal que estás abordando? (energía, agua, agricultura, etc.)
+• ¿Cuántas personas se verían afectadas?
+• ¿Cuál es tu presupuesto estimado?
+• ¿Cuáles son tus ODS prioritarios de las Naciones Unidas?
+• ¿Qué país o región?
+
+Por ejemplo, una microrred de energía limpia en una zona rural puede impactar a 500+ personas, reducir ~50 toneladas de CO₂ anualmente y crear 5-10 empleos. ¡Cuéntame más sobre tu contexto!`;
+      }
       if (language === 'fr') {
         return `Je peux vous aider à calculer l'impact potentiel des solutions 4S! Pour vous donner des estimations précises, j'aimerais savoir:
 
