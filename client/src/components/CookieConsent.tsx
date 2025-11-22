@@ -36,36 +36,18 @@ async function getVisitorData(contactName: string, contactEmail: string): Promis
 }
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
-  
-  let t: any = { 
-    'cookies.title': 'We Value Your Privacy',
-    'cookies.message': 'We collect your name and email to connect with you. No IP tracking.',
-    'cookies.namePlaceholder': 'Your name',
-    'cookies.emailPlaceholder': 'your.email@example.com',
-    'cookies.accept': 'Accept',
-    'cookies.decline': 'Decline',
-    'cookies.successMessage': 'Thank you! Your information has been saved.'
-  };
-  
-  try {
-    const langContext = useLanguage();
-    t = langContext.t;
-  } catch (e) {
-    // Fallback to defaults if useLanguage fails
-    console.warn('CookieConsent: Using default translations');
-  }
+  const { t } = useLanguage();
 
   useEffect(() => {
-    // Always show cookie consent on first load
+    // Check if user has already consented or declined
     const hasConsented = localStorage.getItem('cookieConsent');
-    if (!hasConsented) {
-      // Small delay to ensure it renders after page load
-      setTimeout(() => setIsVisible(true), 500);
+    if (hasConsented) {
+      setIsVisible(false);
     }
   }, []);
 
