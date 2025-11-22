@@ -60,9 +60,11 @@ export function CookieConsent() {
   const { t } = useLanguage();
 
   useEffect(() => {
+    // Always show cookie consent on first load
     const hasConsented = localStorage.getItem('cookieConsent');
     if (!hasConsented) {
-      setIsVisible(true);
+      // Small delay to ensure it renders after page load
+      setTimeout(() => setIsVisible(true), 500);
     }
   }, []);
 

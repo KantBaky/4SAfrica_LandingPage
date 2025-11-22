@@ -1,4 +1,5 @@
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
+import { useLanguage } from '@/lib/i18n';
 
 const scrollToSection = (href: string) => {
   if (href.startsWith('#')) {
@@ -9,13 +10,13 @@ const scrollToSection = (href: string) => {
   }
 };
 
-const quickLinks = [
-  { href: '#hero', label: 'Home' },
-  { href: '#solutions', label: 'Solutions' },
-  { href: '#impact', label: 'Impact' },
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
+const getQuickLinks = (t: (key: string) => string) => [
+  { href: '#hero', label: t('nav.home') },
+  { href: '#solutions', label: t('nav.solutions') },
+  { href: '#impact', label: t('nav.impact') },
+  { href: '#how-it-works', label: t('nav.howItWorks') },
+  { href: '#testimonials', label: t('nav.testimonials') },
+  { href: '#contact', label: t('nav.contact') },
 ];
 
 const socialLinks = [
@@ -26,6 +27,9 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { t } = useLanguage();
+  const quickLinks = getQuickLinks(t);
+
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="max-w-7xl mx-auto px-6">
