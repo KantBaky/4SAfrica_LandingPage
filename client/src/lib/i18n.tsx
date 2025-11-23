@@ -300,6 +300,13 @@ export const translations = {
       step02: 'Projetar e Implementar',
       step03: 'Monitorar e Escalar',
     },
+    chatbot: {
+      title: 'SustainaBot',
+      greeting: 'Olá! Sou SustainaBot, alimentado por GrokAI. Como posso ajudá-lo a aprender sobre as soluções de sustentabilidade da 4S para a África Subsaariana?\n\n💡 Para melhores respostas, tente perguntar:\n• "Calcule o impacto da energia solar no Quênia"\n• "Qual é nossa solução de agricultura inteligente?"\n• "Como a 4S funciona na África Ocidental?"\n• "Mostre-me estudos de caso de gestão de água"',
+      placeholder: 'Pergunte sobre nossas soluções... (seja específico para melhores resultados)',
+      error: 'Peço desculpas, estou tendo dificuldades para conectar agora. Por favor, tente novamente em um momento.',
+      tips: 'Dica: Pergunte sobre soluções, regiões ou casos de uso específicos para melhores respostas',
+    },
     testimonials: {
       title: 'O Que as Pessoas Dizem',
       subtitle: 'Vozes das comunidades que capacitamos',
@@ -429,9 +436,10 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: '¡Hola! Soy SustainaBot, impulsado por GrokAI. ¿Cómo puedo ayudarte a aprender sobre las soluciones de sostenibilidad de 4S para el África Subsahariana?',
-      placeholder: 'Pregunta sobre nuestras soluciones...',
+      greeting: '¡Hola! Soy SustainaBot, impulsado por GrokAI. ¿Cómo puedo ayudarte a aprender sobre las soluciones de sostenibilidad de 4S para el África Subsahariana?\n\n💡 Para mejores respuestas, intenta preguntar:\n• "Calcula el impacto de la energía solar en Kenia"\n• "¿Cuál es nuestra solución de agricultura inteligente?"\n• "¿Cómo funciona 4S en África Occidental?"\n• "Muéstrame estudios de caso de gestión del agua"',
+      placeholder: 'Pregunta sobre nuestras soluciones... (sé específico para mejores resultados)',
       error: 'Disculpa, estoy teniendo dificultades para conectar ahora. Por favor, inténtalo de nuevo en un momento.',
+      tips: 'Consejo: Pregunta sobre soluciones, regiones o casos de uso específicos para mejores respuestas',
     },
     cookies: {
       title: 'Valoramos Tu Privacidad',

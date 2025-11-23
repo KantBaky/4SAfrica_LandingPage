@@ -164,7 +164,7 @@ export function GrokChatbot() {
           {/* Tips Banner */}
           <div className="bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800 p-3">
             <p className="text-xs text-blue-800 dark:text-blue-200">
-              💡 <strong>Tip:</strong> Ask about specific solutions, regions, or use cases for better answers
+              💡 <strong>{t('chatbot.tips')}</strong>
             </p>
           </div>
 
