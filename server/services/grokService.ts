@@ -1,11 +1,5 @@
 import OpenAI from "openai";
 
-// xAI integration - using the xAI blueprint pattern
-const openai = new OpenAI({ 
-  baseURL: "https://api.x.ai/v1", 
-  apiKey: process.env.XAI_API_KEY 
-});
-
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
@@ -19,6 +13,21 @@ export interface ResultData {
 }
 
 export class GrokService {
+  private openai: OpenAI | null = null;
+
+  private getOpenAIClient(): OpenAI {
+    if (!this.openai) {
+      const apiKey = process.env.XAI_API_KEY;
+      if (!apiKey) {
+        throw new Error('XAI_API_KEY environment variable is not set');
+      }
+      this.openai = new OpenAI({
+        baseURL: "https://api.x.ai/v1",
+        apiKey: apiKey
+      });
+    }
+    return this.openai;
+  }
   private getSystemPrompt(language: string = 'en'): string {
     if (language === 'fr') {
       return `Tu es SustainaBot, un assistant IA puissant alimenté par GrokAI. Tu représentes 4S (Solutions de Durabilité pour l'Afrique Subsaharienne). Réponds toujours en FRANÇAIS. 
@@ -443,7 +452,8 @@ What would you like help with? Ask me to calculate impact, match solutions, anal
 
   async chat(messages: ChatMessage[], language: string = 'en'): Promise<string> {
     try {
-      const response = await openai.chat.completions.create({
+      const client = this.getOpenAIClient();
+      const response = await client.chat.completions.create({
         model: "grok-2-1212",
         messages: messages.map(msg => ({
           role: msg.role,
@@ -457,7 +467,7 @@ What would you like help with? Ask me to calculate impact, match solutions, anal
     } catch (error: any) {
       console.error("Grok API error:", error);
       
-      // Use fallback if API is unavailable (credits issue, network error, etc.)
+      // Use fallback if API is unavailable (missing key, credits issue, network error, etc.)
       const lastUserMessage = messages.filter(m => m.role === 'user').pop();
       if (lastUserMessage) {
         console.log("Using fallback response due to API error");
