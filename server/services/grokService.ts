@@ -113,7 +113,7 @@ For example, a clean energy microgrid in a rural area can impact 500+ people, re
 • Qual é seu prazo? (imediato, 1 ano, 3 anos, longo prazo)
 • Faixa de orçamento aproximado?
 
-Com base em suas respostas, posso recomendar a melhor mistura de nossas 6 soluções principais: Energia Limpa, Gestão de Água, Agricultura Inteligente, Infraestrutura Digital, Análise de Impacto ou Laboratórios de Inovação.`;
+Com base em suas respostas, posso recomendar a melhor mistura de nossas 8 soluções principais: Energia Limpa, Gestão de Água, Agricultura Inteligente, Infraestrutura Digital, Análise de Impacto, Laboratórios de Inovação, Mudança Climática ou Desenvolvimento de Capacidades.`;
       }
       if (language === 'es') {
         return `¡Me encantaría ayudarte a encontrar las soluciones perfectas! Déjame hacer algunas preguntas:
@@ -123,7 +123,7 @@ Com base em suas respostas, posso recomendar a melhor mistura de nossas 6 soluç
 • ¿Cuál es tu plazo? (inmediato, 1 año, 3 años, largo plazo)
 • ¿Rango de presupuesto aproximado?
 
-Con base en tus respuestas, puedo recomendar la mejor mezcla de nuestras 6 soluciones principales: Energía Limpia, Gestión del Agua, Agricultura Inteligente, Infraestructura Digital, Análisis de Impacto o Laboratorios de Innovación.`;
+Con base en tus respuestas, puedo recomendar la mejor mezcla de nuestras 8 soluciones principales: Energía Limpia, Gestión del Agua, Agricultura Inteligente, Infraestructura Digital, Análisis de Impacto, Laboratorios de Innovación, Cambio Climático o Desarrollo de Capacidades.`;
       }
       if (language === 'fr') {
         return `J'aimerais vous aider à trouver les solutions parfaites! Laissez-moi poser quelques questions:
@@ -133,7 +133,7 @@ Con base en tus respuestas, puedo recomendar la mejor mezcla de nuestras 6 soluc
 • Quel est votre délai? (immédiat, 1 an, 3 ans, long terme)
 • Budget approximatif?
 
-En fonction de vos réponses, je peux recommander le meilleur mélange de nos 6 solutions principales: Énergie Propre, Gestion de l'Eau, Agriculture Intelligente, Infrastructure Numérique, Analytique d'Impact, ou Laboratoires d'Innovation.`;
+En fonction de vos réponses, je peux recommander le meilleur mélange de nos 8 solutions principales: Énergie Propre, Gestion de l'Eau, Agriculture Intelligente, Infrastructure Numérique, Analytique d'Impact, Laboratoires d'Innovation, Changement Climatique, ou Développement des Capacités.`;
       }
       return `I'd love to help you find the perfect solutions! Let me ask a few questions:
 
@@ -142,12 +142,12 @@ En fonction de vos réponses, je peux recommander le meilleur mélange de nos 6 
 • What's your timeline? (immediate, 1 year, 3 years, long-term)
 • Approximate budget range?
 
-Based on your answers, I can recommend the best mix of our 6 core solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, or Innovation Labs.`;
+Based on your answers, I can recommend the best mix of our 8 core solutions: Clean Energy, Water Management, Smart Agriculture, Digital Infrastructure, Impact Analytics, Innovation Labs, Climate Change, or Capacity Development.`;
     }
     
     if (lowerMessage.includes('solution') || lowerMessage.includes('what do you offer')) {
       if (language === 'pt') {
-        return `4S oferece seis soluções principais de sustentabilidade para a África Subsaariana:
+        return `4S oferece oito soluções principais de sustentabilidade para a África Subsaariana:
 
 1. **Acesso a Energia Limpa**: Microrredes solares alimentadas por IA ($50K-500K), servem ~500 pessoas/sistema
 2. **Gestão de Água**: Distribuição IoT ($30K-300K), servem ~2000 pessoas/sistema
@@ -155,11 +155,13 @@ Based on your answers, I can recommend the best mix of our 6 core solutions: Cle
 4. **Infraestrutura Digital**: Conectividade e alfabetização ($100K-1M+), fecha lacuna digital
 5. **Análise de Impacto**: Rastreamento de ODS em tempo real, preços customizados
 6. **Laboratórios de Inovação**: Centros tecnológicos comunitários ($150K-750K), fomentam soluções locais
+7. **Mudança Climática**: Estratégias de mitigação e adaptação, preparação e resposta comunitária
+8. **Desenvolvimento de Capacidades**: Programas de treinamento e fortalecimento institucional
 
 Peça-me para calcular impacto ou fazer correspondência de soluções com suas necessidades específicas!`;
       }
       if (language === 'es') {
-        return `4S ofrece seis soluciones principales de sostenibilidad para el África Subsahariana:
+        return `4S ofrece ocho soluciones principales de sostenibilidad para el África Subsahariana:
 
 1. **Acceso a Energía Limpia**: Microrredes solares impulsadas por IA ($50K-500K), sirven ~500 personas/sistema
 2. **Gestión del Agua**: Distribución IoT ($30K-300K), sirven ~2000 personas/sistema
@@ -167,11 +169,13 @@ Peça-me para calcular impacto ou fazer correspondência de soluções com suas 
 4. **Infraestructura Digital**: Conectividad y alfabetización ($100K-1M+), cierra la brecha digital
 5. **Análisis de Impacto**: Seguimiento de ODS en tiempo real, precios personalizados
 6. **Laboratorios de Innovación**: Centros tecnológicos comunitarios ($150K-750K), fomentan soluciones locales
+7. **Cambio Climático**: Estrategias de mitigación y adaptación, preparación y respuesta comunitaria
+8. **Desarrollo de Capacidades**: Programas de capacitación y fortalecimiento institucional
 
 ¡Pídeme que calcule impacto o haga coincidir soluciones con tus necesidades específicas!`;
       }
       if (language === 'fr') {
-        return `4S propose six solutions de durabilité principales pour l'Afrique subsaharienne:
+        return `4S propose huit solutions de durabilité principales pour l'Afrique subsaharienne:
 
 1. **Accès à l'Énergie Propre**: Microgrilles solaires alimentées par l'IA ($50K-500K), servent ~500 personnes/système
 2. **Gestion de l'Eau**: Distribution IoT ($30K-300K), servent ~2000 personnes/système
@@ -179,10 +183,12 @@ Peça-me para calcular impacto ou fazer correspondência de soluções com suas 
 4. **Infrastructure Numérique**: Connectivité et littératie ($100K-1M+), comble fossé numérique
 5. **Analytique d'Impact**: Suivi des ODD en temps réel, tarification personnalisée
 6. **Laboratoires d'Innovation**: Centres technologiques communautaires ($150K-750K), favorisent solutions locales
+7. **Changement Climatique**: Stratégies d'atténuation et d'adaptation, préparation et réponse communautaire
+8. **Développement des Capacités**: Programmes de formation et renforcement institutionnel
 
 Demandez-moi de calculer l'impact ou de faire correspondre les solutions à vos besoins spécifiques!`;
       }
-      return `4S offers six core sustainability solutions for Sub-Saharan Africa:
+      return `4S offers eight core sustainability solutions for Sub-Saharan Africa:
 
 1. **Clean Energy Access**: AI solar microgrids ($50K-500K), serves ~500 people/system
 2. **Water Management**: IoT distribution ($30K-300K), serves ~2000 people/system
@@ -190,6 +196,8 @@ Demandez-moi de calculer l'impact ou de faire correspondre les solutions à vos 
 4. **Digital Infrastructure**: Connectivity & literacy ($100K-1M+), bridges digital gap
 5. **Impact Analytics**: Real-time SDG tracking, custom pricing
 6. **Innovation Labs**: Community tech hubs ($150K-750K), fosters local solutions
+7. **Climate Change**: Mitigation and adaptation strategies, community preparedness and response
+8. **Capacity Development**: Training programs and institutional strengthening
 
 Ask me to calculate impact or match solutions to your specific needs!`;
     }
