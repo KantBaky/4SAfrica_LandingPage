@@ -97,7 +97,7 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: 'Hi! I\'m SustainaBot, powered by GrokAI. How can I help you learn about 4S\'s sustainability solutions for Sub-Saharan Africa?\n\n💡 For better responses, try asking:\n• "Calculate impact of solar energy in Kenya"\n• "What\'s our smart agriculture solution?"\n• "How does 4S work in West Africa?"\n• "Show me water management case studies"',
+      greeting: 'Hi! I\'m SustainaBot, powered by GrokAI. How can I help you learn about 4S\'s sustainability solutions for Sub-Saharan Africa?\n\n💡 For better responses, try asking:\n• "Calculate impact of solar energy in Kenya"\n• "What\'s our climate change solution?"\n• "Tell me about digital infrastructure and capacity development"\n• "Show me water management and smart agriculture case studies"',
       placeholder: 'Ask about our solutions... (be specific for better results)',
       error: 'I apologize, but I\'m having trouble connecting right now. Please try again in a moment.',
       tips: 'Tips: Ask about specific solutions, regions, or use cases for better answers',
@@ -183,7 +183,7 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: 'Bonjour! Je suis SustainaBot, alimenté par GrokAI. Comment puis-je vous aider à en savoir plus sur les solutions de durabilité de 4S pour l\'Afrique subsaharienne?\n\n💡 Pour de meilleures réponses, essayez de demander:\n• "Calculer l\'impact de l\'énergie solaire au Kenya"\n• "Qu\'est-ce que notre solution agriculture intelligente?"\n• "Comment fonctionne 4S en Afrique de l\'Ouest?"\n• "Montrez-moi les études de cas de gestion de l\'eau"',
+      greeting: 'Bonjour! Je suis SustainaBot, alimenté par GrokAI. Comment puis-je vous aider à en savoir plus sur les solutions de durabilité de 4S pour l\'Afrique subsaharienne?\n\n💡 Pour de meilleures réponses, essayez de demander:\n• "Calculer l\'impact de l\'énergie solaire au Kenya"\n• "Qu\'est-ce que notre solution changement climatique?"\n• "Parlez-moi de l\'infrastructure numérique et du développement des capacités"\n• "Montrez-moi les études de cas de gestion de l\'eau et agriculture intelligente"',
       placeholder: 'Posez des questions sur nos solutions... (soyez spécifique pour de meilleurs résultats)',
       error: 'Je m\'excuse, mais j\'ai du mal à me connecter en ce moment. Veuillez réessayer dans un instant.',
       tips: 'Conseils: Posez des questions sur des solutions, régions ou cas d\'utilisation spécifiques pour de meilleures réponses',
@@ -302,7 +302,7 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: 'Olá! Sou SustainaBot, alimentado por GrokAI. Como posso ajudá-lo a aprender sobre as soluções de sustentabilidade da 4S para a África Subsaariana?\n\n💡 Para melhores respostas, tente perguntar:\n• "Calcule o impacto da energia solar no Quênia"\n• "Qual é nossa solução de agricultura inteligente?"\n• "Como a 4S funciona na África Ocidental?"\n• "Mostre-me estudos de caso de gestão de água"',
+      greeting: 'Olá! Sou SustainaBot, alimentado por GrokAI. Como posso ajudá-lo a aprender sobre as soluções de sustentabilidade da 4S para a África Subsaariana?\n\n💡 Para melhores respostas, tente perguntar:\n• "Calcule o impacto da energia solar no Quênia"\n• "Qual é nossa solução de mudança climática?"\n• "Fale-me sobre infraestrutura digital e desenvolvimento de capacidades"\n• "Mostre-me estudos de caso de gestão de água e agricultura inteligente"',
       placeholder: 'Pergunte sobre nossas soluções... (seja específico para melhores resultados)',
       error: 'Peço desculpas, estou tendo dificuldades para conectar agora. Por favor, tente novamente em um momento.',
       tips: 'Dica: Pergunte sobre soluções, regiões ou casos de uso específicos para melhores respostas',
@@ -436,7 +436,7 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: '¡Hola! Soy SustainaBot, impulsado por GrokAI. ¿Cómo puedo ayudarte a aprender sobre las soluciones de sostenibilidad de 4S para el África Subsahariana?\n\n💡 Para mejores respuestas, intenta preguntar:\n• "Calcula el impacto de la energía solar en Kenia"\n• "¿Cuál es nuestra solución de agricultura inteligente?"\n• "¿Cómo funciona 4S en África Occidental?"\n• "Muéstrame estudios de caso de gestión del agua"',
+      greeting: '¡Hola! Soy SustainaBot, impulsado por GrokAI. ¿Cómo puedo ayudarte a aprender sobre las soluciones de sostenibilidad de 4S para el África Subsahariana?\n\n💡 Para mejores respuestas, intenta preguntar:\n• "Calcula el impacto de la energía solar en Kenia"\n• "¿Cuál es nuestra solución de cambio climático?"\n• "Cuéntame sobre infraestructura digital y desarrollo de capacidades"\n• "Muéstrame estudios de caso de gestión del agua y agricultura inteligente"',
       placeholder: 'Pregunta sobre nuestras soluciones... (sé específico para mejores resultados)',
       error: 'Disculpa, estoy teniendo dificultades para conectar ahora. Por favor, inténtalo de nuevo en un momento.',
       tips: 'Consejo: Pregunta sobre soluciones, regiones o casos de uso específicos para mejores respuestas',
