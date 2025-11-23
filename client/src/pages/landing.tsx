@@ -7,6 +7,7 @@ import logoImage from '@assets/4S Logo_1756834402906.jpg';
 import { GrokChatbot } from '@/components/GrokChatbot';
 import { ImpactResults } from '@/components/ImpactResults';
 import { useLanguage } from '@/lib/i18n';
+import { Sun, Droplet, Sprout, Wifi, TrendingUp, Lightbulb, Leaf, BookOpen, Users, Globe, Rocket, Trees, ChevronDown, Lock, Mail } from 'lucide-react';
 
 export default function Landing() {
   const { t } = useLanguage();
@@ -18,52 +19,52 @@ export default function Landing() {
   
   const solutions = [
     {
-      icon: 'fa-solar-panel',
+      Icon: Sun,
       title: t('solutions.cleanEnergy'),
       description: t('solutions.cleanEnergyDesc'),
     },
     {
-      icon: 'fa-droplet',
+      Icon: Droplet,
       title: t('solutions.waterManagement'),
       description: t('solutions.waterManagementDesc'),
     },
     {
-      icon: 'fa-seedling',
+      Icon: Sprout,
       title: t('solutions.smartAgriculture'),
       description: t('solutions.smartAgricultureDesc'),
     },
     {
-      icon: 'fa-network-wired',
+      Icon: Wifi,
       title: t('solutions.digitalInfra'),
       description: t('solutions.digitalInfraDesc'),
     },
     {
-      icon: 'fa-chart-line',
+      Icon: TrendingUp,
       title: t('solutions.impactAnalytics'),
       description: t('solutions.impactAnalyticsDesc'),
     },
     {
-      icon: 'fa-lightbulb',
+      Icon: Lightbulb,
       title: t('solutions.innovationLabs'),
       description: t('solutions.innovationLabsDesc'),
     },
     {
-      icon: 'fa-leaf',
+      Icon: Leaf,
       title: t('solutions.climateChange'),
       description: t('solutions.climateChangeDesc'),
     },
     {
-      icon: 'fa-graduation-cap',
+      Icon: BookOpen,
       title: t('solutions.capacityDevelopment'),
       description: t('solutions.capacityDevelopmentDesc'),
     },
   ];
 
   const stats = [
-    { value: '500K+', label: t('stats.livesImpacted'), icon: 'fa-users' },
-    { value: '15+', label: t('stats.activeCountries'), icon: 'fa-globe-africa' },
-    { value: '50+', label: t('stats.solutionsDeployed'), icon: 'fa-rocket' },
-    { value: '2.5M', label: t('stats.co2Reduced'), icon: 'fa-leaf' },
+    { value: '500K+', label: t('stats.livesImpacted'), Icon: Users },
+    { value: '15+', label: t('stats.activeCountries'), Icon: Globe },
+    { value: '50+', label: t('stats.solutionsDeployed'), Icon: Rocket },
+    { value: '2.5M', label: t('stats.co2Reduced'), Icon: Trees },
   ];
 
   const steps = [
@@ -178,7 +179,7 @@ export default function Landing() {
             onClick={() => scrollToSection('mission')}
           >
             <span className="text-sm mb-2">{t('mission.discoverMore')}</span>
-            <i className="fas fa-chevron-down text-xl"></i>
+            <ChevronDown className="text-xl" />
           </motion.div>
         </div>
       </section>
@@ -218,7 +219,7 @@ export default function Landing() {
               <Card key={index} className="card-hover" data-testid={`card-solution-${index}`}>
                 <CardContent className="p-8">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <i className={`fas ${solution.icon} text-3xl text-primary`}></i>
+                    <solution.Icon className="text-3xl text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{solution.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
@@ -244,7 +245,7 @@ export default function Landing() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center" data-testid={`stat-${index}`}>
-                <i className={`fas ${stat.icon} text-4xl mb-4 opacity-80`}></i>
+                <stat.Icon className="text-4xl mb-4 opacity-80 mx-auto" />
                 <div className="text-5xl font-bold mb-2">{stat.value}</div>
                 <div className="text-lg text-primary-foreground/80">{stat.label}</div>
               </div>
@@ -418,7 +419,7 @@ export default function Landing() {
           </div>
 
           <p className="text-sm text-primary-foreground/70">
-            <i className="fas fa-lock mr-2"></i>
+            <Lock className="inline mr-2" size={20} />
             We respect your privacy. No spam, ever.
           </p>
         </div>

@@ -1,5 +1,6 @@
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 import { useLanguage } from '@/lib/i18n';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Facebook, Instagram } from 'lucide-react';
 
 const scrollToSection = (href: string) => {
   if (href.startsWith('#')) {
@@ -20,10 +21,10 @@ const getQuickLinks = (t: (key: string) => string) => [
 ];
 
 const socialLinks = [
-  { icon: 'fab fa-twitter', href: 'https://twitter.com/4ssolutions', label: 'Twitter' },
-  { icon: 'fab fa-linkedin', href: 'https://linkedin.com/company/4ssolutions', label: 'LinkedIn' },
-  { icon: 'fab fa-facebook', href: 'https://facebook.com/4ssolutions', label: 'Facebook' },
-  { icon: 'fab fa-instagram', href: 'https://instagram.com/4ssolutions', label: 'Instagram' },
+  { Icon: Twitter, href: 'https://twitter.com/4ssolutions', label: 'Twitter' },
+  { Icon: Linkedin, href: 'https://linkedin.com/company/4ssolutions', label: 'LinkedIn' },
+  { Icon: Facebook, href: 'https://facebook.com/4ssolutions', label: 'Facebook' },
+  { Icon: Instagram, href: 'https://instagram.com/4ssolutions', label: 'Instagram' },
 ];
 
 export function Footer() {
@@ -56,7 +57,7 @@ export function Footer() {
                   aria-label={social.label}
                   title={social.label}
                 >
-                  <i className={`${social.icon} text-xl font-bold`}></i>
+                  <social.Icon size={20} />
                 </a>
               ))}
             </div>
@@ -84,16 +85,16 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-background mb-4">{t('nav.contact')}</h4>
             <ul className="space-y-3 text-background/80">
-              <li>
-                <i className="fas fa-envelope mr-2"></i>
+              <li className="flex items-center">
+                <Mail size={18} className="mr-2" />
                 info@4ssolutions.com
               </li>
-              <li>
-                <i className="fas fa-phone mr-2"></i>
+              <li className="flex items-center">
+                <Phone size={18} className="mr-2" />
                 +254 XXX XXX XXX
               </li>
-              <li>
-                <i className="fas fa-map-marker-alt mr-2"></i>
+              <li className="flex items-center">
+                <MapPin size={18} className="mr-2" />
                 Nairobi, Kenya
               </li>
             </ul>
