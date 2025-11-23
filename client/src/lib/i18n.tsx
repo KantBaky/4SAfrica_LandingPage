@@ -13,7 +13,7 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      title: 'AI-Powered Sustainability for Africa',
+      title: 'Sustainability Solutions for Sub-Saharan Africa',
       subtitle: 'Transforming challenges into opportunities through intelligent technology, empowering communities across Sub-Saharan Africa to achieve sustainable development goals.',
       getStarted: 'Get Started',
       learnMore: 'Learn More',
@@ -30,7 +30,7 @@ export const translations = {
     },
     solutions: {
       title: 'Our Solutions',
-      subtitle: 'Six core areas of impact',
+      subtitle: 'Eight core areas of impact',
       comprehensive: 'Comprehensive technology-driven approaches to Africa\'s sustainability challenges',
       cleanEnergy: 'Clean Energy Access',
       cleanEnergyDesc: 'AI-optimized microgrids bringing reliable solar power to rural communities across Sub-Saharan Africa.',
@@ -44,6 +44,10 @@ export const translations = {
       impactAnalyticsDesc: 'Real-time tracking and reporting of sustainability metrics aligned with UN SDGs.',
       innovationLabs: 'Innovation Labs',
       innovationLabsDesc: 'Collaborative spaces fostering local innovation and tech-driven solutions to regional challenges.',
+      climateChange: 'Climate Change',
+      climateChangeDesc: 'Comprehensive strategies for climate mitigation and adaptation, helping communities prepare for and respond to climate impacts.',
+      capacityDevelopment: 'Capacity Development',
+      capacityDevelopmentDesc: 'Building skills and institutional strength in governments and companies through training, mentoring, and organizational development programs.',
     },
     stats: {
       livesImpacted: 'Lives Impacted',
@@ -122,7 +126,7 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Durabilité alimentée par l\'IA pour l\'Afrique',
+      title: 'Solutions de Durabilité pour l\'Afrique Subsaharienne',
       subtitle: 'Transformer les défis en opportunités grâce à la technologie intelligente, en habilitant les communautés d\'Afrique subsaharienne à atteindre les objectifs de développement durable.',
       getStarted: 'Commencer',
       learnMore: 'En savoir plus',
@@ -139,7 +143,7 @@ export const translations = {
     },
     solutions: {
       title: 'Nos Solutions',
-      subtitle: 'Six domaines d\'impact clés',
+      subtitle: 'Huit domaines d\'impact clés',
       comprehensive: 'Approches technologiques complètes pour les défis de durabilité de l\'Afrique',
       cleanEnergy: 'Accès à l\'Énergie Propre',
       cleanEnergyDesc: 'Microgrilles optimisées par l\'IA apportant une énergie solaire fiable aux communautés rurales d\'Afrique subsaharienne.',
@@ -153,6 +157,10 @@ export const translations = {
       impactAnalyticsDesc: 'Suivi et rapport en temps réel des mesures de durabilité alignées avec les ODD des Nations unies.',
       innovationLabs: 'Laboratoires d\'Innovation',
       innovationLabsDesc: 'Espaces collaboratifs favorisant l\'innovation locale et les solutions axées sur la technologie pour les défis régionaux.',
+      climateChange: 'Changement Climatique',
+      climateChangeDesc: 'Stratégies complètes d\'atténuation et d\'adaptation au changement climatique, aidant les communautés à se préparer et à réagir aux impacts climatiques.',
+      capacityDevelopment: 'Développement des Capacités',
+      capacityDevelopmentDesc: 'Renforcer les compétences et la force institutionnelle dans les gouvernements et les entreprises par le biais de formation, mentorat et programmes de développement organisationnel.',
     },
     impact: {
       title: 'Vos Résultats d\'Impact',
@@ -207,12 +215,6 @@ export const translations = {
       success: 'Merci! Nous vous recontacterons bientôt.',
       error: 'Erreur lors de l\'envoi. Veuillez réessayer.',
     },
-    chatbot: {
-      title: 'SustainaBot',
-      greeting: 'Bonjour! Je suis SustainaBot, alimenté par GrokAI. Comment puis-je vous aider à en savoir plus sur les solutions de durabilité de 4S pour l\'Afrique subsaharienne?',
-      placeholder: 'Posez des questions sur nos solutions...',
-      error: 'Je m\'excuse, mais j\'ai du mal à me connecter en ce moment. Veuillez réessayer dans un instant.',
-    },
     cookies: {
       title: 'Nous Valorisons Votre Confidentialité',
       message: 'Nous aimerions collecter des informations pour rester en contact au sujet des mises à jour et opportunités de 4S. Votre confidentialité est importante pour nous.',
@@ -237,7 +239,7 @@ export const translations = {
       contact: 'Contato',
     },
     hero: {
-      title: 'Sustentabilidade Alimentada por IA para a África',
+      title: 'Soluções de Sustentabilidade para a África Subsaariana',
       subtitle: 'Transformando desafios em oportunidades através de tecnologia inteligente, capacitando comunidades na África Subsaariana a alcançar objetivos de desenvolvimento sustentável.',
       getStarted: 'Começar',
       learnMore: 'Saiba Mais',
@@ -254,7 +256,7 @@ export const translations = {
     },
     solutions: {
       title: 'Nossas Soluções',
-      subtitle: 'Seis áreas principais de impacto',
+      subtitle: 'Oito áreas principais de impacto',
       comprehensive: 'Abordagens impulsionadas por tecnologia para os desafios de sustentabilidade da África',
       cleanEnergy: 'Acesso a Energia Limpa',
       cleanEnergyDesc: 'Microgrids otimizadas por IA trazendo energia solar confiável para comunidades rurais na África Subsaariana.',
@@ -268,6 +270,10 @@ export const translations = {
       impactAnalyticsDesc: 'Rastreamento e relatório em tempo real de métricas de sustentabilidade alinhadas com os ODS das Nações Unidas.',
       innovationLabs: 'Laboratórios de Inovação',
       innovationLabsDesc: 'Espaços colaborativos promovendo inovação local e soluções orientadas pela tecnologia para desafios regionais.',
+      climateChange: 'Mudança Climática',
+      climateChangeDesc: 'Estratégias abrangentes de mitigação e adaptação às mudanças climáticas, ajudando comunidades a se prepararem e responderem aos impactos climáticos.',
+      capacityDevelopment: 'Desenvolvimento de Capacidades',
+      capacityDevelopmentDesc: 'Construindo habilidades e força institucional em governos e empresas através de programas de treinamento, mentoria e desenvolvimento organizacional.',
     },
     stats: {
       livesImpacted: 'Vidas Impactadas',
@@ -315,12 +321,6 @@ export const translations = {
       success: 'Obrigado! Entraremos em contato em breve.',
       error: 'Erro ao enviar. Por favor, tente novamente.',
     },
-    chatbot: {
-      title: 'SustainaBot',
-      greeting: 'Olá! Sou SustainaBot, alimentado por GrokAI. Como posso ajudá-lo a aprender sobre as soluções de sustentabilidade da 4S para a África Subsaariana?',
-      placeholder: 'Pergunte sobre nossas soluções...',
-      error: 'Peço desculpas, mas estou tendo dificuldades para conectar agora. Por favor, tente novamente em um momento.',
-    },
     cookies: {
       title: 'Valorizamos Sua Privacidade',
       message: 'Gostaríamos de coletar informações para manter contato sobre atualizações e oportunidades da 4S. Sua privacidade é importante para nós.',
@@ -345,7 +345,7 @@ export const translations = {
       contact: 'Contacto',
     },
     hero: {
-      title: 'Sostenibilidad Impulsada por IA para África',
+      title: 'Soluciones de Sostenibilidad para el África Subsahariana',
       subtitle: 'Transformando desafíos en oportunidades a través de tecnología inteligente, empoderando comunidades en el África Subsahariana para lograr objetivos de desarrollo sostenible.',
       getStarted: 'Comenzar',
       learnMore: 'Más Información',
@@ -362,7 +362,7 @@ export const translations = {
     },
     solutions: {
       title: 'Nuestras Soluciones',
-      subtitle: 'Seis áreas principales de impacto',
+      subtitle: 'Ocho áreas principales de impacto',
       comprehensive: 'Enfoques impulsados por tecnología para los desafíos de sostenibilidad de África',
       cleanEnergy: 'Acceso a Energía Limpia',
       cleanEnergyDesc: 'Microrredes optimizadas por IA que traen energía solar confiable a las comunidades rurales del África Subsahariana.',
@@ -376,6 +376,10 @@ export const translations = {
       impactAnalyticsDesc: 'Seguimiento e informe en tiempo real de métricas de sostenibilidad alineadas con los ODS de las Naciones Unidas.',
       innovationLabs: 'Laboratorios de Innovación',
       innovationLabsDesc: 'Espacios colaborativos que fomentan la innovación local y las soluciones orientadas por tecnología para desafíos regionales.',
+      climateChange: 'Cambio Climático',
+      climateChangeDesc: 'Estrategias integrales de mitigación y adaptación al cambio climático, ayudando a las comunidades a prepararse y responder a los impactos climáticos.',
+      capacityDevelopment: 'Desarrollo de Capacidades',
+      capacityDevelopmentDesc: 'Construyendo habilidades y fortaleza institucional en gobiernos y empresas a través de programas de capacitación, mentoría y desarrollo organizacional.',
     },
     stats: {
       livesImpacted: 'Vidas Impactadas',
