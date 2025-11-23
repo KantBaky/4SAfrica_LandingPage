@@ -161,6 +161,13 @@ export function GrokChatbot() {
             </Button>
           </div>
 
+          {/* Tips Banner */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800 p-3">
+            <p className="text-xs text-blue-800 dark:text-blue-200">
+              💡 <strong>Tip:</strong> Ask about specific solutions, regions, or use cases for better answers
+            </p>
+          </div>
+
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-muted/10">
             {messages.map((message, index) => (
@@ -235,7 +242,7 @@ export function GrokChatbot() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder={t('chatbot.placeholder')}
-                className="flex-1"
+                className="flex-1 text-xs"
                 disabled={chatMutation.isPending}
                 data-testid="input-chat-message"
               />

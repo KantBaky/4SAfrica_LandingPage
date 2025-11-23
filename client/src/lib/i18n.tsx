@@ -93,9 +93,10 @@ export const translations = {
     },
     chatbot: {
       title: 'SustainaBot',
-      greeting: 'Hi! I\'m SustainaBot, powered by GrokAI. How can I help you learn about 4S\'s sustainability solutions for Sub-Saharan Africa?',
-      placeholder: 'Ask about our solutions...',
+      greeting: 'Hi! I\'m SustainaBot, powered by GrokAI. How can I help you learn about 4S\'s sustainability solutions for Sub-Saharan Africa?\n\n💡 For better responses, try asking:\n• "Calculate impact of solar energy in Kenya"\n• "What\'s our smart agriculture solution?"\n• "How does 4S work in West Africa?"\n• "Show me water management case studies"',
+      placeholder: 'Ask about our solutions... (be specific for better results)',
       error: 'I apologize, but I\'m having trouble connecting right now. Please try again in a moment.',
+      tips: 'Tips: Ask about specific solutions, regions, or use cases for better answers',
     },
     cookies: {
       title: 'We Value Your Privacy',
@@ -171,6 +172,13 @@ export const translations = {
       step01: 'Évaluer et Analyser',
       step02: 'Concevoir et Déployer',
       step03: 'Surveiller et Développer',
+    },
+    chatbot: {
+      title: 'SustainaBot',
+      greeting: 'Bonjour! Je suis SustainaBot, alimenté par GrokAI. Comment puis-je vous aider à en savoir plus sur les solutions de durabilité de 4S pour l\'Afrique subsaharienne?\n\n💡 Pour de meilleures réponses, essayez de demander:\n• "Calculer l\'impact de l\'énergie solaire au Kenya"\n• "Qu\'est-ce que notre solution agriculture intelligente?"\n• "Comment fonctionne 4S en Afrique de l\'Ouest?"\n• "Montrez-moi les études de cas de gestion de l\'eau"',
+      placeholder: 'Posez des questions sur nos solutions... (soyez spécifique pour de meilleurs résultats)',
+      error: 'Je m\'excuse, mais j\'ai du mal à me connecter en ce moment. Veuillez réessayer dans un instant.',
+      tips: 'Conseils: Posez des questions sur des solutions, régions ou cas d\'utilisation spécifiques pour de meilleures réponses',
     },
     stats: {
       livesImpacted: 'Vies Impactées',
