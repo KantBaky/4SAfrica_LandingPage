@@ -47,6 +47,16 @@ export default function Landing() {
       title: t('solutions.innovationLabs'),
       description: t('solutions.innovationLabsDesc'),
     },
+    {
+      icon: 'fa-leaf',
+      title: t('solutions.climateChange'),
+      description: t('solutions.climateChangeDesc'),
+    },
+    {
+      icon: 'fa-graduation-cap',
+      title: t('solutions.capacityDevelopment'),
+      description: t('solutions.capacityDevelopmentDesc'),
+    },
   ];
 
   const stats = [
