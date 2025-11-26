@@ -60,12 +60,12 @@ export function Header() {
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-1">
               {navigationItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-3 py-2 text-sm font-medium transition-colors focus:outline-none text-muted-foreground hover:text-primary border-0 bg-transparent"
+                  className="px-4 py-2 text-sm font-medium transition-all focus:outline-none text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md border-0 bg-transparent"
                   data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   {item.label}
@@ -85,7 +85,7 @@ export function Header() {
               size="sm"
               onClick={toggleLowBandwidth}
               data-testid="button-low-bandwidth-toggle"
-              className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+              className="hidden md:flex bg-primary text-primary-foreground hover:bg-primary/85 hover:text-primary-foreground transition-all duration-200 shadow-sm hover:shadow-md"
             >
               <Wifi className="w-4 h-4 mr-2" />
               {isLowBandwidth ? 'High Bandwidth' : 'Low Bandwidth'}

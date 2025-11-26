@@ -142,8 +142,8 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-accent leading-tight">
-              <span style={{ color: 'hsl(102, 35%, 25%)', textShadow: '0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3)' }}>{t('hero.title')}</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-accent leading-tight hero-title">
+              {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
               {t('hero.subtitle')}
