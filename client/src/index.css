@@ -88,12 +88,15 @@
   }
 
   .hero-title {
-    background: linear-gradient(90deg, hsl(218, 73%, 55%), hsl(29, 94%, 53%), hsl(102, 35%, 35%));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    color: hsl(0, 0%, 100%);
+    text-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.8),
+      0 4px 20px rgba(0, 0, 0, 0.7),
+      0 0 60px rgba(102, 35%, 25%, 0.5),
+      2px 2px 0 rgba(0, 0, 0, 0.5),
+      -2px -2px 0 rgba(0, 0, 0, 0.5);
+    filter: brightness(1.1);
+    letter-spacing: -0.02em;
   }
 
   .card-hover {

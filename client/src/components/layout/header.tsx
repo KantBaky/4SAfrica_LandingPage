@@ -65,7 +65,7 @@ export function Header() {
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-4 py-2 text-sm font-medium transition-all focus:outline-none text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-md border-0 bg-transparent"
+                  className="px-4 py-2 text-sm font-medium transition-all focus:outline-none text-balance hover:text-primary hover:bg-primary/5 rounded-md border-0 bg-transparent"
                   data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   {item.label}
