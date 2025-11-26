@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4S - Sub-Saharan Sustainability Solutions | AI-Powered Green Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "system-ui", "sans-serif"],
+                    accent: ["Ubuntu", "system-ui", "sans-serif"],
+                },
+                animation: {
+                    'fade-in-up': 'fadeInUp 0.6s ease-out',
+                    'pulse-slow': 'pulse 3s infinite',
+                    'bounce-gentle': 'bounceGentle 2s infinite',
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(32 25% 98%);
+            --foreground: hsl(217 32% 17%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(217 32% 17%);
+            --primary: hsl(102 35% 25%);
+            --primary-foreground: hsl(0 0% 98%);
+            --secondary: hsl(218 73% 41%);
+            --secondary-foreground: hsl(0 0% 98%);
+            --muted: hsl(32 15% 92%);
+            --muted-foreground: hsl(217 13% 45%);
+            --accent: hsl(29 94% 43%);
+            --accent-foreground: hsl(0 0% 98%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 98%);
+            --border: hsl(32 15% 88%);
+            --input: hsl(32 15% 88%);
+            --ring: hsl(102 35% 25%);
+            --radius: 0.75rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceGentle {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-seed-hover {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-seed-hover::before {
+            content: '🌱';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            transform: translateY(-50%);
+            transition: left 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn-seed-hover:hover::before {
+            left: 8px;
+            opacity: 1;
+        }
+
+        .btn-seed-hover:hover {
+            padding-left: 2.5rem;
+        }
+
+        .scroll-indicator {
+            animation: bounceGentle 2s infinite;
+        }
+
+        /* Low bandwidth mode styles */
+        .low-bandwidth .animate-bounce,
+        .low-bandwidth .animate-pulse,
+        .low-bandwidth .animate-spin {
+            animation: none !important;
+        }
+
+        .low-bandwidth .transition-all,
+        .low-bandwidth .transition-transform {
+            transition: none !important;
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        .focus-visible {
+            outline: 2px solid var(--ring);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans antialiased">
+    <!-- @COMPONENT: AccessibilityControls -->
+    <div class="fixed top-4 right-4 z-50 space-y-2">
+        <button id="lowBandwidthToggle" class="bg-muted text-muted-foreground px-3 py-2 rounded-md text-sm hover:bg-primary hover:text-primary-foreground transition-colors focus-visible" aria-label="Toggle low bandwidth mode">
+            <i class="fas fa-wifi mr-2"></i>
+            <span id="bandwidthText">Low Bandwidth</span>
+        </button>
+        <button id="voiceSearchToggle" class="bg-muted text-muted-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary hover:text-secondary-foreground transition-colors focus-visible" aria-label="Toggle voice search">
+            <i class="fas fa-microphone mr-2"></i>
+            Voice Search
+        </button>
+    </div>
+    <!-- @END_COMPONENT: AccessibilityControls -->
+
+    <!-- @COMPONENT: Navigation -->
+    <nav class="bg-card/95 backdrop-blur-sm border-b border-border sticky top-0 z-40" role="navigation" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary font-accent">
+                        4S
+                        <span class="text-sm text-muted-foreground ml-1">Sustainability Solutions</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Home</a>
+                        <a href="#solutions" class="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Solutions</a>
+                        <a href="#impact" class="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Impact</a>
+                        <a href="#theory" class="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Theory of Change</a>
+                        <a href="#investors" class="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Investors</a>
+                        <a href="#blog" class="text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium focus-visible">Insights</a>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <button class="bg-primary text-primary-foreground px-6 py-2 rounded-md text-sm font-medium btn-seed-hover transition-all focus-visible">
+                        Partner With Us
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuToggle" class="text-foreground hover:text-primary focus-visible p-2" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-card border-t border-border">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block text-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+                <a href="#solutions" class="block text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Solutions</a>
+                <a href="#impact" class="block text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Impact</a>
+                <a href="#theory" class="block text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Theory of Change</a>
+                <a href="#investors" class="block text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Investors</a>
+                <a href="#blog" class="block text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-base font-medium transition-colors">Insights</a>
+                <div class="px-3 py-2">
+                    <button class="w-full bg-primary text-primary-foreground px-6 py-2 rounded-md text-sm font-medium btn-seed-hover transition-all">
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: HeroSection -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background with overlay -->
+        <div class="absolute inset-0 hero-gradient opacity-90"></div>
+        <!-- African landscape with technology overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-accent leading-tight">
+                    AI-Powered Sustainability for<br>
+                    <span class="text-accent">Africa's Green Revolution</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Transforming challenges into opportunities through intelligent technology, 
+                    empowering communities across Sub-Saharan Africa to achieve sustainable development goals.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button class="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all shadow-lg hover:shadow-xl focus-visible">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Explore Our Solutions
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all hover:bg-white hover:text-primary focus-visible">
+                        <i class="fas fa-handshake mr-2"></i>
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white scroll-indicator">
+            <div class="flex flex-col items-center">
+                <span class="text-sm mb-2">Discover More</span>
+                <i class="fas fa-chevron-down text-xl"></i>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: StatsSection -->
+    <section class="py-16 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2" data-counter="12">0</div>
+                    <div class="text-muted-foreground">Countries Served</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-secondary mb-2" data-counter="150">0</div>
+                    <div class="text-muted-foreground">Projects Completed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-accent mb-2" data-counter="500">0</div>
+                    <div class="text-muted-foreground">Communities Impacted</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-bold text-primary mb-2" data-counter="17">0</div>
+                    <div class="text-muted-foreground">SDGs Addressed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: StatsSection -->
+
+    <!-- @COMPONENT: FeaturesSection -->
+    <section id="solutions" class="py-20 bg-muted/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    The <span class="text-gradient">4S Difference</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    We don't just identify problems—we transform them into sustainable opportunities using AI and innovation.
+                </p>
+            </div>
+
+            <!-- Interactive Challenges → Opportunities Slider -->
+            <div class="mb-16">
+                <div class="bg-card rounded-2xl p-8 shadow-lg">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-foreground mb-4">Challenges → Opportunities</h3>
+                        <div class="flex items-center justify-center space-x-4 mb-6">
+                            <button id="challengeBtn" class="px-6 py-3 bg-destructive text-destructive-foreground rounded-lg font-semibold transition-all focus-visible">
+                                Challenges
+                            </button>
+                            <div class="w-12 h-0.5 bg-border"></div>
+                            <button id="opportunityBtn" class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold transition-all focus-visible">
+                                Opportunities
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="challengeContent" class="text-center space-y-6">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="p-6 bg-destructive/10 rounded-xl">
+                                <i class="fas fa-exclamation-triangle text-3xl text-destructive mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Climate Vulnerability</h4>
+                                <p class="text-muted-foreground">Rising temperatures and unpredictable weather patterns threaten agricultural livelihoods.</p>
+                            </div>
+                            <div class="p-6 bg-destructive/10 rounded-xl">
+                                <i class="fas fa-plug text-3xl text-destructive mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Energy Access Gap</h4>
+                                <p class="text-muted-foreground">600 million people lack access to reliable electricity infrastructure.</p>
+                            </div>
+                            <div class="p-6 bg-destructive/10 rounded-xl">
+                                <i class="fas fa-chart-line-down text-3xl text-destructive mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Limited Investment</h4>
+                                <p class="text-muted-foreground">Sustainability projects struggle to attract sufficient funding and resources.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="opportunityContent" class="text-center space-y-6 hidden">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="p-6 bg-primary/10 rounded-xl">
+                                <i class="fas fa-leaf text-3xl text-primary mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Climate-Smart Agriculture</h4>
+                                <p class="text-muted-foreground">AI-driven farming solutions that adapt to climate change and boost yields.</p>
+                            </div>
+                            <div class="p-6 bg-secondary/10 rounded-xl">
+                                <i class="fas fa-solar-panel text-3xl text-secondary mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Renewable Energy Grid</h4>
+                                <p class="text-muted-foreground">Decentralized solar and wind networks powered by smart grid technology.</p>
+                            </div>
+                            <div class="p-6 bg-accent/10 rounded-xl">
+                                <i class="fas fa-coins text-3xl text-accent mb-4"></i>
+                                <h4 class="font-semibold text-foreground mb-2">Green Finance Hub</h4>
+                                <p class="text-muted-foreground">Innovative funding mechanisms that connect global capital with local impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                    <!-- African entrepreneur with solar technology -->
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">AI-Powered Insights</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Machine learning algorithms analyze local conditions, market dynamics, and climate data to identify the most promising sustainability opportunities.
+                    </p>
+                </div>
+
+                <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Community-Centered</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        Every solution is designed with and for local communities, ensuring cultural relevance, social acceptance, and long-term sustainability.
+                    </p>
+                </div>
+
+                <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-foreground mb-4">Scalable Impact</h3>
+                    <p class="text-muted-foreground leading-relaxed">
+                        From pilot projects to regional implementation, our solutions are designed to scale efficiently across diverse African contexts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FeaturesSection -->
+
+    <!-- @COMPONENT: AIImpactCalculator -->
+    <section id="impact" class="py-20 bg-gradient-to-b from-primary/5 to-secondary/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    AI <span class="text-gradient">Impact Calculator</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Discover the potential impact of sustainable solutions in your region. Our AI analyzes multiple factors to project outcomes.
+                </p>
+            </div>
+
+            <div class="bg-card rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <form id="impactCalculator" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="country" class="block text-sm font-medium text-foreground mb-2">Country/Region</label>
+                            <select id="country" class="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent">
+                                <option value="">Select a country</option>
+                                <option value="nigeria">Nigeria</option>
+                                <option value="kenya">Kenya</option>
+                                <option value="ghana">Ghana</option>
+                                <option value="senegal">Senegal</option>
+                                <option value="uganda">Uganda</option>
+                                <option value="tanzania">Tanzania</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="population" class="block text-sm font-medium text-foreground mb-2">Population Size</label>
+                            <input type="number" id="population" placeholder="e.g., 50000" class="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="solutionType" class="block text-sm font-medium text-foreground mb-2">Solution Type</label>
+                            <select id="solutionType" class="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent">
+                                <option value="">Select solution type</option>
+                                <option value="solar">Solar Energy</option>
+                                <option value="agriculture">Smart Agriculture</option>
+                                <option value="water">Water Management</option>
+                                <option value="education">Digital Education</option>
+                                <option value="healthcare">Mobile Healthcare</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-sm font-medium text-foreground mb-2">Investment Budget (USD)</label>
+                            <input type="number" id="budget" placeholder="e.g., 100000" class="w-full px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-foreground mb-4">Priority SDGs</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg1" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">No Poverty</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg2" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Zero Hunger</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg3" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Good Health</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg4" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Quality Education</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg7" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Clean Energy</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg13" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Climate Action</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg15" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Life on Land</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" value="sdg17" class="rounded border-input text-primary focus:ring-ring">
+                                <span class="text-sm">Partnerships</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-primary text-primary-foreground px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all shadow-lg hover:shadow-xl focus-visible">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Calculate Impact
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Results Section -->
+                <div id="calculatorResults" class="mt-12 hidden">
+                    <div class="border-t border-border pt-8">
+                        <h3 class="text-2xl font-bold text-foreground mb-6 text-center">Projected Impact</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="text-center p-6 bg-primary/10 rounded-xl">
+                                <div class="text-3xl font-bold text-primary mb-2" id="peopleImpacted">0</div>
+                                <div class="text-muted-foreground">People Directly Impacted</div>
+                            </div>
+                            <div class="text-center p-6 bg-secondary/10 rounded-xl">
+                                <div class="text-3xl font-bold text-secondary mb-2" id="co2Reduction">0</div>
+                                <div class="text-muted-foreground">Tons CO₂ Reduced/Year</div>
+                            </div>
+                            <div class="text-center p-6 bg-accent/10 rounded-xl">
+                                <div class="text-3xl font-bold text-accent mb-2" id="jobsCreated">0</div>
+                                <div class="text-muted-foreground">Jobs Created</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-6 bg-muted/50 rounded-xl">
+                            <h4 class="font-semibold text-foreground mb-3">Recommended Actions:</h4>
+                            <ul id="recommendations" class="space-y-2 text-muted-foreground">
+                                <!-- Dynamic recommendations will be inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AIImpactCalculator -->
+
+    <!-- @COMPONENT: SolutionMatchmaker -->
+    <section class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    Solution <span class="text-gradient">Matchmaker</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Answer a few questions and let our AI recommend the most suitable sustainability solutions for your specific context.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 shadow-xl max-w-4xl mx-auto">
+                <div id="quizContainer">
+                    <div id="quizProgress" class="mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-foreground">Question <span id="currentQuestion">1</span> of <span id="totalQuestions">5</span></span>
+                            <span class="text-sm text-muted-foreground"><span id="progressPercent">20</span>% Complete</span>
+                        </div>
+                        <div class="w-full bg-muted rounded-full h-2">
+                            <div id="progressBar" class="bg-primary h-2 rounded-full transition-all duration-300" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <div id="quizQuestions">
+                        <!-- Question 1 -->
+                        <div class="quiz-question active" data-question="1">
+                            <h3 class="text-2xl font-bold text-foreground mb-6">What's your primary focus area?</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <button class="quiz-option p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="energy">
+                                    <div class="flex items-center mb-3">
+                                        <i class="fas fa-bolt text-2xl text-primary mr-3"></i>
+                                        <h4 class="font-semibold text-foreground">Energy Access</h4>
+                                    </div>
+                                    <p class="text-muted-foreground">Providing reliable, clean energy to communities</p>
+                                </button>
+                                <button class="quiz-option p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="agriculture">
+                                    <div class="flex items-center mb-3">
+                                        <i class="fas fa-seedling text-2xl text-primary mr-3"></i>
+                                        <h4 class="font-semibold text-foreground">Agriculture</h4>
+                                    </div>
+                                    <p class="text-muted-foreground">Improving farming practices and food security</p>
+                                </button>
+                                <button class="quiz-option p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="water">
+                                    <div class="flex items-center mb-3">
+                                        <i class="fas fa-tint text-2xl text-primary mr-3"></i>
+                                        <h4 class="font-semibold text-foreground">Water & Sanitation</h4>
+                                    </div>
+                                    <p class="text-muted-foreground">Clean water access and waste management</p>
+                                </button>
+                                <button class="quiz-option p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="education">
+                                    <div class="flex items-center mb-3">
+                                        <i class="fas fa-graduation-cap text-2xl text-primary mr-3"></i>
+                                        <h4 class="font-semibold text-foreground">Education</h4>
+                                    </div>
+                                    <p class="text-muted-foreground">Digital learning and skills development</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="quiz-question hidden" data-question="2">
+                            <h3 class="text-2xl font-bold text-foreground mb-6">What's your budget range?</h3>
+                            <div class="space-y-4">
+                                <button class="quiz-option w-full p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="small">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h4 class="font-semibold text-foreground">Pilot Project</h4>
+                                            <p class="text-muted-foreground">$10,000 - $50,000</p>
+                                        </div>
+                                        <i class="fas fa-seedling text-xl text-primary"></i>
+                                    </div>
+                                </button>
+                                <button class="quiz-option w-full p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="medium">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h4 class="font-semibold text-foreground">Community Scale</h4>
+                                            <p class="text-muted-foreground">$50,000 - $500,000</p>
+                                        </div>
+                                        <i class="fas fa-users text-xl text-secondary"></i>
+                                    </div>
+                                </button>
+                                <button class="quiz-option w-full p-6 border-2 border-border rounded-xl hover:border-primary transition-colors text-left focus-visible" data-value="large">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <h4 class="font-semibold text-foreground">Regional Impact</h4>
+                                            <p class="text-muted-foreground">$500,000+</p>
+                                        </div>
+                                        <i class="fas fa-rocket text-xl text-accent"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Additional questions would be added here -->
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button id="prevQuestion" class="px-6 py-3 border border-border text-foreground rounded-lg font-medium transition-colors hover:bg-muted focus-visible disabled:opacity-50" disabled>
+                            Previous
+                        </button>
+                        <button id="nextQuestion" class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium btn-seed-hover transition-all focus-visible disabled:opacity-50" disabled>
+                            Next
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Results -->
+                <div id="quizResults" class="hidden">
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-bold text-foreground mb-4">Your Perfect Match!</h3>
+                        <p class="text-lg text-muted-foreground">Based on your responses, here are our AI-recommended solutions:</p>
+                    </div>
+                    
+                    <div id="recommendedSolutions" class="space-y-6">
+                        <!-- Dynamic solution recommendations will be inserted here -->
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button id="restartQuiz" class="px-6 py-3 border border-border text-foreground rounded-lg font-medium transition-colors hover:bg-muted focus-visible mr-4">
+                            Retake Quiz
+                        </button>
+                        <button class="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium btn-seed-hover transition-all focus-visible">
+                            Get Detailed Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SolutionMatchmaker -->
+
+    <!-- @COMPONENT: SolutionsPortfolio -->
+    <section class="py-20 bg-muted/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    Our <span class="text-gradient">Solutions Portfolio</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Explore our comprehensive range of AI-powered sustainability solutions across different sectors and regions.
+                </p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="bg-card rounded-2xl p-6 mb-12 shadow-lg">
+                <div class="flex flex-wrap gap-4 items-center justify-center">
+                    <div class="flex items-center space-x-2">
+                        <label class="text-sm font-medium text-foreground">Filter by:</label>
+                    </div>
+                    
+                    <select id="sdgFilter" class="px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring">
+                        <option value="">All SDGs</option>
+                        <option value="sdg7">Clean Energy</option>
+                        <option value="sdg2">Zero Hunger</option>
+                        <option value="sdg6">Clean Water</option>
+                        <option value="sdg4">Quality Education</option>
+                        <option value="sdg13">Climate Action</option>
+                    </select>
+
+                    <select id="countryFilter" class="px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring">
+                        <option value="">All Countries</option>
+                        <option value="nigeria">Nigeria</option>
+                        <option value="kenya">Kenya</option>
+                        <option value="ghana">Ghana</option>
+                        <option value="senegal">Senegal</option>
+                        <option value="uganda">Uganda</option>
+                    </select>
+
+                    <select id="toolFilter" class="px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring">
+                        <option value="">All Tools</option>
+                        <option value="ai">AI/ML</option>
+                        <option value="iot">IoT Sensors</option>
+                        <option value="mobile">Mobile Apps</option>
+                        <option value="blockchain">Blockchain</option>
+                    </select>
+
+                    <button id="clearFilters" class="px-4 py-2 text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Solutions Grid -->
+            <div id="solutionsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Solution Card 1 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg7" data-country="nigeria" data-tool="ai">
+                    <!-- Solar installation in Nigeria -->
+                    <img src="https://pixabay.com/get/g78e5b60dd806a72868cd4df02b9201a53daffba1ed3a8df2c40a1338cdf7972d33c4b5d8b750c1dce55d5e877c02fdd42b430fd375f6024afd60c4e13b46255a_1280.jpg" alt="Solar energy installation in rural Nigeria" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">SDG 7</span>
+                            <span class="text-sm text-muted-foreground">Nigeria</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">Smart Grid Nigeria</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            AI-powered microgrid system serving 15,000 rural households with reliable solar energy and smart load balancing.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">AI/ML</span>
+                                <span class="px-2 py-1 bg-accent/10 text-accent text-xs font-medium rounded">IoT</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Card 2 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg2" data-country="kenya" data-tool="iot">
+                    <!-- Smart agriculture in Kenya -->
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Smart agricultural sensors in Kenyan farm" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm font-medium rounded-full">SDG 2</span>
+                            <span class="text-sm text-muted-foreground">Kenya</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">AgriSense Kenya</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            IoT sensor network providing real-time soil and weather data to optimize crop yields for smallholder farmers.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">IoT</span>
+                                <span class="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded">Mobile</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Card 3 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg6" data-country="ghana" data-tool="mobile">
+                    <!-- Water management system in Ghana -->
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Clean water access project in Ghana" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full">SDG 6</span>
+                            <span class="text-sm text-muted-foreground">Ghana</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">WaterWatch Ghana</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            Mobile-based water quality monitoring and distribution system ensuring safe drinking water for 30+ communities.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded">Mobile</span>
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">IoT</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Card 4 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg4" data-country="senegal" data-tool="ai">
+                    <!-- Digital education in Senegal -->
+                    <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Students using digital learning tools in Senegal" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">SDG 4</span>
+                            <span class="text-sm text-muted-foreground">Senegal</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">EduAI Senegal</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            AI-powered adaptive learning platform delivering personalized education content in local languages to rural schools.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">AI/ML</span>
+                                <span class="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded">Mobile</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Card 5 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg13" data-country="uganda" data-tool="blockchain">
+                    <!-- Climate monitoring in Uganda -->
+                    <img src="https://pixabay.com/get/g268980eedf2eab880f60b99adbfc546c95c15085f11e9ef56667ceb64a37ed6275bed98bb742a49cdfd77b0ca7293a324d91cf0ba1624187cd1a5dfabbe999e2_1280.jpg" alt="Climate monitoring station in Uganda" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full">SDG 13</span>
+                            <span class="text-sm text-muted-foreground">Uganda</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">Carbon Track Uganda</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            Blockchain-based carbon credit system enabling smallholder farmers to monetize sustainable farming practices.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-accent/10 text-accent text-xs font-medium rounded">Blockchain</span>
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">IoT</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Card 6 -->
+                <div class="solution-card bg-card rounded-2xl shadow-lg overflow-hidden card-hover" data-sdg="sdg7" data-country="ghana" data-tool="ai">
+                    <!-- Wind energy project in Ghana -->
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Wind turbines in Ghana landscape" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">SDG 7</span>
+                            <span class="text-sm text-muted-foreground">Ghana</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">WindSmart Ghana</h3>
+                        <p class="text-muted-foreground mb-4 leading-relaxed">
+                            AI-optimized wind farm management system maximizing energy output while reducing environmental impact.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs font-medium rounded">AI/ML</span>
+                                <span class="px-2 py-1 bg-accent/10 text-accent text-xs font-medium rounded">IoT</span>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                Learn More <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-secondary text-secondary-foreground px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all shadow-lg hover:shadow-xl focus-visible">
+                    <i class="fas fa-plus-circle mr-2"></i>
+                    View All Solutions
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SolutionsPortfolio -->
+
+    <!-- @COMPONENT: TheoryOfChange -->
+    <section id="theory" class="py-20 bg-gradient-to-b from-card to-muted/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    Our <span class="text-gradient">Theory of Change</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    From identifying challenges to creating sustainable impact - our proven methodology transforms communities across Sub-Saharan Africa.
+                </p>
+            </div>
+
+            <!-- Animated Roadmap -->
+            <div class="relative">
+                <!-- Vertical Timeline -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-secondary to-accent h-full"></div>
+                
+                <div class="space-y-16">
+                    <!-- Stage 1: Diagnose -->
+                    <div class="theory-stage flex items-center" data-stage="1">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                                <div class="flex items-center justify-end mb-4">
+                                    <h3 class="text-2xl font-bold text-foreground mr-4">Diagnose</h3>
+                                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-search text-2xl text-primary"></i>
+                                    </div>
+                                </div>
+                                <p class="text-muted-foreground leading-relaxed mb-4">
+                                    AI-powered analysis of local challenges, community needs, and resource availability. 
+                                    We use satellite data, ground sensors, and community feedback to create comprehensive assessments.
+                                </p>
+                                <div class="flex justify-end">
+                                    <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                        <i class="fas fa-play-circle mr-2"></i>
+                                        Watch Process
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center z-10 border-4 border-background">
+                            <span class="text-primary-foreground font-bold">1</span>
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <!-- Diagnostic process visualization in African context -->
+                            <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Community assessment and data collection in African village" class="rounded-xl shadow-lg w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- Stage 2: Innovate -->
+                    <div class="theory-stage flex items-center" data-stage="2">
+                        <div class="w-1/2 pr-8">
+                            <!-- Innovation lab with African technologists -->
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="African innovators working on technology solutions" class="rounded-xl shadow-lg w-full h-auto">
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-secondary rounded-full flex items-center justify-center z-10 border-4 border-background">
+                            <span class="text-secondary-foreground font-bold">2</span>
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-lightbulb text-2xl text-secondary"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-foreground">Innovate</h3>
+                                </div>
+                                <p class="text-muted-foreground leading-relaxed mb-4">
+                                    Co-creation of tailored solutions with local communities and partners. 
+                                    Our innovation labs combine global AI expertise with indigenous knowledge systems.
+                                </p>
+                                <div class="flex">
+                                    <button class="text-secondary hover:text-secondary/80 font-medium transition-colors focus-visible">
+                                        <i class="fas fa-play-circle mr-2"></i>
+                                        Watch Process
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3: Scale -->
+                    <div class="theory-stage flex items-center" data-stage="3">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                                <div class="flex items-center justify-end mb-4">
+                                    <h3 class="text-2xl font-bold text-foreground mr-4">Scale</h3>
+                                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-expand-arrows-alt text-2xl text-accent"></i>
+                                    </div>
+                                </div>
+                                <p class="text-muted-foreground leading-relaxed mb-4">
+                                    Strategic expansion across regions through partnerships with governments, NGOs, and private sector. 
+                                    Technology transfer and capacity building ensure sustainable growth.
+                                </p>
+                                <div class="flex justify-end">
+                                    <button class="text-accent hover:text-accent/80 font-medium transition-colors focus-visible">
+                                        <i class="fas fa-play-circle mr-2"></i>
+                                        Watch Process
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-accent rounded-full flex items-center justify-center z-10 border-4 border-background">
+                            <span class="text-accent-foreground font-bold">3</span>
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <!-- Scaling operations across African regions -->
+                            <img src="https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Regional expansion of sustainability projects across Africa" class="rounded-xl shadow-lg w-full h-auto">
+                        </div>
+                    </div>
+
+                    <!-- Stage 4: Sustain -->
+                    <div class="theory-stage flex items-center" data-stage="4">
+                        <div class="w-1/2 pr-8">
+                            <!-- Long-term sustainability and community ownership -->
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Community-owned renewable energy project in Africa" class="rounded-xl shadow-lg w-full h-auto">
+                        </div>
+                        
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center z-10 border-4 border-background">
+                            <span class="text-primary-foreground font-bold">4</span>
+                        </div>
+                        
+                        <div class="w-1/2 pl-8">
+                            <div class="bg-card p-8 rounded-2xl shadow-lg card-hover">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-leaf text-2xl text-primary"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-foreground">Sustain</h3>
+                                </div>
+                                <p class="text-muted-foreground leading-relaxed mb-4">
+                                    Long-term community ownership and maintenance systems. 
+                                    Financial sustainability models and continuous monitoring ensure lasting impact.
+                                </p>
+                                <div class="flex">
+                                    <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                                        <i class="fas fa-play-circle mr-2"></i>
+                                        Watch Process
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TheoryOfChange -->
+
+    <!-- @COMPONENT: InvestorHub -->
+    <section id="investors" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
+                    Investor <span class="text-gradient">Hub</span>
+                </h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Join us in driving sustainable development across Sub-Saharan Africa. Explore investment opportunities with measurable impact and strong returns.
+                </p>
+            </div>
+
+            <!-- Live Opportunity Pipeline Dashboard -->
+            <div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 mb-12 shadow-xl">
+                <h3 class="text-2xl font-bold text-foreground mb-6 text-center">Live Opportunity Pipeline</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">$12.5M</div>
+                        <div class="text-muted-foreground">Total Pipeline Value</div>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl font-bold text-secondary mb-2">23</div>
+                        <div class="text-muted-foreground">Active Projects</div>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center">
+                        <div class="text-3xl font-bold text-accent mb-2">8.2%</div>
+                        <div class="text-muted-foreground">Avg. IRR</div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Projects -->
+                <div class="space-y-4">
+                    <div class="bg-card p-6 rounded-xl shadow-lg flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Nigeria Solar Grid Expansion</h4>
+                                <p class="text-sm text-muted-foreground">Series A • Energy Access • 50,000 beneficiaries</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-foreground">$3.2M</div>
+                            <div class="text-sm text-muted-foreground">Seeking</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-xl shadow-lg flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-3 h-3 bg-secondary rounded-full"></div>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Kenya AgriTech Platform</h4>
+                                <p class="text-sm text-muted-foreground">Seed • Agriculture • 15,000 farmers</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-foreground">$1.8M</div>
+                            <div class="text-sm text-muted-foreground">Seeking</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-xl shadow-lg flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-3 h-3 bg-accent rounded-full"></div>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Ghana Water Management</h4>
+                                <p class="text-sm text-muted-foreground">Series B • Water & Sanitation • 80,000 beneficiaries</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-foreground">$5.5M</div>
+                            <div class="text-sm text-muted-foreground">Seeking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold btn-seed-hover transition-all focus-visible">
+                        View Full Pipeline
+                    </button>
+                </div>
+            </div>
+
+            <!-- Investment Briefs -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-muted/30 p-6 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-pdf text-2xl text-destructive mr-3"></i>
+                        <h4 class="font-bold text-foreground">Nigeria Investment Brief</h4>
+                    </div>
+                    <p class="text-muted-foreground mb-4">
+                        Comprehensive analysis of energy access opportunities and market potential in Nigeria's rural regions.
+                    </p>
+                    <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                        Download PDF <i class="fas fa-download ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="bg-muted/30 p-6 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-pdf text-2xl text-destructive mr-3"></i>
+                        <h4 class="font-bold text-foreground">Kenya AgriTech Report</h4>
+                    </div>
+                    <p class="text-muted-foreground mb-4">
+                        Market analysis and investment opportunities in Kenya's rapidly growing agricultural technology sector.
+                    </p>
+                    <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                        Download PDF <i class="fas fa-download ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="bg-muted/30 p-6 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-pdf text-2xl text-destructive mr-3"></i>
+                        <h4 class="font-bold text-foreground">Regional Impact Study</h4>
+                    </div>
+                    <p class="text-muted-foreground mb-4">
+                        Cross-country analysis of sustainable development investment returns and social impact metrics.
+                    </p>
+                    <button class="text-primary hover:text-primary/80 font-medium transition-colors focus-visible">
+                        Download PDF <i class="fas fa-download ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-foreground mb-4">Ready to Invest in Africa's Future?</h3>
+                <p class="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                    Schedule a meeting with our investment team to explore partnership opportunities and due diligence materials.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-secondary text-secondary-foreground px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all shadow-lg hover:shadow-xl focus-visible">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="border-2 border-secondary text-secondary px-8 py-4 rounded-lg text-lg font-semibold btn-seed-hover transition-all hover:bg-secondary hover:text-secondary-foreground focus-visible">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Request Info Pack
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: InvestorHub -->
+
+    <!-- @COMPONENT: SustainaBotChat -->
+    <div id="sustainaBot" class="fixed bottom-6 right-6 z-50">
+        <div id="chatWidget" class="bg-card rounded-2xl shadow-2xl w-80 max-h-96 hidden">
+            <div class="bg-primary text-primary-foreground p-4 rounded-t-2xl flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 bg-primary-foreground/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-robot text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">SustainaBot</h4>
+                        <p class="text-xs opacity-90">AI Sustainability Assistant</p>
+                    </div>
+                </div>
+                <button id="closeChatWidget" class="text-primary-foreground/80 hover:text-primary-foreground transition-colors focus-visible">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="chatMessages" class="p-4 space-y-3 max-h-64 overflow-y-auto">
+                <div class="bg-primary/10 p-3 rounded-lg">
+                    <p class="text-sm text-foreground">
+                        Hello! I'm SustainaBot, your AI assistant for sustainability solutions in Africa. 
+                        How can I help you today?
+                    </p>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="bg-muted text-muted-foreground px-3 py-2 rounded-lg text-sm hover:bg-primary hover:text-primary-foreground transition-colors chat-suggestion focus-visible">
+                        Find solutions for my region
+                    </button>
+                    <button class="bg-muted text-muted-foreground px-3 py-2 rounded-lg text-sm hover:bg-primary hover:text-primary-foreground transition-colors chat-suggestion focus-visible">
+                        Investment opportunities
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-border">
+                <div class="flex space-x-2">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-input rounded-lg bg-background text-foreground text-sm focus:ring-2 focus:ring-ring focus:border-transparent">
+                    <button id="sendChatMessage" class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm btn-seed-hover transition-all focus-visible">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button id="openChatWidget" class="bg-primary text-primary-foreground w-14 h-14 rounded-full shadow-2xl hover:shadow-xl transition-all animate-pulse-slow focus-visible">
+            <i class="fas fa-robot text-xl"></i>
+        </button>
+    </div>
+    <!-- @END_COMPONENT: SustainaBotChat -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-foreground text-background py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="text-3xl font-bold text-primary font-accent mb-4">4S</div>
+                    <p class="text-background/80 leading-relaxed mb-6">
+                        Transforming Sub-Saharan Africa through AI-powered sustainability solutions, 
+                        creating lasting impact for communities and the environment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-background/60 hover:text-primary transition-colors focus-visible">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-background/60 hover:text-primary transition-colors focus-visible">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-background/60 hover:text-primary transition-colors focus-visible">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-background/60 hover:text-primary transition-colors focus-visible">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-background mb-4">Solutions</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Energy Access</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Smart Agriculture</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Water Management</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Digital Education</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Climate Action</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-background mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">About Us</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Our Team</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Careers</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Press</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-background mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Blog</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Research</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Case Studies</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Documentation</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-primary transition-colors focus-visible">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-background/60 text-sm">
+                    © 2024 4S - Sub-Saharan Sustainability Solutions. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors focus-visible">Privacy Policy</a>
+                    <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors focus-visible">Terms of Service</a>
+                    <a href="#" class="text-background/60 hover:text-primary text-sm transition-colors focus-visible">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // TODO: Implement business logic, API calls, and state management
+            
+            // Low bandwidth mode toggle
+            const lowBandwidthToggle = document.getElementById('lowBandwidthToggle');
+            const bandwidthText = document.getElementById('bandwidthText');
+            const body = document.body;
+            
+            lowBandwidthToggle.addEventListener('click', function() {
+                body.classList.toggle('low-bandwidth');
+                const isLowBandwidth = body.classList.contains('low-bandwidth');
+                bandwidthText.textContent = isLowBandwidth ? 'High Bandwidth' : 'Low Bandwidth';
+                
+                // TODO: Implement actual bandwidth optimization (lazy loading, image compression, etc.)
+            });
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Animated counter for stats
+            function animateCounters() {
+                const counters = document.querySelectorAll('[data-counter]');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.dataset.counter);
+                    let current = 0;
+                    const increment = target / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = Math.floor(current);
+                    }, 20);
+                });
+            }
+
+            // Challenge/Opportunity slider
+            const challengeBtn = document.getElementById('challengeBtn');
+            const opportunityBtn = document.getElementById('opportunityBtn');
+            const challengeContent = document.getElementById('challengeContent');
+            const opportunityContent = document.getElementById('opportunityContent');
+
+            challengeBtn.addEventListener('click', function() {
+                challengeContent.classList.remove('hidden');
+                opportunityContent.classList.add('hidden');
+                challengeBtn.classList.add('bg-destructive', 'text-destructive-foreground');
+                opportunityBtn.classList.remove('bg-primary', 'text-primary-foreground');
+                opportunityBtn.classList.add('bg-muted', 'text-muted-foreground');
+            });
+
+            opportunityBtn.addEventListener('click', function() {
+                opportunityContent.classList.remove('hidden');
+                challengeContent.classList.add('hidden');
+                opportunityBtn.classList.add('bg-primary', 'text-primary-foreground');
+                challengeBtn.classList.remove('bg-destructive', 'text-destructive-foreground');
+                challengeBtn.classList.add('bg-muted', 'text-muted-foreground');
+            });
+
+            // Impact Calculator
+            const impactForm = document.getElementById('impactCalculator');
+            const calculatorResults = document.getElementById('calculatorResults');
+            
+            impactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // TODO: Implement actual AI calculation logic
+                const country = document.getElementById('country').value;
+                const population = parseInt(document.getElementById('population').value) || 0;
+                const budget = parseInt(document.getElementById('budget').value) || 0;
+                const solutionType = document.getElementById('solutionType').value;
+                
+                // Mock calculations
+                const peopleImpacted = Math.floor(population * 0.6);
+                const co2Reduction = Math.floor(budget * 0.002);
+                const jobsCreated = Math.floor(budget * 0.0001);
+                
+                document.getElementById('peopleImpacted').textContent = peopleImpacted.toLocaleString();
+                document.getElementById('co2Reduction').textContent = co2Reduction.toLocaleString();
+                document.getElementById('jobsCreated').textContent = jobsCreated.toLocaleString();
+                
+                // Generate recommendations
+                const recommendations = document.getElementById('recommendations');
+                recommendations.innerHTML = `
+                    <li>• Partner with local organizations for community engagement</li>
+                    <li>• Implement phased rollout starting with pilot communities</li>
+                    <li>• Establish monitoring and evaluation framework</li>
+                    <li>• Develop local capacity building programs</li>
+                `;
+                
+                calculatorResults.classList.remove('hidden');
+                calculatorResults.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Solution Matchmaker Quiz
+            let currentQuestionIndex = 1;
+            const totalQuestions = 5;
+            let quizAnswers = {};
+
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const questionNumber = question.dataset.question;
+                    
+                    // Remove selection from siblings
+                    question.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('border-primary', 'bg-primary/5');
+                    });
+                    
+                    // Add selection to clicked option
+                    this.classList.add('border-primary', 'bg-primary/5');
+                    
+                    // Store answer
+                    quizAnswers[questionNumber] = this.dataset.value;
+                    
+                    // Enable next button
+                    document.getElementById('nextQuestion').disabled = false;
+                });
+            });
+
+            document.getElementById('nextQuestion').addEventListener('click', function() {
+                if (currentQuestionIndex < totalQuestions) {
+                    currentQuestionIndex++;
+                    // TODO: Show next question (only 2 questions implemented in mock)
+                    
+                    // Update progress
+                    const progress = (currentQuestionIndex / totalQuestions) * 100;
+                    document.getElementById('progressBar').style.width = progress + '%';
+                    document.getElementById('progressPercent').textContent = Math.round(progress);
+                    document.getElementById('currentQuestion').textContent = currentQuestionIndex;
+                    
+                    // Enable previous button
+                    document.getElementById('prevQuestion').disabled = false;
+                } else {
+                    // Show results
+                    showQuizResults();
+                }
+            });
+
+            function showQuizResults() {
+                document.getElementById('quizContainer').classList.add('hidden');
+                document.getElementById('quizResults').classList.remove('hidden');
+                
+                // TODO: Implement actual AI recommendation logic
+                const recommendedSolutions = document.getElementById('recommendedSolutions');
+                recommendedSolutions.innerHTML = `
+                    <div class="bg-card p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-foreground mb-3">Recommended: Solar Energy Microgrid</h4>
+                        <p class="text-muted-foreground mb-4">
+                            Based on your focus area and budget, a solar microgrid solution would provide 
+                            maximum impact for your community.
+                        </p>
+                        <div class="flex space-x-2">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">Energy Access</span>
+                            <span class="px-3 py-1 bg-secondary/10 text-secondary text-sm font-medium rounded-full">AI-Optimized</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Portfolio filtering
+            const sdgFilter = document.getElementById('sdgFilter');
+            const countryFilter = document.getElementById('countryFilter');
+            const toolFilter = document.getElementById('toolFilter');
+            const clearFilters = document.getElementById('clearFilters');
+            const solutionCards = document.querySelectorAll('.solution-card');
+
+            function filterSolutions() {
+                const sdgValue = sdgFilter.value;
+                const countryValue = countryFilter.value;
+                const toolValue = toolFilter.value;
+
+                solutionCards.forEach(card => {
+                    const cardSdg = card.dataset.sdg;
+                    const cardCountry = card.dataset.country;
+                    const cardTool = card.dataset.tool;
+
+                    const sdgMatch = !sdgValue || cardSdg === sdgValue;
+                    const countryMatch = !countryValue || cardCountry === countryValue;
+                    const toolMatch = !toolValue || cardTool === toolValue;
+
+                    if (sdgMatch && countryMatch && toolMatch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            sdgFilter.addEventListener('change', filterSolutions);
+            countryFilter.addEventListener('change', filterSolutions);
+            toolFilter.addEventListener('change', filterSolutions);
+
+            clearFilters.addEventListener('click', function() {
+                sdgFilter.value = '';
+                countryFilter.value = '';
+                toolFilter.value = '';
+                filterSolutions();
+            });
+
+            // SustainaBot Chat
+            const openChatWidget = document.getElementById('openChatWidget');
+            const closeChatWidget = document.getElementById('closeChatWidget');
+            const chatWidget = document.getElementById('chatWidget');
+            const chatInput = document.getElementById('chatInput');
+            const sendChatMessage = document.getElementById('sendChatMessage');
+            const chatMessages = document.getElementById('chatMessages');
+
+            openChatWidget.addEventListener('click', function() {
+                chatWidget.classList.remove('hidden');
+                openChatWidget.style.display = 'none';
+            });
+
+            closeChatWidget.addEventListener('click', function() {
+                chatWidget.classList.add('hidden');
+                openChatWidget.style.display = 'block';
+            });
+
+            function addChatMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = isUser ? 'bg-primary text-primary-foreground p-3 rounded-lg ml-8' : 'bg-muted p-3 rounded-lg mr-8';
+                messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            sendChatMessage.addEventListener('click', function() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addChatMessage(message, true);
+                    chatInput.value = '';
+                    
+                    // TODO: Implement actual AI chatbot logic
+                    setTimeout(() => {
+                        addChatMessage("Thank you for your question! I'm currently learning more about your specific needs. Our team will follow up with detailed information about sustainability solutions in your region.");
+                    }, 1000);
+                }
+            });
+
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage.click();
+                }
+            });
+
+            // Chat suggestions
+            document.querySelectorAll('.chat-suggestion').forEach(suggestion => {
+                suggestion.addEventListener('click', function() {
+                    const message = this.textContent;
+                    addChatMessage(message, true);
+                    
+                    // TODO: Implement specific response logic
+                    setTimeout(() => {
+                        addChatMessage("Great question! Let me help you with that. Could you tell me more about your specific location and requirements?");
+                    }, 1000);
+                });
+            });
+
+            // Voice search functionality
+            const voiceSearchToggle = document.getElementById('voiceSearchToggle');
+            
+            voiceSearchToggle.addEventListener('click', function() {
+                // TODO: Implement actual voice search functionality
+                if ('webkitSpeechRecognition' in window) {
+                    alert('Voice search activated! (Mock implementation - would integrate with Web Speech API)');
+                } else {
+                    alert('Voice search not supported in this browser');
+                }
+            });
+
+            // Scroll-triggered animations (simplified)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe theory of change stages
+            document.querySelectorAll('.theory-stage').forEach(stage => {
+                observer.observe(stage);
+            });
+
+            // Initialize animations when page loads
+            setTimeout(animateCounters, 1000);
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

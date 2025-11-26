@@ -87,11 +87,11 @@ export function Footer() {
             <ul className="space-y-3 text-background/80">
               <li className="flex items-center">
                 <Mail size={18} className="mr-2" />
-                info@4ssolutions.com
+                info@weare4s.com
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2" />
-                +254 XXX XXX XXX
+                +254 782 999 666, +60 13 870 4808
               </li>
               <li className="flex items-center">
                 <MapPin size={18} className="mr-2" />
