@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 import logoImage from '@assets/4S Logo_1756834402906.jpg';
 import { GrokChatbot } from '@/components/GrokChatbot';
 import { ImpactResults } from '@/components/ImpactResults';
-import { useLanguage } from '@/lib/i18n';
+import { useLanguage, translations } from '@/lib/i18n';
 import { Sun, Droplet, Sprout, Wifi, TrendingUp, Lightbulb, Leaf, BookOpen, Users, Globe, Rocket, Trees, ChevronDown, Lock, Mail } from 'lucide-react';
 
 export default function Landing() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [email, setEmail] = useState('');
   const [contactName, setContactName] = useState('');
   const [contactMessage, setContactMessage] = useState('');
@@ -88,20 +88,7 @@ export default function Landing() {
     },
   ];
 
-  const testimonials = [
-    {
-      quote: t('testimonials.quote1'),
-      name: t('testimonials.name1'),
-      title: t('testimonials.title1'),
-      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-    },
-    {
-      quote: t('testimonials.quote2'),
-      name: t('testimonials.name2'),
-      title: t('testimonials.title2'),
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
-    },
-  ];
+  const projects = translations[language].trackRecord.projects;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -292,36 +279,25 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="py-24 bg-muted/30">
+      {/* Track Record */}
+      <section id="track-record" className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-accent">
-              <span className="text-gradient">{t('testimonials.title')}</span>
+              <span className="text-gradient">{t('trackRecord.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('testimonials.subtitle')}
+              {t('trackRecord.subtitle')}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="card-hover">
+          <div className="max-w-3xl mx-auto">
+            {projects.map((project: any, index: number) => (
+              <Card key={index} className="card-hover" data-testid={`card-project-${index}`}>
                 <CardContent className="p-8">
-                  <div className="flex items-start gap-4 mb-6">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-bold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                    </div>
-                  </div>
-                  <p className="text-lg text-muted-foreground italic leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
+                  <div className="text-sm font-semibold text-primary mb-4">{project.client}</div>
+                  <p className="text-muted-foreground leading-relaxed">{project.description}</p>
                 </CardContent>
               </Card>
             ))}

@@ -17,7 +17,8 @@ export class GrokService {
 
   private getOpenAIClient(): OpenAI {
     if (!this.openai) {
-      const apiKey = process.env.XAI_API_KEY;
+      const apiKey = import.meta.env.VITE_XAI_API_KEY;
+      // const apiKey = process.env.XAI_API_KEY || process.env.VITE_XAI_API_KEY;
       if (!apiKey) {
         throw new Error('XAI_API_KEY environment variable is not set');
       }
@@ -291,8 +292,8 @@ Let me calculate specific returns for your investment parameters!`;
 
 Próximos passos:
 • Preencha o formulário de contato na parte inferior desta página
-• Envie-nos um email em info@4ssolutions.com
-• Ligue para +254 XXX XXX XXX
+• Envie-nos um email em info@weare4s.com
+• Ligue para +254 782 999 666 / +60 13 870 4808
 
 Qual tipo de parceria o interessa mais?`;
       }
@@ -306,8 +307,8 @@ Qual tipo de parceria o interessa mais?`;
 
 Próximos pasos:
 • Rellena el formulario de contacto en la parte inferior de esta página
-• Envíanos un email a info@4ssolutions.com
-• Llama a +254 XXX XXX XXX
+• Envíanos un email a info@weare4s.com
+• Llama a +254 782 999 666 / +60 13 870 4808
 
 ¿Qué tipo de asociación te interesa más?`;
       }
@@ -321,8 +322,8 @@ Próximos pasos:
 
 Prochaines étapes:
 • Remplissez le formulaire de contact au bas de cette page
-• Contactez-nous à info@4ssolutions.com
-• Appelez +254 XXX XXX XXX
+• Contactez-nous à info@weare4s.com
+• Appelez +254 782 999 666 / +60 13 870 4808
 
 Quel type de partenariat vous intéresse le plus?`;
       }
@@ -335,8 +336,8 @@ Quel type de partenariat vous intéresse le plus?`;
 
 Next steps:
 • Fill out the contact form at the bottom of this page
-• Email us at info@4ssolutions.com
-• Call +254 XXX XXX XXX
+• Email us at info@weare4s.com
+• Call +254 782 999 666 / +60 13 870 4808
 
 What type of partnership interests you most?`;
     }

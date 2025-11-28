@@ -74,15 +74,16 @@ export const translations = {
       step02: 'Design & Deploy',
       step03: 'Monitor & Scale',
     },
-    testimonials: {
-      title: 'What People Say',
-      subtitle: 'Voices from communities we\'ve empowered',
-      quote1: '4S transformed our village with clean energy. We now have reliable power for schools and health clinics, changing lives every day.',
-      name1: 'Amara Okafor',
-      title1: 'Community Leader, Nigeria',
-      quote2: 'The smart agriculture platform increased our yields by 40% while using less water. It\'s exactly what smallholder farmers need.',
-      name2: 'Kofi Mensah',
-      title2: 'Agricultural Cooperative Director, Ghana',
+    trackRecord: {
+      title: 'Our Track Record',
+      subtitle: 'Examples of the impact we\'ve delivered for our clients',
+      projects: [
+        {
+          title: 'Strengthening Private Sector Engagement in Climate Finance – Mali (Readiness Support)',
+          client: 'Mali\'s National Designated Authority (AEDD)',
+          description: 'ASCENT supported Mali\'s National Designated Authority (AEDD) to enhance private-sector participation in climate finance. The assignment included developing a national Private Sector Engagement Strategy, conducting in-depth consultations across agribusiness, finance, energy, and MSMEs, and identifying climate investment barriers and opportunities. ASCENT also designed practical tools for project pipeline development, proposed financial instruments tailored to private-sector needs, and delivered training to strengthen institutions involved in GCF processes. The work equips Mali to mobilize private capital for climate-resilient development and to accelerate high-quality project submissions to the Green Climate Fund.',
+        },
+      ],
     },
     contact: {
       title: 'Ready to Make an Impact?',
@@ -194,15 +195,16 @@ export const translations = {
       solutionsDeployed: 'Solutions Déployées',
       co2Reduced: 'Tonnes CO₂ Réduites',
     },
-    testimonials: {
-      title: 'Ce que les gens disent',
-      subtitle: 'Voix des communautés que nous avons habilitées',
-      quote1: '4S a transformé notre village avec l\'énergie propre. Nous avons maintenant une alimentation électrique fiable pour les écoles et les cliniques de santé, changeant des vies chaque jour.',
-      name1: 'Amara Okafor',
-      title1: 'Leader Communautaire, Nigeria',
-      quote2: 'La plateforme d\'agriculture intelligente a augmenté nos rendements de 40% tout en utilisant moins d\'eau. C\'est exactement ce dont les petits agriculteurs ont besoin.',
-      name2: 'Kofi Mensah',
-      title2: 'Directeur de Coopérative Agricole, Ghana',
+    trackRecord: {
+      title: 'Notre Historique',
+      subtitle: 'Exemples d\'impact que nous avons livrés à nos clients',
+      projects: [
+        {
+          title: 'Renforcement de l\'Engagement du Secteur Privé dans la Finance Climatique – Mali (Appui à la Préparation)',
+          client: 'Autorité Nationale Désignée du Mali (AEDD)',
+          description: 'ASCENT a soutenu l\'Autorité Nationale Désignée du Mali (AEDD) pour améliorer la participation du secteur privé à la finance climatique. L\'affectation comprenait le développement d\'une Stratégie Nationale d\'Engagement du Secteur Privé, la réalisation de consultations approfondies dans l\'agro-industrie, la finance, l\'énergie et les PME, et l\'identification des barrières et opportunités d\'investissement climatique. ASCENT a également conçu des outils pratiques pour le développement du portefeuille de projets, proposé des instruments financiers adaptés aux besoins du secteur privé et fourni une formation pour renforcer les institutions impliquées dans les processus du FVC. Ce travail dote le Mali des moyens de mobiliser le capital privé pour un développement résilient au climat et d\'accélérer les soumissions de projets de haute qualité au Fonds Vert pour le Climat.',
+        },
+      ],
     },
     contact: {
       title: 'Prêt à faire une différence?',
@@ -307,15 +309,16 @@ export const translations = {
       error: 'Peço desculpas, estou tendo dificuldades para conectar agora. Por favor, tente novamente em um momento.',
       tips: 'Dica: Pergunte sobre soluções, regiões ou casos de uso específicos para melhores respostas',
     },
-    testimonials: {
-      title: 'O Que as Pessoas Dizem',
-      subtitle: 'Vozes das comunidades que capacitamos',
-      quote1: 'A 4S transformou nossa aldeia com energia limpa. Agora temos energia confiável para escolas e clínicas de saúde, mudando vidas todos os dias.',
-      name1: 'Amara Okafor',
-      title1: 'Líder Comunitário, Nigéria',
-      quote2: 'A plataforma de agricultura inteligente aumentou nossos rendimentos em 40% enquanto usa menos água. É exatamente o que os pequenos agricultores precisam.',
-      name2: 'Kofi Mensah',
-      title2: 'Diretor de Cooperativa Agrícola, Gana',
+    trackRecord: {
+      title: 'Nosso Histórico',
+      subtitle: 'Exemplos do impacto que entregamos para nossos clientes',
+      projects: [
+        {
+          title: 'Fortalecimento do Engajamento do Setor Privado em Finanças Climáticas – Mali (Apoio à Preparação)',
+          client: 'Autoridade Nacional Designada do Mali (AEDD)',
+          description: 'ASCENT apoiou a Autoridade Nacional Designada do Mali (AEDD) para aprimorar a participação do setor privado em finanças climáticas. O trabalho incluiu o desenvolvimento de uma Estratégia Nacional de Engajamento do Setor Privado, realização de consultas aprofundadas em agronegócio, finanças, energia e PMEs, e identificação de barreiras e oportunidades de investimento climático. ASCENT também projetou ferramentas práticas para desenvolvimento de portfólio de projetos, propôs instrumentos financeiros adaptados às necessidades do setor privado e ofereceu treinamento para fortalecer instituições envolvidas em processos do FVC. O trabalho capacita Mali a mobilizar capital privado para desenvolvimento resiliente ao clima e acelerar submissões de projetos de alta qualidade ao Fundo Verde para o Clima.',
+        },
+      ],
     },
     contact: {
       title: 'Pronto para Fazer um Impacto?',
@@ -413,15 +416,16 @@ export const translations = {
       step02: 'Diseñar e Implementar',
       step03: 'Monitorear y Escalar',
     },
-    testimonials: {
-      title: 'Lo Que la Gente Dice',
-      subtitle: 'Voces de comunidades que empoderamos',
-      quote1: '4S transformó nuestro pueblo con energía limpia. Ahora tenemos energía confiable para escuelas y clínicas de salud, cambiando vidas cada día.',
-      name1: 'Amara Okafor',
-      title1: 'Líder Comunitario, Nigeria',
-      quote2: 'La plataforma de agricultura inteligente aumentó nuestros rendimientos un 40% mientras usamos menos agua. Es exactamente lo que los pequeños agricultores necesitan.',
-      name2: 'Kofi Mensah',
-      title2: 'Director de Cooperativa Agrícola, Ghana',
+    trackRecord: {
+      title: 'Nuestro Historial',
+      subtitle: 'Ejemplos del impacto que hemos entregado para nuestros clientes',
+      projects: [
+        {
+          title: 'Fortalecimiento de la Participación del Sector Privado en Finanzas Climáticas – Mali (Apoyo de Preparación)',
+          client: 'Autoridad Nacional Designada de Mali (AEDD)',
+          description: 'ASCENT apoyó a la Autoridad Nacional Designada de Mali (AEDD) para mejorar la participación del sector privado en finanzas climáticas. El trabajo incluyó el desarrollo de una Estrategia Nacional de Participación del Sector Privado, consultas profundas en agroindustria, finanzas, energía y PyMEs, e identificación de barreras y oportunidades de inversión climática. ASCENT también diseñó herramientas prácticas para desarrollo de cartera de proyectos, propuso instrumentos financieros adaptados a las necesidades del sector privado y brindó capacitación para fortalecer instituciones involucradas en procesos del FVC. El trabajo equipa a Mali para movilizar capital privado para desarrollo resiliente al clima y acelerar presentaciones de proyectos de alta calidad al Fondo Verde para el Clima.',
+        },
+      ],
     },
     contact: {
       title: '¿Listo para Crear Impacto?',
