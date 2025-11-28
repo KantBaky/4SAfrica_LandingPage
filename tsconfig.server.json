@@ -1,14 +1,16 @@
-// tsconfig.server.json
+// tsconfig.server.json   ← create this file in your repo root
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist/server",
     "rootDir": "./server",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "target": "ES2022",
-    "sourceMap": false,
-    "removeComments": true
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false
   },
   "include": ["server/**/*"],
   "exclude": ["node_modules"]
