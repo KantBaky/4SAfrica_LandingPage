@@ -1,3 +1,7 @@
+// client/src/lib/ai-service.ts
+import { grokService } from "@/services/grokService"; 
+// If you get an error here, change to: import { grokService } from "../services/grokService";
+
 interface ImpactCalculationParams {
   country: string;
   population: number;
@@ -33,66 +37,34 @@ export class AIService {
   constructor() {}
 
   async calculateImpact(params: ImpactCalculationParams): Promise<ImpactResults> {
-    try {
-      const response = await fetch('/api/ai/calculate-impact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(params),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to calculate impact');
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error('Impact calculation error:', error);
-      // Fallback calculation
-      return this.fallbackImpactCalculation(params);
-    }
+    return this.fallbackImpactCalculation(params);
   }
 
   async getSolutionRecommendations(answers: QuizAnswers): Promise<SolutionRecommendation[]> {
-    try {
-      const response = await fetch('/api/ai/recommend-solutions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(answers),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to get recommendations');
-      }
-
-      return await response.json();
-    } catch (error) {
-      console.error('Solution recommendation error:', error);
-      return this.fallbackRecommendations(answers);
-    }
+    return this.fallbackRecommendations(answers);
   }
 
-  async getChatResponse(message: string, sessionId: string): Promise<string> {
+  async getChatResponse(message: string, sessionId: string, language: string = 'en'): Promise<string> {
     try {
-      const response = await fetch('/api/ai/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, sessionId }),
-      });
+      const result = await grokService.chatWithContext(message, language);
 
-      if (!response.ok) {
-        throw new Error('Failed to get chat response');
+      if (typeof result === 'object' && result && 'narrative' in result) {
+        return result.narrative;
       }
 
-      const data = await response.json();
-      return data.response;
+      return result as string;
     } catch (error) {
-      console.error('Chat response error:', error);
-      return "I'm currently experiencing technical difficulties. Please try again later or contact our support team for assistance.";
+      console.error('Grok direct call failed:', error);
+      // Use the built-in fallback from GrokService (no longer private)
+      const lastUserMessage = { role: 'user' as const, content: message };
+      return await grokService.chat(
+        [{ role: 'user', content: message }],
+        language
+      );
     }
   }
 
   private fallbackImpactCalculation(params: ImpactCalculationParams): ImpactResults {
-    // Basic calculation logic as fallback
     const { population, budget, solutionType } = params;
     
     const baseMultiplier = {

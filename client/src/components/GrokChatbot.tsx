@@ -50,7 +50,7 @@ export function GrokChatbot() {
     ]);
   }, [language, t]);
 
-  const chatMutation = useMutation({
+  const chatMutation = useMutation({ 
     mutationFn: async (message: string) => {
       const response = await fetch('/api/ai/chat', {
         method: 'POST',

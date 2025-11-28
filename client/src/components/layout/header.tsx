@@ -12,7 +12,7 @@ const getNavigationItems = (t: (key: string) => string) => [
   { href: '#solutions', label: t('nav.solutions') },
   { href: '#impact', label: t('nav.impact') },
   { href: '#how-it-works', label: t('nav.howItWorks') },
-  { href: '#testimonials', label: t('nav.testimonials') },
+  { href: '#track-record', label: 'Track Record' },
   { href: '#contact', label: t('nav.contact') },
 ];
 
