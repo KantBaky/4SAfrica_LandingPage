@@ -1,3 +1,4 @@
+// server/services/emailService.ts
 import nodemailer from 'nodemailer';
 
 export interface ContactMessage {

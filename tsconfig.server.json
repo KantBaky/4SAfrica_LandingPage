@@ -1,17 +1,25 @@
-// tsconfig.server.json   ← create this file in your repo root
+// tsconfig.server.json
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./dist/tsconfig.server.tsbuildinfo",
     "outDir": "./dist/server",
-    "rootDir": "./server",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "target": "ES2022",
+    "rootDir": "./",                    // ← Allow entire monorepo
+    "module": "node16",                 // ← Critical: enables import.meta
+    "moduleResolution": "node16",       // ← Required with node16
     "allowImportingTsExtensions": false,
-    "noEmit": false,
-    "declaration": false,
-    "sourceMap": false
+    "noEmitOnError": true
   },
-  "include": ["server/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "server/**/*.ts",
+    "shared/**/*.ts",
+    "vite.config.ts",
+    "server/vite.ts"
+  ],
+  "exclude": [
+    "client/**/*",
+    "dist/**/*",
+    "node_modules/**/*"
+  ]
 }
