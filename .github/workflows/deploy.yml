@@ -29,7 +29,9 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist   # or ./build if using Create React App
+          publish_dir: ./dist/public   # or ./build if using Create React App
+          destination_dir: public
+          publish_branch: gh-pages
 
       - name: Install dependencies
         run: |
