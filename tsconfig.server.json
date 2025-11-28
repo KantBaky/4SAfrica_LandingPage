@@ -4,10 +4,11 @@
   "compilerOptions": {
     "outDir": "./dist/server",
     "rootDir": "./server",
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ES2022",
-    "sourceMap": true
+    "sourceMap": false,
+    "removeComments": true
   },
   "include": ["server/**/*"],
   "exclude": ["node_modules"]
