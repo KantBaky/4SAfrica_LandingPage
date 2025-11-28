@@ -1,45 +1,52 @@
+# .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write   # Required for peaceiris/actions-gh-pages to push
 
-      - name: Setup Node
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Build with env vars
+      - name: Build with VITE_XAI_API_KEY
         env:
           VITE_XAI_API_KEY: ${{ secrets.VITE_XAI_API_KEY }}
         run: |
           echo "VITE_XAI_API_KEY=$VITE_XAI_API_KEY" >> .env.production
           npm run build
 
-      - name: Deploy
+      - name: Deploy to gh-pages (files go to root)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/public   # or ./build if using Create React App
-          destination_dir: public
+          publish_dir: ./dist/public        # Vite outputs here
           publish_branch: gh-pages
+          force_orphan: true                # Clean branch every time (recommended)
+          allow_empty_commit: false
+          # NO destination_dir → files go directly to root of gh-pages
 
-      - name: Install dependencies
-        run: |
-          npm ci
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
+      # Optional: Add .nojekyll so GitHub doesn't try to run Jekyll
+      - name: Add .nojekyll file
+        run: touch ./dist/public/.nojekyll && cp ./dist/public/.nojekyll .
 
-      # If npm ci ever fails again, fall back to npm install (safe mode)
-      - name: Fallback install (if ci fails)
-        if: failure()
-        run: npm install
+      # Optional: Create CNAME for your custom domain
+      - name: Add CNAME
+        if: github.ref == 'refs/heads/main'
+        run: echo "weare4s.com" > ./dist/public/CNAME
