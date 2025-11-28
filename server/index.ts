@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
+  if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
@@ -62,8 +62,14 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen(5000, 'localhost', () => {
-    log(`serving on port ${port}`);
+  // const port = parseInt(process.env.PORT || '5000', 10);
+  // server.listen(5000, 'localhost', () => {
+  //   log(`serving on port ${port}`);
+  // });
+
+  // Vercel requires listening on the port it provides
+  const port = Number(process.env.PORT) || 3000;
+  server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
   });
 })();
