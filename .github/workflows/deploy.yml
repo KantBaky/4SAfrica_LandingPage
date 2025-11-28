@@ -30,3 +30,14 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist   # or ./build if using Create React App
+
+      - name: Install dependencies
+        run: |
+          npm ci
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      # If npm ci ever fails again, fall back to npm install (safe mode)
+      - name: Fallback install (if ci fails)
+        if: failure()
+        run: npm install
