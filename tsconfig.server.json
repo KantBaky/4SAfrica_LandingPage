@@ -1,0 +1,14 @@
+// tsconfig.server.json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/server",
+    "rootDir": "./server",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "sourceMap": true
+  },
+  "include": ["server/**/*"],
+  "exclude": ["node_modules"]
+}
