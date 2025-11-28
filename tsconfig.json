@@ -3,8 +3,8 @@
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
     "target": "ES2022",
-    "module": "nodenext",                  // ← fixed
-    "moduleResolution": "nodenext",        // ← fixed (already correct, but keep consistent)
+    "module": "NodeNext",                  // ← fixed
+    "moduleResolution": "NodeNext",        // ← fixed (already correct, but keep consistent)
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
