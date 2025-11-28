@@ -10,11 +10,5 @@
     { "src": "/api/(.*)", "dest": "/server/index.ts" },
     { "src": "/(.*)", "dest": "/server/index.ts" }
   ],
-  "functions": {
-    "server/index.ts": {
-      "memory": 1024,
-      "maxDuration": 30
-    }
-  },
   "outputDirectory": "dist/public"
 }
