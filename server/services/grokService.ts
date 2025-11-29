@@ -1,6 +1,16 @@
 // server/services/grokService.ts
 import OpenAI from "openai";
 
+const XAI_API_KEY =
+  process.env.VITE_XAI_API_KEY ??
+  process.env.XAI_API_KEY ??
+  "";
+
+if (!XAI_API_KEY) {
+  console.warn(
+    "[grokService] Missing XAI API key. Set XAI_API_KEY or VITE_XAI_API_KEY in your environment."
+  );
+}
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
@@ -16,20 +26,25 @@ export interface ResultData {
 export class GrokService {
   private openai: OpenAI | null = null;
 
-  private getOpenAIClient(): OpenAI {
+   private getOpenAIClient(): OpenAI {
     if (!this.openai) {
-      const apiKey = import.meta.env.VITE_XAI_API_KEY;
-      // const apiKey = process.env.XAI_API_KEY || process.env.VITE_XAI_API_KEY;
+      const apiKey =
+        process.env.VITE_XAI_API_KEY ??
+        process.env.XAI_API_KEY ??
+        "";
+
       if (!apiKey) {
-        throw new Error('XAI_API_KEY environment variable is not set');
+        throw new Error("XAI_API_KEY environment variable is not set");
       }
+
       this.openai = new OpenAI({
         baseURL: "https://api.x.ai/v1",
-        apiKey: apiKey
+        apiKey,
       });
     }
     return this.openai;
   }
+  
   private getSystemPrompt(language: string = 'en'): string {
     if (language === 'fr') {
       return `Tu es SustainaBot, un assistant IA puissant alimenté par GrokAI. Tu représentes 4S (Solutions de Durabilité pour l'Afrique Subsaharienne). Réponds toujours en FRANÇAIS. 

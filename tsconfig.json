@@ -2,9 +2,9 @@
   "include": ["client/src/**/*", "shared/**/*", "server/**/*"],
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",                  // ← fixed
-    "moduleResolution": "NodeNext",        // ← fixed (already correct, but keep consistent)
+    "target": "ES2022",                // ← fixed
+    "moduleResolution": "bundler",       // ← fixed (already correct, but keep consistent)
+    "module": "esnext",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

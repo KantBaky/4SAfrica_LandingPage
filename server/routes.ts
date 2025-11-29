@@ -1,8 +1,8 @@
 // server/routes.ts
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { grokService } from "./services/grokService";
-import { emailService } from "./services/emailService";
+import { grokService } from "./services/grokService.js"; 
+import { emailService } from "./services/emailService.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Chat API - Using GrokAI 
