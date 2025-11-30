@@ -402,7 +402,7 @@ export default function Landing() {
       </section>
 
       {/* GrokAI Chatbot */}
-      <GrokChatbot />
+      {/* <GrokChatbot /> */}
     </div>
   );
 }
