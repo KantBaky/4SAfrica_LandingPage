@@ -18,6 +18,7 @@ const getQuickLinks = (t: (key: string) => string) => [
   { href: '#how-it-works', label: t('nav.howItWorks') },
   { href: '#testimonials', label: t('nav.testimonials') },
   { href: '#contact', label: t('nav.contact') },
+  { href: 'https://www.smartsafari.io', label: "SmartSafari"},
 ];
 
 const socialLinks = [
@@ -65,21 +66,40 @@ export function Footer() {
           
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-background mb-4">{t('nav.home') && 'Quick Links'}</h4>
+            <h4 className="font-bold text-background mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-background/80 hover:text-primary transition-colors focus-visible text-left"
-                    data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
+              {quickLinks.map((link) => {
+                const isExternal = link.href.startsWith("http");
+
+                return (
+                  <li key={link.href}>
+                    {isExternal ? (
+                      // External link opens in new tab
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-background/80 hover:text-primary transition-colors focus-visible text-left inline-block"
+                        data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      // Internal link scroll behaviour
+                      <button
+                        onClick={() => scrollToSection(link.href)}
+                        className="text-background/80 hover:text-primary transition-colors focus-visible text-left"
+                        data-testid={`link-footer-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
+                        {link.label}
+                      </button>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
+
 
           {/* Contact Info */}
           <div>

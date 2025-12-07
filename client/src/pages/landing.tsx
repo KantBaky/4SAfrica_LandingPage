@@ -58,6 +58,11 @@ export default function Landing() {
       title: t('solutions.capacityDevelopment'),
       description: t('solutions.capacityDevelopmentDesc'),
     },
+    {
+      Icon: Rocket,
+      title: t('solutions.SmartSafari'),
+      description: t('solutions.SmartSafariDesc'),
+    },
   ];
 
   const stats = [

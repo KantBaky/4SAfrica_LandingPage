@@ -48,7 +48,8 @@ export const translations = {
       climateChangeDesc: 'Comprehensive strategies for climate mitigation and adaptation, helping communities prepare for and respond to climate impacts.',
       capacityDevelopment: 'Capacity Development',
       capacityDevelopmentDesc: 'Building skills and institutional strength in governments and companies through training, mentoring, and organizational development programs.',
-      
+      SmartSafari: 'SmartSafari.io',
+      SmartSafariDesc: 'SmartSafari draws you straight into the pulse of East Africa, turning your travel dreams into something bright, bold, and instantly alive. Its smart AI listens to your style, shapes your ideas into vivid routes, and fills each journey with close wildlife moments, secret viewpoints, and iconic scenes across Kenya, Tanzania, Uganda, and Rwanda. The experience feels smooth and exciting from the first click on smartsafari.io, where every detail works together to create a trip that feels personal, thrilling, and impossible to forget.',
     },
     stats: {
       livesImpacted: 'Lives Impacted',
