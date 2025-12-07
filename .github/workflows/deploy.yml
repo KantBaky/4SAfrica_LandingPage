@@ -1,52 +1,83 @@
-# .github/workflows/deploy.yml
+# # .github/workflows/deploy.yml
+# name: Deploy to GitHub Pages
+
+# on:
+#   push:
+#     branches: [ main ]
+#   workflow_dispatch:  # Allows manual trigger
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write   # Required for peaceiris/actions-gh-pages to push
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#           cache: 'npm'
+
+#       - name: Install dependencies
+#         run: npm ci
+
+#       - name: Build with VITE_XAI_API_KEY
+#         env:
+#           VITE_XAI_API_KEY: ${{ secrets.VITE_XAI_API_KEY }}
+#         run: |
+#           echo "VITE_XAI_API_KEY=$VITE_XAI_API_KEY" >> .env.production
+#           npm run build
+
+#       - name: Deploy to gh-pages (files go to root)
+#         uses: peaceiris/actions-gh-pages@v4
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./dist/public        # Vite outputs here
+#           publish_branch: gh-pages
+#           force_orphan: true                # Clean branch every time (recommended)
+#           allow_empty_commit: false
+#           # NO destination_dir → files go directly to root of gh-pages
+
+#       # Optional: Add .nojekyll so GitHub doesn't try to run Jekyll
+#       - name: Add .nojekyll file
+#         run: touch ./dist/public/.nojekyll && cp ./dist/public/.nojekyll .
+
+#       # Optional: Create CNAME for your custom domain
+#       - name: Add CNAME
+#         if: github.ref == 'refs/heads/main'
+#         run: echo "weare4s.com" > ./dist/public/CNAME
+
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:  # Allows manual trigger
+    branches:
+      - main  # or your default branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write   # Required for peaceiris/actions-gh-pages to push
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build with VITE_XAI_API_KEY
-        env:
-          VITE_XAI_API_KEY: ${{ secrets.VITE_XAI_API_KEY }}
-        run: |
-          echo "VITE_XAI_API_KEY=$VITE_XAI_API_KEY" >> .env.production
-          npm run build
+      - name: Build
+        run: npm run build
 
-      - name: Deploy to gh-pages (files go to root)
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/public        # Vite outputs here
-          publish_branch: gh-pages
-          force_orphan: true                # Clean branch every time (recommended)
-          allow_empty_commit: false
-          # NO destination_dir → files go directly to root of gh-pages
-
-      # Optional: Add .nojekyll so GitHub doesn't try to run Jekyll
-      - name: Add .nojekyll file
-        run: touch ./dist/public/.nojekyll && cp ./dist/public/.nojekyll .
-
-      # Optional: Create CNAME for your custom domain
-      - name: Add CNAME
-        if: github.ref == 'refs/heads/main'
-        run: echo "weare4s.com" > ./dist/public/CNAME
+          publish_dir: ./dist

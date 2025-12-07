@@ -4,7 +4,7 @@
   "compilerOptions": {
     "target": "ES2022",                // ← fixed
     "moduleResolution": "bundler",       // ← fixed (already correct, but keep consistent)
-    "module": "esnext",
+    "module": "ESNext",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,

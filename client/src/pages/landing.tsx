@@ -33,7 +33,7 @@ export default function Landing() {
       title: t('solutions.smartAgriculture'),
       description: t('solutions.smartAgricultureDesc'),
     },
-    {
+    { 
       Icon: Wifi,
       title: t('solutions.digitalInfra'),
       description: t('solutions.digitalInfraDesc'),
