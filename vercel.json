@@ -8,7 +8,6 @@
     { "src": "/api/(.*)", "dest": "server/index.ts" },
     { "src": "/(.*)", "dest": "dist/public/$1" }
   ],
-  "installCommand": "npm install --legacy-peer-deps",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
   "framework": null

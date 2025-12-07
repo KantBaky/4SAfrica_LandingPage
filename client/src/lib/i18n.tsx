@@ -48,6 +48,7 @@ export const translations = {
       climateChangeDesc: 'Comprehensive strategies for climate mitigation and adaptation, helping communities prepare for and respond to climate impacts.',
       capacityDevelopment: 'Capacity Development',
       capacityDevelopmentDesc: 'Building skills and institutional strength in governments and companies through training, mentoring, and organizational development programs.',
+      
     },
     stats: {
       livesImpacted: 'Lives Impacted',
