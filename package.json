@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "deploy": "npm run build && vercel --prod",
     "deploy:preview": "npm run build && vercel",
-    "deploy:git": "git add . && git commit -m 'Deploy updates' && git push",
+    "deploy:git": "git add . && git commit -m Update && git push",
     "deploy:all": "npm run deploy:git && npm run deploy"
   },
   "dependencies": {
