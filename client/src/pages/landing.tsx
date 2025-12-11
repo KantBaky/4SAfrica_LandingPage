@@ -603,7 +603,7 @@ export default function Landing() {
         </DialogContent>
       </Dialog>
 
-      {/* Contact/CTA Section */}
+      {/* Contact/CTA Section
       <section id="contact" className="py-24 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-accent">
@@ -694,6 +694,129 @@ export default function Landing() {
 
           <p className="text-sm text-primary-foreground/70">
             <Lock className="inline mr-2" size={20} />
+            We respect your privacy. No spam, ever.
+          </p>
+        </div>
+      </section> */}
+
+      {/* Contact/CTA Section */}
+      <section id="contact" className="py-24 bg-primary text-primary-foreground">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 
+            id="contact-heading" 
+            className="text-4xl md:text-5xl font-bold mb-6 font-accent"
+          >
+            {t('contact.title')}
+          </h2>
+          <p className="text-xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto">
+            {t('contact.subtitle')}
+          </p>
+
+          <form 
+            aria-labelledby="contact-heading"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              
+              if (!email || !contactMessage) {
+                setSubmitMessage(t('contact.error'));
+                return;
+              }
+
+              setIsSubmitting(true);
+              setSubmitMessage('');
+
+              try {
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    email,
+                    name: contactName || undefined,
+                    message: contactMessage,
+                  }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                  setSubmitMessage('✓ ' + t('contact.success'));
+                  setEmail('');
+                  setContactName('');
+                  setContactMessage('');
+                  setTimeout(() => setSubmitMessage(''), 5000);
+                } else {
+                  setSubmitMessage(data.message || t('contact.error'));
+                }
+              } catch (error) {
+                setSubmitMessage(t('contact.error'));
+                console.error('Contact form error:', error);
+              } finally {
+                setIsSubmitting(false);
+              }
+            }}
+            className="space-y-4 max-w-2xl mx-auto mb-8"
+          >
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Input
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder={t('contact.namePlaceholder')}
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                aria-label={t('contact.namePlaceholder')}
+                className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
+                data-testid="input-name"
+              />
+              <Input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder={t('contact.emailPlaceholder')}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label={t('contact.emailPlaceholder')}
+                required
+                aria-required="true"
+                className="flex-1 bg-white text-foreground px-6 py-4 text-lg"
+                data-testid="input-email"
+              />
+            </div>
+            <textarea
+              id="contact-message"
+              name="message"
+              placeholder={t('contact.messagePlaceholder')}
+              value={contactMessage}
+              onChange={(e) => setContactMessage(e.target.value)}
+              aria-label={t('contact.messagePlaceholder')}
+              required
+              aria-required="true"
+              className="w-full bg-white text-foreground px-6 py-4 text-lg rounded-md border border-border focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
+              data-testid="textarea-message"
+            />
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isSubmitting || !email || !contactMessage}
+              aria-label={isSubmitting ? t('contact.sending') : t('contact.submit')}
+              className="w-full bg-secondary text-secondary-foreground px-8 py-4 text-lg font-semibold btn-seed-hover hover:bg-secondary/90"
+              data-testid="button-submit-email"
+            >
+              {isSubmitting ? t('contact.sending') : t('contact.submit')}
+            </Button>
+            {submitMessage && (
+              <p 
+                role="status"
+                aria-live="polite"
+                className={`text-sm text-center ${submitMessage.includes('✓') ? 'text-green-300' : 'text-yellow-200'}`}
+              >
+                {submitMessage}
+              </p>
+            )}
+          </form>
+
+          <p className="text-sm text-primary-foreground/70">
+            <Lock className="inline mr-2" size={20} aria-hidden="true" />
             We respect your privacy. No spam, ever.
           </p>
         </div>
