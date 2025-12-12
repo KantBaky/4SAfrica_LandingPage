@@ -17,7 +17,7 @@ export class EmailService {
     const smtpPassword = process.env.SMTP_PASSWORD;
     
     // Use SMTP_USER as recipient, or fallback to CONTACT_EMAIL env var
-    this.recipientEmail = process.env.CONTACT_EMAIL || smtpUser || 'info@4ssolutions.com';
+    this.recipientEmail = process.env.CONTACT_EMAIL || smtpUser || 'info@weare4s.com';
 
     if (smtpUser && smtpPassword) {
       this.transporter = nodemailer.createTransport({
