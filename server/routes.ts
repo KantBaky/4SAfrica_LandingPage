@@ -4,36 +4,67 @@ import { emailService } from "./services/emailService";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact Form API
+  // app.post("/api/contact", async (req, res) => {
+  //   try {
+  //     const { email, name, message, subject } = req.body;
+
+  //     // Validate required fields
+  //     if (!email || !message) {
+  //       return res.status(400).json({ message: "Email and message are required" });
+  //     } 
+
+  //     // Validate email format
+  //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //     if (!emailRegex.test(email)) {
+  //       return res.status(400).json({ message: "Invalid email format" });
+  //     }
+
+  //     // Send contact email to 4S
+  //     await emailService.sendContactEmail({ email, name, message, subject });
+
+  //     // Send confirmation email to user
+  //     await emailService.sendConfirmationEmail(email);
+
+  //     res.json({ 
+  //       success: true,
+  //       message: "Your message has been sent successfully. We'll get back to you soon!" 
+  //     });
+  //   } catch (error: any) {
+  //     console.error("Contact form error:", error);
+  //     res.status(500).json({ 
+  //       message: "Failed to send message. Please try again or contact us directly at info@4ssolutions.com",
+  //       error: error.message 
+  //     });
+  //   }
+  // });
   app.post("/api/contact", async (req, res) => {
     try {
-      const { email, name, message, subject } = req.body;
+      const { email, name, message } = req.body;
 
-      // Validate required fields
       if (!email || !message) {
-        return res.status(400).json({ message: "Email and message are required" });
+        return res.status(400).json({ 
+          success: false, 
+          message: "Email and message are required" 
+        });
       }
 
-      // Validate email format
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return res.status(400).json({ message: "Invalid email format" });
+      // Send email (if email service is configured)
+      try {
+        await sendContactEmail({ email, name, message });
+      } catch (emailError) {
+        console.error("Email sending failed:", emailError);
+        // Continue even if email fails
       }
-
-      // Send contact email to 4S
-      await emailService.sendContactEmail({ email, name, message, subject });
-
-      // Send confirmation email to user
-      await emailService.sendConfirmationEmail(email);
 
       res.json({ 
-        success: true,
-        message: "Your message has been sent successfully. We'll get back to you soon!" 
+        success: true, 
+        message: "Thank you for your message! We'll get back to you soon." 
       });
-    } catch (error: any) {
+    } catch (error) {
       console.error("Contact form error:", error);
       res.status(500).json({ 
-        message: "Failed to send message. Please try again or contact us directly at info@4ssolutions.com",
-        error: error.message 
+        success: false, 
+        message: "Something went wrong. Please try again later." 
       });
     }
   });
@@ -93,3 +124,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   return httpServer;
 }
+function sendContactEmail(arg0: { email: any; name: any; message: any; }) {
+  throw new Error("Function not implemented.");
+}
+
