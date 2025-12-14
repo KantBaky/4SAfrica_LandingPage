@@ -26,7 +26,7 @@ async function getVisitorData(): Promise<VisitorData> {
     screenResolution: typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : '',
     platform: typeof navigator !== 'undefined' ? navigator.platform : '',
     contactName: 'Website Visitor',
-    contactEmail: 'visitor@4ssolutions.com',
+    contactEmail: 'support@weare4s.com',
   };
 }
 
