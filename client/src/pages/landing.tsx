@@ -534,23 +534,6 @@ export default function Landing() {
                 <ExternalLink className="w-3 h-3 ml-1" />
               </a>
             </p>
-            <div className="flex justify-center items-center gap-6 pt-4">
-              <a 
-                href="https://4ssolutions.org" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary font-semibold hover:underline inline-flex items-center gap-2"
-                data-testid="link-4s-website"
-              >
-                <img 
-                  src={logoImage} 
-                  alt="4S Logo" 
-                  className="w-6 h-6 rounded-full object-cover"
-                />
-                4S Solutions
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
           </div>
         </div>
       </section>
