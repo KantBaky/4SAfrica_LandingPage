@@ -71,7 +71,7 @@ export function CookieConsent() {
     <div className="fixed bottom-6 left-6 z-50 w-80 bg-white dark:bg-slate-900 border border-border rounded-lg shadow-lg p-4">
       <h3 className="font-semibold text-primary mb-2">Cookie Consent</h3>
       <p className="text-sm text-muted-foreground mb-4">
-        We collect visitor information to stay connected about updates and opportunities with 4S. No manual input needed—we automatically gather your information.
+        We collect visitor information to stay connected about updates and opportunities with 4S.
       </p>
 
       <div className="flex gap-2">
