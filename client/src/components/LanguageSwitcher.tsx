@@ -12,6 +12,9 @@ export function LanguageSwitcher() {
     { code: 'fr' as Language, flag: '🇫🇷', label: 'FR', fullLabel: 'Français' },
     { code: 'pt' as Language, flag: '🇵🇹', label: 'PT', fullLabel: 'Português' },
     { code: 'es' as Language, flag: '🇪🇸', label: 'ES', fullLabel: 'Español' },
+    { code: 'ar' as Language, flag: '🇸🇦', label: 'AR', fullLabel: 'العربية' },
+    { code: 'ru' as Language, flag: '🇷🇺', label: 'RU', fullLabel: 'Русский' },
+    { code: 'zh' as Language, flag: '🇨🇳', label: 'ZH', fullLabel: '中文' },
   ];
 
   const current = languages.find(l => l.code === language);

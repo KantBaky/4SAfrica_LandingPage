@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { X } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n';
 
 interface VisitorData {
   timestamp: string;
@@ -26,11 +27,12 @@ async function getVisitorData(): Promise<VisitorData> {
     screenResolution: typeof window !== 'undefined' ? `${window.screen.width}x${window.screen.height}` : '',
     platform: typeof navigator !== 'undefined' ? navigator.platform : '',
     contactName: 'Website Visitor',
-    contactEmail: 'support@weare4s.com',
+    contactEmail: 'visitor@4ssolutions.com',
   };
 }
 
 export function CookieConsent() {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -69,9 +71,9 @@ export function CookieConsent() {
 
   return (
     <div className="fixed bottom-6 left-6 z-50 w-80 bg-white dark:bg-slate-900 border border-border rounded-lg shadow-lg p-4">
-      <h3 className="font-semibold text-primary mb-2">Cookie Consent</h3>
+      <h3 className="font-semibold text-primary mb-2">{t('cookies.title')}</h3>
       <p className="text-sm text-muted-foreground mb-4">
-        We collect visitor information to stay connected about updates and opportunities with 4S.
+        {t('cookies.message')}
       </p>
 
       <div className="flex gap-2">
@@ -80,14 +82,14 @@ export function CookieConsent() {
           className="flex-1 px-3 py-2 bg-green-700 hover:bg-green-800 text-white rounded text-sm font-medium"
           data-testid="button-accept-cookies"
         >
-          Accept Cookies
+          {t('cookies.accept')}
         </button>
         <button
           onClick={handleDecline}
           className="flex-1 px-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded text-sm font-medium"
           data-testid="button-decline-cookies"
         >
-          Decline
+          {t('cookies.decline')}
         </button>
       </div>
     </div>
