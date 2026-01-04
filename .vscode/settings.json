@@ -1,0 +1,17 @@
+{
+    "accessibility.signals.terminalQuickFix": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandSucceeded": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalBell": {
+        "sound": "off"
+    },
+    "accessibility.signals.clear": {
+        "sound": "off"
+    }
+}
